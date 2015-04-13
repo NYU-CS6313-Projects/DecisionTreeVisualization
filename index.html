@@ -1,10 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<title>Flare Dendrogram</title>
 <head>
-  <!--<link rel="shortcut icon" type="image/x-icon" href="icon.png">-->
-  <title>NYU - CS6313 - Project X</title>
-  <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/slider.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
+  
+  <div id="left" class="col-md-8">
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div id="toolbar"> 
+
+            <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    
+
+    </div>
+
+    <div class="col-md-12">
+      <div id="mainviz"> </div>
+
+      
+
+    </div>
+    
+    <div id="center" class="col-md-2"></div>
+  </div>
+
+  <div id="right" class="col-md-4">
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!--<div id="overview"></div>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Statistics</h3>
+        </div>
+        <div class="panel-body">
+          <div id="stats"></div>
+        </div>
+      </div>
+    </div>
+
+        <div class="col-md-12">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Attribute Distribution</h3>
+        </div>
+        <div class="panel-body">
+          <div id="attrDist"></div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Predicted Values</h3>
+        </div>
+        <div class="panel-body">
+          <div id="classDist"></div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" >
+        <div class="panel-heading">
+          <h3 class="panel-title">Attribute List</h3>
+        </div>
+        <div class="panel-body" style="height:150px;overflow:scroll;">
+        <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Attribute Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <div id="attr-list"></div>
+          </tbody>
+        </table>
+        <!--
+          <table class="table table-condensed">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Attribute Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Xinyu Wang</td>
+          </tr>
+                    <tr>
+            <td>2</td>
+            <td>Yixue Wang</td>
+          </tr>
+                    <tr>
+            <td>3</td>
+            <td>Kania Azrina</td>
+          </tr>
+                    <tr>
+            <td>4</td>
+            <td>Joschua Krause</td>
+          </tr>
+          </tbody>
+
+  
+          </table>
+          -->
+          </div>
+    </div>
+
+  </div>
+  </div>
+
+
 </body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-slider.js"></script>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/d3.layout.js"></script>
+<script src="js/mainviz.js"></script>
+<script src="js/overview.js"></script>
+<script src="js/dist.js"></script>
+
+<script src="js/app.js"></script>

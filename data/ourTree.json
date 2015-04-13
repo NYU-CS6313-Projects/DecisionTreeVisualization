@@ -1,0 +1,107 @@
+{
+  "id": "0", "rule": "diagnosis__HIERARCHY_10.2.1 <= 0.5000", "entropy": "0.999212735884", "samples": "666",
+  "left": 
+  
+    {"id": "1", "criterion": "entropy", "impurity": "0.0", "samples": "259", "rule": "[ 259.    0.]"}  
+  ,
+  "right": 
+  {
+    "id": "2", "rule": "diagnosis__29410 <= 0.5000", "entropy": "0.621701419652", "samples": "407",
+    "left": 
+    {
+      "id": "3", "rule": "diagnosis__7093 <= 0.5000", "entropy": "0.780514927957", "samples": "229",
+      "left": 
+      {
+        "id": "4", "rule": "diagnosis__HIERARCHY_7.3.3 <= 0.5000", "entropy": "0.875319825607", "samples": "166",
+        "left": 
+        {
+          "id": "5", "rule": "diagnosis__V1588 <= 0.5000", "entropy": "0.904665535187", "samples": "153",
+          "left": 
+          {
+            "id": "6", "rule": "diagnosis__HIERARCHY_2.15.1 <= 0.5000", "entropy": "0.927338928252", "samples": "143",
+            "left": 
+            {
+              "id": "7", "rule": "diagnosis__7108 <= 0.5000", "entropy": "0.900174945035", "samples": "136"            
+            },
+            "right": 
+            {
+              "id": "48", "rule": "diagnosis__311 <= 0.5000", "entropy": "0.591672778582", "samples": "7"            
+            }          
+          },
+          "right": 
+          
+            {"id": "51", "criterion": "entropy", "impurity": "0.0", "samples": "10", "rule": "[  0.  10.]"}          
+                  
+        },
+        "right": 
+        
+          {"id": "52", "criterion": "entropy", "impurity": "0.0", "samples": "13", "rule": "[  0.  13.]"}        
+              
+      },
+      "right": 
+      {
+        "id": "53", "rule": "diagnosis__HIERARCHY_7.2.9.2 <= 0.5000", "entropy": "0.341153893145", "samples": "63",
+        "left": 
+        {
+          "id": "54", "rule": "diagnosis__HIERARCHY_9.6.4 <= 0.5000", "entropy": "0.666578357995", "samples": "23",
+          "left": 
+          
+            {"id": "55", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"}          
+          ,
+          "right": 
+          {
+            "id": "56", "rule": "diagnosis__40211 <= 0.5000", "entropy": "0.453716339187", "samples": "21",
+            "left": 
+            
+              {"id": "57", "criterion": "entropy", "impurity": "0.0", "samples": "18", "rule": "[  0.  18.]"}            
+            ,
+            "right": 
+            {
+              "id": "58", "rule": "diagnosis__71533 <= 0.5000", "entropy": "0.918295834054", "samples": "3"            
+            }          
+          }        
+        },
+        "right": 
+        
+          {"id": "61", "criterion": "entropy", "impurity": "0.0", "samples": "40", "rule": "[  0.  40.]"}        
+              
+      }    
+    },
+    "right": 
+    {
+      "id": "62", "rule": "diagnosis__HIERARCHY_7.2.4.3 <= 0.5000", "entropy": "0.312089565934", "samples": "178",
+      "left": 
+      {
+        "id": "63", "rule": "diagnosis__40290 <= 0.5000", "entropy": "0.436770454577", "samples": "111",
+        "left": 
+        {
+          "id": "64", "rule": "diagnosis__6009 <= 0.5000", "entropy": "0.378465427915", "samples": "109",
+          "left": 
+          {
+            "id": "65", "rule": "diagnosis__V4586 <= 0.5000", "entropy": "0.311661988623", "samples": "107",
+            "left": 
+            {
+              "id": "66", "rule": "diagnosis__56031 <= 0.5000", "entropy": "0.233489710448", "samples": "105"            
+            },
+            "right": 
+            
+              {"id": "75", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"}            
+                      
+          },
+          "right": 
+          
+            {"id": "76", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"}          
+                  
+        },
+        "right": 
+        
+          {"id": "77", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"}        
+              
+      },
+      "right": 
+      
+        {"id": "78", "criterion": "entropy", "impurity": "0.0", "samples": "67", "rule": "[  0.  67.]"}      
+          
+    }  
+  }
+}
