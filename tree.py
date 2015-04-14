@@ -20,7 +20,7 @@ import StringIO, pydot
 ### reading csv file into list of lists, header and main body of the data
 data = []
 c = 0
-with open('output_small.csv', 'rU') as f:  #opens PW file
+with open('output.csv', 'rU') as f:  #opens PW file
     reader = csv.reader(f)
     for row in reader:
     	if c == 0:
@@ -38,8 +38,8 @@ numInstances = len(data)
 
 
 ### delect the first attribute, 'id', attributes contains all the attributes need to fit the model
-attributes = data[:,1:-1]
-target = data[:,-1]
+attributes = data[:,3:]
+target = data[:,2]
 # print attributes.shape
 # print target.shape
 
@@ -56,6 +56,7 @@ clf = clf.fit(Xtrain, ytrain)
 
 dot_data = StringIO.StringIO()
 export_graphviz(clf, out_file=dot_data)
+print dot_data.getvalue()
 graph = pydot.graph_from_dot_data(dot_data.getvalue())
 graph.write_pdf("haha.pdf")
 
