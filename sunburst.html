@@ -38,6 +38,7 @@ function toJson(x)
     result.children = [];
   else
     result.size = parseInt(x.samples);
+    result.color = "red";
  
   var index = 0;
   if (!!x.left && !x.left.value)
