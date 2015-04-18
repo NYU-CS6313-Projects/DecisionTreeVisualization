@@ -45,40 +45,42 @@ target = data[:,2]
 
 
 ### randomly pick up training set and testing set
-Xtrain, Xtest, ytrain, ytest = train_test_split(attributes, target, train_size=666, test_size=333, random_state=42)
+Xtrain, Xtest, ytrain, ytest = train_test_split(attributes, target, train_size=int(31829*0.9), test_size=int(31829*0.1), random_state=42)
 
 ### build up the tree and using split-testing data to test
 clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20)
 clf = clf.fit(Xtrain, ytrain)
-# myPredictions = clf.predict(Xtest)
-# correctClass = accuracy_score(ytest, myPredictions)
-# print correctClass
+myPredictions = clf.predict(Xtest)
+print len(myPredictions[myPredictions==1])
+print len(myPredictions)
+correctClass = accuracy_score(ytest, myPredictions)
+print correctClass
 
 dot_data = StringIO.StringIO()
 export_graphviz(clf, out_file=dot_data)
-print dot_data.getvalue()
+# print dot_data.getvalue()
 graph = pydot.graph_from_dot_data(dot_data.getvalue())
 graph.write_pdf("haha.pdf")
 
 im = Image(graph.create_png())
-print type(im)
+# print type(im)
 
 ### use cross validation to test the optimal depth of the tree
-kfold = KFold(Xtrain.shape[0], n_folds=10)
-accs = []
-max_depths = range(1, 50)
-for max_depth in max_depths:
-    k_accs = []
-    for train, test in kfold:
-        Xtrain1, Xtest1, ytrain1, ytest1 = Xtrain[train], Xtrain[test], ytrain[train], ytrain[test]
-        clf = tree.DecisionTreeClassifier(max_depth=max_depth)
-        clf.fit(Xtrain, ytrain)
-        ypred = clf.predict(Xtest)
-        k_accs.append(accuracy_score(ytest, ypred))
-    accs.append(np.mean(k_accs))
-# plot the accuracies as a function of max_depth
-plt.plot(max_depths, accs, linewidth=2.5)
-plt.show()
+# kfold = KFold(Xtrain.shape[0], n_folds=10)
+# accs = []
+# max_depths = range(1, 50)
+# for max_depth in max_depths:
+#     k_accs = []
+#     for train, test in kfold:
+#         Xtrain1, Xtest1, ytrain1, ytest1 = Xtrain[train], Xtrain[test], ytrain[train], ytrain[test]
+#         clf = tree.DecisionTreeClassifier(max_depth=max_depth)
+#         clf.fit(Xtrain, ytrain)
+#         ypred = clf.predict(Xtest)
+#         k_accs.append(accuracy_score(ytest, ypred))
+#     accs.append(np.mean(k_accs))
+# # plot the accuracies as a function of max_depth
+# plt.plot(max_depths, accs, linewidth=2.5)
+# plt.show()
 
 
 
