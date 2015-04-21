@@ -24,6 +24,9 @@ var width = screen.width*0.6,
     height = screen.height,
     radius = (screen.height * 0.3);
 
+var pos = 0;
+var neg = 0;
+
 var x = d3.scale.linear()
     .range([0, 2 * Math.PI]);
 
@@ -55,19 +58,56 @@ d3.json("data/ourTree.json", function(error, root) {
 
   var path = g.append("path")
     .attr("d", arc)
-    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+    .style("fill", function(d) { 
+      //return color((d.children ? d : d.parent).name); 
+      //var str = d.name.replace(/\s/g, '');
+      var str = d.name.split(". ");
+    
+      //console.log(str);
+      
+      //var str = d.name.replace(/\s/g, '');
+      if (str.length > 1){
+        //str = str.split(".");
+      
+        
+        str[0] = str[0].replace('[', '');
+        str[0] = str[0].replace(' ', '');
+        str[1] = str[1].replace('.', '');
+        str[1] = str[1].replace(']', '');
+        str[1] = str[1].replace(' ', '');
+
+        pos= pos+parseInt(str[1]);
+        neg= neg+parseInt(str[0]);
+        //console.log(str[3]);
+        console.log(pos);
+       
+
+        if (str[0] > str[1]){
+           return "#A6A6A6"; //positive
+        } else {
+         
+         return "#7D0C0C"; //negative
+        }
+      } else{
+        return "#F5EFE4"; // patern
+         
+      }
+
+
+
+    })
     .on("click", click);
 
-  // var text = g.append("text")
-  //   .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
-  //   .attr("x", function(d) { return y(d.y); })
-  //   .attr("dx", "6") // margin
-  //   .attr("dy", ".35em") // vertical-align
-  //   .text(function(d) { return d.name; });
+  var text = g.append("text")
+     //.attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
+     //.attr("x", function(d) { return y(d.y); })
+     //.attr("dx", "6") // margin
+     //.attr("dy", ".35em") // vertical-align
+     //.text(function(d) { return d.name; });
 
   function click(d) {
     // fade out all text elements
-    //text.transition().attr("opacity", 0);
+   // text.transition().attr("opacity", 0);
 
     path.transition()
       .duration(750)
@@ -104,3 +144,7 @@ function arcTween(d) {
 function computeTextRotation(d) {
   return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
 }
+
+console.log(pos);
+console.log(neg);
+

@@ -21,7 +21,7 @@ function toJson(x)
   return result;
 }
 
-treeJSON = d3.json("data/ourTree.json", function(error, treeData) {
+treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
