@@ -19,10 +19,10 @@ function toJson(x)
   return result;
 }
 
-var radius = (screen.height * 0.4);
+var radius = (screen.height * 0.45);
 
 var cluster = d3.layout.cluster()
-    .size([360, radius - 120]);
+    .size([360, radius-120]);
 
 var diagonal = d3.svg.diagonal.radial()
     .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
@@ -31,7 +31,7 @@ var svg = d3.select("#mainviz").append("svg")
     .attr("width", radius * 2)
     .attr("height", radius * 2)
   .append("g")
-    .attr("transform", "translate(" + radius + "," + radius/1.5 + ")");
+    .attr("transform", "translate(" + radius*1.1 + "," + radius/1.3 + ")");
 
 d3.json("data/ourTree.json", function(error, root) {
   var nodes = cluster.nodes(toJson(root));
@@ -51,11 +51,11 @@ d3.json("data/ourTree.json", function(error, root) {
   node.append("circle")
       .attr("r", 4.5);
 
-  node.append("text")
-      .attr("dy", ".31em")
-      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-      .text(function(d) { return d.name; });
+  // node.append("text")
+  //     .attr("dy", ".31em")
+  //     .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+  //     .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+  //     .text(function(d) { return d.name; });
 });
 
 d3.select(self.frameElement).style("height", radius * 2 + "px");

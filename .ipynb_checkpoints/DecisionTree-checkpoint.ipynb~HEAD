@@ -94,7 +94,7 @@
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      "clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=100)\n",
+      "clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20)\n",
       "clf = clf.fit(Xtrain, ytrain)"
      ],
      "language": "python",

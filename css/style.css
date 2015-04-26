@@ -1,6 +1,6 @@
 .node circle {
   fill: #fff;
-  stroke: steelblue;
+  stroke: #7D0C0C;
   stroke-width: 1.5px;
 }
 
@@ -41,4 +41,14 @@
 
   #ex1Slider .slider-selection {
   background: #BABABA;
+}
+
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
+
+text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
 }
