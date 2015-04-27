@@ -430,7 +430,7 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
             .attr('class', 'ghostCircle')
             .attr("r", 30)
             .attr("opacity", 0.2) // change this to zero to hide the target area
-        .style("fill", "red")
+        .style("fill", "blue")
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
                 overCircle(node);
