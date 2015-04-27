@@ -16,6 +16,10 @@ var xAxis = d3.svg.axis()
     .scale(xdist)
     .orient("bottom");
 
+var color = d3.scale.ordinal()
+          .range(["#7d0c0c", "#801414", "#841c1c", "#872525", "#8b2d2d", "#923e3e", "#964747","#994f4f","#9d5858","#a16060","#a46868","#a87171","#ab7979","#af8282","#b38a8a","#b69393","#ba9b9b","#bda4a4","#c1acac","#c5b5b5"])
+
+
 // var yAxis = d3.svg.axis()
 //     .scale(y)
 //     .orient("left")
