@@ -1,4 +1,5 @@
 #### Xinyu_Wang 2015.04.26. Cloudy, New York, Home.####
+#### Xinyu_Wang 2015.04.27. Sunny, New York, MetroTech 6. ####
 
 import numpy as np
 import scipy as sp
@@ -82,6 +83,8 @@ def delete_leaf(train, test, tree, keys, feature):
 	new_class = counts.argmax()
 	return new_class 
 
+def add_leaf(train,test,tree,keys,feature):
+	pass
 def delete_layer():
 	### for this part, rerun the scipy decision tree with the newmaxdepth
 	pass
