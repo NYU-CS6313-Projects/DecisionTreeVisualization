@@ -1,9 +1,23 @@
-// Get JSON data
+//console.log(realName);
+//console.log(aliasName);
+
+function mapName(name){
+    return aliasName[realName.indexOf(name)];
+    
+}
 
 function toJson(x) 
 {
+
   var result = {};
-  result.name = x.rule;
+  var labelName = "";
+  alias = mapName(x.rule);
+  if (alias!=undefined){
+    labelName = x.rule+" "+alias;
+  } else {
+    labelName = x.rule;
+  }
+  result.name = labelName;
   result.samples=x.samples;
   result.rule=x.rule;
  
@@ -51,7 +65,7 @@ function toJson(x)
   
 }
 
-treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
+treeJSON = d3.json("data/ourTree.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -647,6 +661,6 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         tr.appendChild(td);
         theTable.appendChild(tr);
     }
-    console.log(theTable);
+    //console.log(theTable);
     $("#attr-list").append(theTable);
 });
