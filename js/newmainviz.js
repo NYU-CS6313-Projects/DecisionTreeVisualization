@@ -91,6 +91,31 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
             var count = children.length;
             for (var i = 0; i < count; i++) {
                 visit(children[i], visitFn, childrenFn);
+
+    function getDepth (obj) {
+    var depth = 0;
+    if (obj.children) {
+        obj.children.forEach(function (d) {
+            var tmpDepth = getDepth(d)
+            if (tmpDepth > depth) {
+                depth = tmpDepth
+            }
+        })
+    }
+    return 1 + depth}
+// Yixue's changes about depth, nodes number, etc.
+    var dep = getDepth(toJson(treeData))
+    d3.select("#num_nodes")
+    .text(totalNodes);
+    d3.select("#depth")
+    .text(dep-1);
+    d3.select("#branch_num")
+    .text(totalNodes);
+    // need revision to make it dynamic
+    d3.select("#accuracy")
+    .text("80.15%");
+    
+
             }
         }
     }
