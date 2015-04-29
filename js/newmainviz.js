@@ -3,13 +3,41 @@
 function toJson(x) 
 {
   var result = {};
-  result.name = x.rule;
+  result.name = x.id;
+  result.samples=x.samples;
  
   if ( (!!x.left && !x.left.value) ||
-       (!!x.right && !x.right.value) )
-    result.children = [];
-  else
+       (!!x.right && !x.right.value) ){
     result.size = parseInt(x.samples);
+    result.children = [];
+  }
+      
+  else{ //leaf node
+    result.size = parseInt(x.samples); 
+    var str = result.name
+    str = str.replace(/\s/g, '');
+        //str = str.split(".");
+      
+        
+        str[0] = str[0].replace('[', '');
+        str[0] = str[0].replace(' ', '');
+        str[1] = str[1].replace('.', '');
+        str[1] = str[1].replace(']', '');
+        str[1] = str[1].replace(' ', '');
+       
+
+        if (str[0] > str[1]){
+           result.name = "" //positive
+           result.color="#A6A6A6"
+        } else {
+         
+         result.name = ""; //negative
+         result.color = "#7D0C0C"
+        }
+    } 
+
+  
+    
  
   var index = 0;
   if (!!x.left && !x.left.value)
@@ -19,6 +47,7 @@ function toJson(x)
     result.children[index++] = toJson(x.right);
  
   return result;
+  
 }
 
 treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
@@ -313,7 +342,16 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         link.enter().append("path")
             .attr("class", "templink")
             .attr("d", d3.svg.diagonal())
-            .attr('pointer-events', 'none');
+            .attr('pointer-events', 'none')
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
+                console.log(d.samples);
+
+
+            });
 
         link.attr("d", d3.svg.diagonal());
 
@@ -428,9 +466,9 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         // phantom node to give us mouseover in a radius around it
         nodeEnter.append("circle")
             .attr('class', 'ghostCircle')
-            //.attr("r", 30)
-            //.attr("opacity", 0.2) // change this to zero to hide the target area
-            //.style("fill", "red")
+            .attr("r", 10)
+            .attr("opacity", 1) // change this to zero to hide the target area
+            .style("fill", function(d) {return d.color;})
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
                 overCircle(node);
@@ -487,6 +525,12 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         var link = svgGroup.selectAll("path.link")
             .data(links, function(d) {
                 return d.target.id;
+            })
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
             });
 
         // Enter any new links at the parent's previous position.
@@ -501,7 +545,16 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
                     source: o,
                     target: o
                 });
+            })
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
+                console.log(d.samples);
+
             });
+
 
         // Transition links to their new position.
         link.transition()
