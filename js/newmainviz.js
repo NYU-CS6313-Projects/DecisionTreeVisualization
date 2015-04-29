@@ -3,8 +3,9 @@
 function toJson(x) 
 {
   var result = {};
-  result.name = x.id;
+  result.name = x.rule;
   result.samples=x.samples;
+  result.rule=x.rule;
  
   if ( (!!x.left && !x.left.value) ||
        (!!x.right && !x.right.value) ){
@@ -14,25 +15,25 @@ function toJson(x)
       
   else{ //leaf node
     result.size = parseInt(x.samples); 
-    var str = result.name
-    str = str.replace(/\s/g, '');
-        //str = str.split(".");
-      
-        
-        str[0] = str[0].replace('[', '');
-        str[0] = str[0].replace(' ', '');
-        str[1] = str[1].replace('.', '');
-        str[1] = str[1].replace(']', '');
-        str[1] = str[1].replace(' ', '');
-       
 
-        if (str[0] > str[1]){
-           result.name = "" //positive
-           result.color="#A6A6A6"
+    var str = result.rule;
+    str = str.replace(' ','');
+    str = str.split(".");
+           
+        str[0] = str[0].replace('[', '');
+        str[1] = str[1].replace(']', '');
+
+        var leftVal = parseInt(str[0]);
+        var rightVal = parseInt(str[1]);
+
+        if (leftVal > rightVal){
+           result.name = "";
+           result.color="#A6A6A6";
         } else {
          
-         result.name = ""; //negative
-         result.color = "#7D0C0C"
+         //result.name = ""; //negative
+         result.name = "";
+         result.color = "#7D0C0C";
         }
     } 
 
@@ -446,7 +447,8 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
 
         // Set widths between levels based on maxLabelLength.
         nodes.forEach(function(d) {
-            d.y = (d.depth * (maxLabelLength * 10)); //maxLabelLength * 10px
+            d.y = (d.depth * (maxLabelLength * 2)); //maxLabelLength * 10px
+            //d.y = (d.depth * (50)); //maxLabelLength * 10px
             // alternatively to keep a fixed scale one can set a fixed depth per level
             // Normalize for fixed-depth by commenting out below line
             // d.y = (d.depth * 500); //500px per level.
