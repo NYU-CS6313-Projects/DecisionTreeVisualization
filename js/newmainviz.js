@@ -621,4 +621,32 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
+    var list1 = [];
+    function getName (obj){
+        if (obj.name!=""){
+           list1.push(obj.name); 
+        }
+        if (obj.children) {
+            obj.children.forEach(function (d) {
+                getName(d);
+            })
+        }
+    }
+    var container = d3.select("#attr-list"); 
+
+    getName(toJson(treeData));
+    var arrayLength = list1.length;
+    var theTable = document.createElement('table');
+    // Note, don't forget the var keyword!
+    for (var i = 0, tr, td; i < arrayLength; i++) {
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(list1[i]));
+        
+        tr.appendChild(td);
+        theTable.appendChild(tr);
+    }
+    console.log(theTable);
+    $("#attr-list").append(theTable);
 });
