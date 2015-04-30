@@ -26,7 +26,7 @@ def read(file):
 	    		data.append(row)
 	data = np.asarray(data)
 
-	data = data[1:5000,:]
+	# data = data[1:5000,:]
 
 	feature = head[2:]
 	feature_id = np.arange(len(feature))
@@ -63,7 +63,7 @@ def travel(dct, data, name_dct):
 	return dct
 
 if __name__ == '__main__':
-	with open('test_tree.json') as data_file:    	
+	with open('tree.json') as data_file:    	
 		data = json.load(data_file)
 	train,test, n_to_p_dct, p_to_n_dct= read('output.csv')
 
