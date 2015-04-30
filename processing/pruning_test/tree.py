@@ -67,110 +67,110 @@ correctClass = accuracy_score(ytest, myPredictions)
 dot_data = StringIO.StringIO()
 export_graphviz(clf, out_file=dot_data)
 print dot_data.getvalue()
-# graph = pydot.graph_from_dot_data(dot_data.getvalue())
-# graph.write_pdf("haha.pdf")
+graph = pydot.graph_from_dot_data(dot_data.getvalue())
+graph.write_pdf("haha.pdf")
 # 
 # im = Image(graph.create_png())
 
 # print type(im)
 
 
-def viz(decision_tree, feature_names=None):
-  from warnings import warn
+# def viz(decision_tree, feature_names=None):
+#   from warnings import warn
  
-  js = ""
+#   js = ""
  
-  def node_to_str(tree, node_id, criterion):
-    if not isinstance(criterion, sklearn.tree.tree.six.string_types):
-      criterion = "impurity"
+#   def node_to_str(tree, node_id, criterion):
+#     if not isinstance(criterion, sklearn.tree.tree.six.string_types):
+#       criterion = "impurity"
  
-    value = tree.value[node_id]
-    if tree.n_outputs == 1:
-      value = value[0, :]
+#     value = tree.value[node_id]
+#     if tree.n_outputs == 1:
+#       value = value[0, :]
  
-    if tree.children_left[node_id] == sklearn.tree._tree.TREE_LEAF:
-      return '"id": "%s", "criterion": "%s", "impurity": "%s", "samples": "%s", "rule": "%s"' \
-             % (node_id, 
-                criterion,
-                tree.impurity[node_id],
-                tree.n_node_samples[node_id],
-                value)
-    else:
-      if feature_names is not None:
-        feature = feature_names[tree.feature[node_id]]
-      else:
-        feature = tree.feature[node_id]
+#     if tree.children_left[node_id] == sklearn.tree._tree.TREE_LEAF:
+#       return '"id": "%s", "criterion": "%s", "impurity": "%s", "samples": "%s", "rule": "%s"' \
+#              % (node_id, 
+#                 criterion,
+#                 tree.impurity[node_id],
+#                 tree.n_node_samples[node_id],
+#                 value)
+#     else:
+#       if feature_names is not None:
+#         feature = feature_names[tree.feature[node_id]]
+#       else:
+#         feature = tree.feature[node_id]
  
-      return '"id": "%s", "rule": "%s <= %.4f", "%s": "%s", "samples": "%s"' \
-             % (node_id, 
-                feature,
-                tree.threshold[node_id],
-                criterion,
-                tree.impurity[node_id],
-                tree.n_node_samples[node_id])
+#       return '"id": "%s", "rule": "%s <= %.4f", "%s": "%s", "samples": "%s"' \
+#              % (node_id, 
+#                 feature,
+#                 tree.threshold[node_id],
+#                 criterion,
+#                 tree.impurity[node_id],
+#                 tree.n_node_samples[node_id])
  
-  def recurse(tree, node_id, criterion, parent=None, depth=0):
-    tabs = "  " * depth
-    js = ""
+#   def recurse(tree, node_id, criterion, parent=None, depth=0):
+#     tabs = "  " * depth
+#     js = ""
  
-    left_child = tree.children_left[node_id]
-    right_child = tree.children_right[node_id]
+#     left_child = tree.children_left[node_id]
+#     right_child = tree.children_right[node_id]
  
-    js = js + "\n" + \
-         tabs + "{\n" + \
-         tabs + "  " + node_to_str(tree, node_id, criterion)
+#     js = js + "\n" + \
+#          tabs + "{\n" + \
+#          tabs + "  " + node_to_str(tree, node_id, criterion)
  
-    if left_child != sklearn.tree._tree.TREE_LEAF:
-      js = js + ",\n" + \
-           tabs + '  "left": ' + \
-           recurse(tree, \
-                   left_child, \
-                   criterion=criterion, \
-                   parent=node_id, \
-                   depth=depth + 1) + ",\n" + \
-           tabs + '  "right": ' + \
-           recurse(tree, \
-                   right_child, \
-                   criterion=criterion, \
-                   parent=node_id,
-                   depth=depth + 1)
+#     if left_child != sklearn.tree._tree.TREE_LEAF:
+#       js = js + ",\n" + \
+#            tabs + '  "left": ' + \
+#            recurse(tree, \
+#                    left_child, \
+#                    criterion=criterion, \
+#                    parent=node_id, \
+#                    depth=depth + 1) + ",\n" + \
+#            tabs + '  "right": ' + \
+#            recurse(tree, \
+#                    right_child, \
+#                    criterion=criterion, \
+#                    parent=node_id,
+#                    depth=depth + 1)
  
-    js = js + tabs + "\n" + \
-         tabs + "}"
+#     js = js + tabs + "\n" + \
+#          tabs + "}"
  
-    return js
+#     return js
  
-  if isinstance(decision_tree, sklearn.tree.tree.Tree):
-    js = js + recurse(decision_tree, 0, criterion="impurity")
-  else:
-    js = js + recurse(decision_tree.tree_, 0, criterion=decision_tree.criterion)
+#   if isinstance(decision_tree, sklearn.tree.tree.Tree):
+#     js = js + recurse(decision_tree, 0, criterion="impurity")
+#   else:
+#     js = js + recurse(decision_tree.tree_, 0, criterion=decision_tree.criterion)
  
-  return js
+#   return js
 
-## Create json file for decision tree
+# ## Create json file for decision tree
 
-str1 = viz(clf, feature_names=features_n)
+# str1 = viz(clf, feature_names=features_n)
 
-obj = open('data.json', 'wb')
-obj.write(str1)
-obj.close
+# obj = open('data.json', 'wb')
+# obj.write(str1)
+# obj.close
 
-# ### use cross validation to test the optimal depth of the tree
-# kfold = KFold(Xtrain.shape[0], n_folds=10)
-# accs = []
-# max_depths = range(1, 50)
-# for max_depth in max_depths:
-#     k_accs = []
-#     for train, test in kfold:
-#         Xtrain1, Xtest1, ytrain1, ytest1 = Xtrain[train], Xtrain[test], ytrain[train], ytrain[test]
-#         clf = tree.DecisionTreeClassifier(max_depth=max_depth)
-#         clf.fit(Xtrain, ytrain)
-#         ypred = clf.predict(Xtest)
-#         k_accs.append(accuracy_score(ytest, ypred))
-#     accs.append(np.mean(k_accs))
-# # plot the accuracies as a function of max_depth
-# plt.plot(max_depths, accs, linewidth=2.5)
-# plt.show()
+# # ### use cross validation to test the optimal depth of the tree
+# # kfold = KFold(Xtrain.shape[0], n_folds=10)
+# # accs = []
+# # max_depths = range(1, 50)
+# # for max_depth in max_depths:
+# #     k_accs = []
+# #     for train, test in kfold:
+# #         Xtrain1, Xtest1, ytrain1, ytest1 = Xtrain[train], Xtrain[test], ytrain[train], ytrain[test]
+# #         clf = tree.DecisionTreeClassifier(max_depth=max_depth)
+# #         clf.fit(Xtrain, ytrain)
+# #         ypred = clf.predict(Xtest)
+# #         k_accs.append(accuracy_score(ytest, ypred))
+# #     accs.append(np.mean(k_accs))
+# # # plot the accuracies as a function of max_depth
+# # plt.plot(max_depths, accs, linewidth=2.5)
+# # plt.show()
 
 
 
