@@ -1,6 +1,9 @@
 //console.log(realName);
 //console.log(aliasName);
 
+console.log(realName.length);
+console.log(aliasName.length);
+
 function mapName(name){
     return aliasName[realName.indexOf(name)];
     
@@ -12,6 +15,8 @@ function toJson(x)
   var result = {};
   var labelName = "";
   alias = mapName(x.rule);
+  var count = 0;
+
   if (alias!=undefined){
     labelName = x.rule+" "+alias;
   } else {
