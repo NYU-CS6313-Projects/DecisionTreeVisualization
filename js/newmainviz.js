@@ -1,15 +1,63 @@
-// Get JSON data
+//console.log(realName);
+//console.log(aliasName);
+
+console.log(realName.length);
+console.log(aliasName.length);
+
+function mapName(name){
+    return aliasName[realName.indexOf(name)];
+    
+}
 
 function toJson(x) 
 {
+
   var result = {};
-  result.name = x.rule;
+  var labelName = "";
+  alias = mapName(x.rule);
+  var count = 0;
+
+  if (alias!=undefined){
+    labelName = x.rule+" "+alias;
+  } else {
+    labelName = x.rule;
+  }
+  result.name = labelName;
+  result.samples=x.samples;
+  result.rule=x.rule;
  
   if ( (!!x.left && !x.left.value) ||
-       (!!x.right && !x.right.value) )
-    result.children = [];
-  else
+       (!!x.right && !x.right.value) ){
     result.size = parseInt(x.samples);
+    result.children = [];
+  }
+      
+  else{ //leaf node
+    result.size = parseInt(x.samples); 
+
+    var str = result.rule;
+    str = str.replace(' ','');
+    str = str.split(".");
+           
+        str[0] = str[0].replace('[', '');
+        str[1] = str[1].replace(']', '');
+
+        var leftVal = parseInt(str[0]);
+        var rightVal = parseInt(str[1]);
+
+        if (leftVal > rightVal){
+           result.name = "";
+           result.color="#A6A6A6";
+        } else {
+         
+         //result.name = ""; //negative
+         result.name = "";
+         result.color = "#7D0C0C";
+        }
+    } 
+
+  
+    
  
   var index = 0;
   if (!!x.left && !x.left.value)
@@ -19,9 +67,10 @@ function toJson(x)
     result.children[index++] = toJson(x.right);
  
   return result;
+  
 }
 
-treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
+treeJSON = d3.json("data/ourTree.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -62,6 +111,31 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
             var count = children.length;
             for (var i = 0; i < count; i++) {
                 visit(children[i], visitFn, childrenFn);
+
+    function getDepth (obj) {
+    var depth = 0;
+    if (obj.children) {
+        obj.children.forEach(function (d) {
+            var tmpDepth = getDepth(d)
+            if (tmpDepth > depth) {
+                depth = tmpDepth
+            }
+        })
+    }
+    return 1 + depth}
+// Yixue's changes about depth, nodes number, etc.
+    var dep = getDepth(toJson(treeData))
+    d3.select("#num_nodes")
+    .text(totalNodes);
+    d3.select("#depth")
+    .text(dep-1);
+    d3.select("#branch_num")
+    .text(totalNodes);
+    // need revision to make it dynamic
+    d3.select("#accuracy")
+    .text("80.15%");
+    
+
             }
         }
     }
@@ -313,7 +387,16 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         link.enter().append("path")
             .attr("class", "templink")
             .attr("d", d3.svg.diagonal())
-            .attr('pointer-events', 'none');
+            .attr('pointer-events', 'none')
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
+                console.log(d.samples);
+
+
+            });
 
         link.attr("d", d3.svg.diagonal());
 
@@ -383,7 +466,8 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
 
         // Set widths between levels based on maxLabelLength.
         nodes.forEach(function(d) {
-            d.y = (d.depth * (maxLabelLength * 10)); //maxLabelLength * 10px
+            d.y = (d.depth * (maxLabelLength * 2)); //maxLabelLength * 10px
+            //d.y = (d.depth * (50)); //maxLabelLength * 10px
             // alternatively to keep a fixed scale one can set a fixed depth per level
             // Normalize for fixed-depth by commenting out below line
             // d.y = (d.depth * 500); //500px per level.
@@ -428,9 +512,9 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         // phantom node to give us mouseover in a radius around it
         nodeEnter.append("circle")
             .attr('class', 'ghostCircle')
-            //.attr("r", 30)
-            //.attr("opacity", 0.2) // change this to zero to hide the target area
-            //.style("fill", "red")
+            .attr("r", 10)
+            .attr("opacity", 1) // change this to zero to hide the target area
+            .style("fill", function(d) {return d.color;})
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
                 overCircle(node);
@@ -487,6 +571,12 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
         var link = svgGroup.selectAll("path.link")
             .data(links, function(d) {
                 return d.target.id;
+            })
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
             });
 
         // Enter any new links at the parent's previous position.
@@ -501,7 +591,16 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
                     source: o,
                     target: o
                 });
+            })
+            .style("stroke", function(d){
+                return d.color;
+            })
+            .style("stroke-width", function(d){
+                return d.samples;
+                console.log(d.samples);
+
             });
+
 
         // Transition links to their new position.
         link.transition()
@@ -541,4 +640,32 @@ treeJSON = d3.json("../data/ourTree.json", function(error, treeData) {
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
+    var list1 = [];
+    function getName (obj){
+        if (obj.name!=""){
+           list1.push(obj.name); 
+        }
+        if (obj.children) {
+            obj.children.forEach(function (d) {
+                getName(d);
+            })
+        }
+    }
+    var container = d3.select("#attr-list"); 
+
+    getName(toJson(treeData));
+    var arrayLength = list1.length;
+    var theTable = document.createElement('table');
+    // Note, don't forget the var keyword!
+    for (var i = 0, tr, td; i < arrayLength; i++) {
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(list1[i]));
+        
+        tr.appendChild(td);
+        theTable.appendChild(tr);
+    }
+    //console.log(theTable);
+    $("#attr-list").append(theTable);
 });

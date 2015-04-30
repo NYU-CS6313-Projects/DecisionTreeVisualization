@@ -62,7 +62,7 @@ myPredictions = clf.predict(Xtest)
 # print len(myPredictions[myPredictions==1])
 # print len(myPredictions)
 correctClass = accuracy_score(ytest, myPredictions)
-# print correctClass
+print correctClass
 
 dot_data = StringIO.StringIO()
 export_graphviz(clf, out_file=dot_data)

@@ -73,7 +73,7 @@
       "name": "Condition"
     }, 
     "HIERARCHY_7.3.1.3": {
-      "desc": "Acute but ill-defined cerebrovascular accident                                                          -", 
+      "desc": "Acute but ill-defined cerebrovascular accident        -", 
       "id": "HIERARCHY_7.3.1.3", 
       "parent": "HIERARCHY_7.3.1", 
       "name": "Acute but ill-defined cerebrovascular accident"
@@ -265,61 +265,61 @@
       "name": "Other acute and subacute forms of ischemic heart disease"
     }, 
     "HIERARCHY_7.2.4.1": {
-      "desc": "Angina pectoris                                                                                         -", 
+      "desc": "Angina pectoris         -", 
       "id": "HIERARCHY_7.2.4.1", 
       "parent": "HIERARCHY_7.2.4", 
       "name": "Angina pectoris"
     }, 
     "HIERARCHY_7.2.4.4": {
-      "desc": "Coronary atherosclerosis                                                                                -", 
+      "desc": "Coronary atherosclerosis-", 
       "id": "HIERARCHY_7.2.4.4", 
       "parent": "HIERARCHY_7.2.4", 
       "name": "Coronary atherosclerosis"
     }, 
     "HIERARCHY_7.2.4.5": {
-      "desc": "Other forms of chronic heart disease                                                                    -", 
+      "desc": "Other forms of chronic heart disease        -", 
       "id": "HIERARCHY_7.2.4.5", 
       "parent": "HIERARCHY_7.2.4", 
       "name": "Other forms of chronic heart disease"
     }, 
     "HIERARCHY_4.1.3.5": {
-      "desc": "Acquired hemolytic anemia                                                                               -", 
+      "desc": "Acquired hemolytic anemia         -", 
       "id": "HIERARCHY_4.1.3.5", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Acquired hemolytic anemia"
     }, 
     "HIERARCHY_4.1.3.7": {
-      "desc": "Anemia; unspecified                                                                                     -", 
+      "desc": "Anemia; unspecified     -", 
       "id": "HIERARCHY_4.1.3.7", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Anemia; unspecified"
     }, 
     "HIERARCHY_4.1.3.6": {
-      "desc": "Other specified anemia                                                                                  -", 
+      "desc": "Other specified anemia  -", 
       "id": "HIERARCHY_4.1.3.6", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Other specified anemia"
     }, 
     "HIERARCHY_4.1.3.1": {
-      "desc": "Iron deficiency anemia                                                                                  -", 
+      "desc": "Iron deficiency anemia  -", 
       "id": "HIERARCHY_4.1.3.1", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Iron deficiency anemia"
     }, 
     "HIERARCHY_4.1.3.3": {
-      "desc": "Aplastic anemia                                                                                         -", 
+      "desc": "Aplastic anemia         -", 
       "id": "HIERARCHY_4.1.3.3", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Aplastic anemia"
     }, 
     "HIERARCHY_4.1.3.2": {
-      "desc": "Other deficiency anemia                                                                                 -", 
+      "desc": "Other deficiency anemia -", 
       "id": "HIERARCHY_4.1.3.2", 
       "parent": "HIERARCHY_4.1.3", 
       "name": "Other deficiency anemia"
     }, 
     "HIERARCHY_7.2.2.1": {
-      "desc": "Cardiomyopathy                                                                                          -", 
+      "desc": "Cardiomyopathy-", 
       "id": "HIERARCHY_7.2.2.1", 
       "parent": "HIERARCHY_7.2.2", 
       "name": "Cardiomyopathy"
@@ -337,7 +337,7 @@
       "name": "V0481"
     }, 
     "HIERARCHY_4.2.1": {
-      "desc": "Coagulation defects                                                                                     -", 
+      "desc": "Coagulation defects     -", 
       "id": "HIERARCHY_4.2.1", 
       "parent": "HIERARCHY_4.2", 
       "name": "Coagulation defects"
@@ -403,7 +403,7 @@
       "name": "Cough"
     }, 
     "HIERARCHY_10.1.6.2": {
-      "desc": "Other and unspecified diseases of kidney and ureters                                                    -", 
+      "desc": "Other and unspecified diseases of kidney and ureters  -", 
       "id": "HIERARCHY_10.1.6.2", 
       "parent": "HIERARCHY_10.1.6", 
       "name": "Other and unspecified diseases of kidney and ureters"
@@ -457,7 +457,7 @@
       "name": "Atrial fibrillation and flutter"
     }, 
     "HIERARCHY_7.2.8.4": {
-      "desc": "Other conduction disorders                                                                              -", 
+      "desc": "Other conduction disorders        -", 
       "id": "HIERARCHY_7.2.8.4", 
       "parent": "HIERARCHY_7.2.8", 
       "name": "Other conduction disorders"
@@ -469,7 +469,7 @@
       "name": "Atrial fibrillation and flutter"
     }, 
     "HIERARCHY_7.2.8.2": {
-      "desc": "Bundle branch block                                                                                     -", 
+      "desc": "Bundle branch block     -", 
       "id": "HIERARCHY_7.2.8.2", 
       "parent": "HIERARCHY_7.2.8", 
       "name": "Bundle branch block"
@@ -481,13 +481,13 @@
       "name": "Impacted cerumen"
     }, 
     "HIERARCHY_7.1.2.2": {
-      "desc": "Other hypertensive complications                                                                        -", 
+      "desc": "Other hypertensive complications  -", 
       "id": "HIERARCHY_7.1.2.2", 
       "parent": "HIERARCHY_7.1.2", 
       "name": "Other hypertensive complications"
     }, 
     "HIERARCHY_7.1.2.1": {
-      "desc": "Hypertensive heart and/or renal disease                                                                 -", 
+      "desc": "Hypertensive heart and/or renal disease     -", 
       "id": "HIERARCHY_7.1.2.1", 
       "parent": "HIERARCHY_7.1.2", 
       "name": "Hypertensive heart and/or renal disease"
@@ -499,19 +499,19 @@
       "name": "V1046"
     }, 
     "HIERARCHY_2.16.2.2": {
-      "desc": "Benign neoplasm of colon                                                                                -", 
+      "desc": "Benign neoplasm of colon-", 
       "id": "HIERARCHY_2.16.2.2", 
       "parent": "HIERARCHY_2.16.2", 
       "name": "Benign neoplasm of colon"
     }, 
     "HIERARCHY_2.16.2.5": {
-      "desc": "Other and unspecified benign neoplasms                                                                  -", 
+      "desc": "Other and unspecified benign neoplasms      -", 
       "id": "HIERARCHY_2.16.2.5", 
       "parent": "HIERARCHY_2.16.2", 
       "name": "Other and unspecified benign neoplasms"
     }, 
     "HIERARCHY_8.5.2": {
-      "desc": "Pulmonary collapse; interstitial and compensatory emphysema                                             -", 
+      "desc": "Pulmonary collapse; interstitial and compensatory emphysema     -", 
       "id": "HIERARCHY_8.5.2", 
       "parent": "HIERARCHY_8.5", 
       "name": "Pulmonary collapse; interstitial and compensatory emphysema"
@@ -523,7 +523,7 @@
       "name": "Non-traumatic joint disorders"
     }, 
     "HIERARCHY_8.5.1": {
-      "desc": "Pleurisy; pleural effusion                                                                              -", 
+      "desc": "Pleurisy; pleural effusion        -", 
       "id": "HIERARCHY_8.5.1", 
       "parent": "HIERARCHY_8.5", 
       "name": "Pleurisy; pleural effusion"
@@ -553,13 +553,13 @@
       "name": "Other connective tissue disease [211.]"
     }, 
     "HIERARCHY_10.1.2.1": {
-      "desc": "Acute renal failure                                                                                     -", 
+      "desc": "Acute renal failure     -", 
       "id": "HIERARCHY_10.1.2.1", 
       "parent": "HIERARCHY_10.1.2", 
       "name": "Acute renal failure"
     }, 
     "HIERARCHY_6.7.2.3": {
-      "desc": "Other retinal disorders                                                                                 -", 
+      "desc": "Other retinal disorders -", 
       "id": "HIERARCHY_6.7.2.3", 
       "parent": "HIERARCHY_6.7.2", 
       "name": "Other retinal disorders"
@@ -625,13 +625,13 @@
       "name": "Cause unspecified"
     }, 
     "HIERARCHY_6.5.1": {
-      "desc": "Migraine                                                                                                -", 
+      "desc": "Migraine      -", 
       "id": "HIERARCHY_6.5.1", 
       "parent": "HIERARCHY_6.5", 
       "name": "Migraine"
     }, 
     "HIERARCHY_6.5.2": {
-      "desc": "Other headache                                                                                          -", 
+      "desc": "Other headache-", 
       "id": "HIERARCHY_6.5.2", 
       "parent": "HIERARCHY_6.5", 
       "name": "Other headache"
@@ -685,13 +685,13 @@
       "name": "Pelvic region"
     }, 
     "HIERARCHY_7.2.9.2": {
-      "desc": "Paroxysmal ventricular tachycardia                                                                      -", 
+      "desc": "Paroxysmal ventricular tachycardia-", 
       "id": "HIERARCHY_7.2.9.2", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Paroxysmal ventricular tachycardia"
     }, 
     "HIERARCHY_7.2.9.1": {
-      "desc": "Paroxysmal supraventricular tachycardia                                                                 -", 
+      "desc": "Paroxysmal supraventricular tachycardia     -", 
       "id": "HIERARCHY_7.2.9.1", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Paroxysmal supraventricular tachycardia"
@@ -727,7 +727,7 @@
       "name": "V7644"
     }, 
     "HIERARCHY_7.2.9.6": {
-      "desc": "Sinoatrial node dysfunction                                                                             -", 
+      "desc": "Sinoatrial node dysfunction       -", 
       "id": "HIERARCHY_7.2.9.6", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Sinoatrial node dysfunction"
@@ -757,25 +757,25 @@
       "name": "Pyrexia of unknown origin"
     }, 
     "HIERARCHY_7.5.1.2": {
-      "desc": "Other venous embolism and thrombosis                                                                    -", 
+      "desc": "Other venous embolism and thrombosis        -", 
       "id": "HIERARCHY_7.5.1.2", 
       "parent": "HIERARCHY_7.5.1", 
       "name": "Other venous embolism and thrombosis"
     }, 
     "HIERARCHY_10.1.8.2": {
-      "desc": "Retention of urine                                                                                      -", 
+      "desc": "Retention of urine      -", 
       "id": "HIERARCHY_10.1.8.2", 
       "parent": "HIERARCHY_10.1.8", 
       "name": "Retention of urine"
     }, 
     "HIERARCHY_10.1.8.3": {
-      "desc": "Other and unspecified genitourinary symptoms                                                            -", 
+      "desc": "Other and unspecified genitourinary symptoms-", 
       "id": "HIERARCHY_10.1.8.3", 
       "parent": "HIERARCHY_10.1.8", 
       "name": "Other and unspecified genitourinary symptoms"
     }, 
     "HIERARCHY_10.1.8.1": {
-      "desc": "Hematuria                                                                                               -", 
+      "desc": "Hematuria     -", 
       "id": "HIERARCHY_10.1.8.1", 
       "parent": "HIERARCHY_10.1.8", 
       "name": "Hematuria"
@@ -811,7 +811,7 @@
       "name": "V5869"
     }, 
     "HIERARCHY_7.2.9.7": {
-      "desc": "Other cardiac dysrhythmias                                                                              -", 
+      "desc": "Other cardiac dysrhythmias        -", 
       "id": "HIERARCHY_7.2.9.7", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Other cardiac dysrhythmias"
@@ -871,19 +871,19 @@
       "name": "Congenital anomalies"
     }, 
     "HIERARCHY_6.9.1": {
-      "desc": "Disorders of the peripheral nervous system                                                              -", 
+      "desc": "Disorders of the peripheral nervous system  -", 
       "id": "HIERARCHY_6.9.1", 
       "parent": "HIERARCHY_6.9", 
       "name": "Disorders of the peripheral nervous system"
     }, 
     "HIERARCHY_6.9.2": {
-      "desc": "Other central nervous system disorders                                                                  -", 
+      "desc": "Other central nervous system disorders      -", 
       "id": "HIERARCHY_6.9.2", 
       "parent": "HIERARCHY_6.9", 
       "name": "Other central nervous system disorders"
     }, 
     "HIERARCHY_6.9.3": {
-      "desc": "Other nervous system symptoms and disorders                                                             -", 
+      "desc": "Other nervous system symptoms and disorders -", 
       "id": "HIERARCHY_6.9.3", 
       "parent": "HIERARCHY_6.9", 
       "name": "Other nervous system symptoms and disorders"
@@ -943,25 +943,25 @@
       "name": "Alcohol-related disorders [660.]"
     }, 
     "HIERARCHY_10.1.4.2": {
-      "desc": "Cystitis and urethritis                                                                                 -", 
+      "desc": "Cystitis and urethritis -", 
       "id": "HIERARCHY_10.1.4.2", 
       "parent": "HIERARCHY_10.1.4", 
       "name": "Cystitis and urethritis"
     }, 
     "HIERARCHY_10.1.4.3": {
-      "desc": "Urinary tract infection; site not specified                                                             -", 
+      "desc": "Urinary tract infection; site not specified -", 
       "id": "HIERARCHY_10.1.4.3", 
       "parent": "HIERARCHY_10.1.4", 
       "name": "Urinary tract infection; site not specified"
     }, 
     "HIERARCHY_10.1.4.1": {
-      "desc": "Infections of kidney                                                                                    -", 
+      "desc": "Infections of kidney    -", 
       "id": "HIERARCHY_10.1.4.1", 
       "parent": "HIERARCHY_10.1.4", 
       "name": "Infections of kidney"
     }, 
     "HIERARCHY_1.2.2": {
-      "desc": "Other mycoses                                                                                           -", 
+      "desc": "Other mycoses -", 
       "id": "HIERARCHY_1.2.2", 
       "parent": "HIERARCHY_1.2", 
       "name": "Other mycoses"
@@ -997,7 +997,7 @@
       "name": "Premature beats"
     }, 
     "HIERARCHY_7.2.9.4": {
-      "desc": "Atrial flutter                                                                                          -", 
+      "desc": "Atrial flutter-", 
       "id": "HIERARCHY_7.2.9.4", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Atrial flutter"
@@ -1009,13 +1009,13 @@
       "name": "Premature beats"
     }, 
     "HIERARCHY_7.4.4.1": {
-      "desc": "Hypotension                                                                                             -", 
+      "desc": "Hypotension   -", 
       "id": "HIERARCHY_7.4.4.1", 
       "parent": "HIERARCHY_7.4.4", 
       "name": "Hypotension"
     }, 
     "HIERARCHY_7.4.4.2": {
-      "desc": "Other and unspecified circulatory disease                                                               -", 
+      "desc": "Other and unspecified circulatory disease   -", 
       "id": "HIERARCHY_7.4.4.2", 
       "parent": "HIERARCHY_7.4.4", 
       "name": "Other and unspecified circulatory disease"
@@ -1117,7 +1117,7 @@
       "name": "Rheumatoid arthritis and related disease [202.]"
     }, 
     "HIERARCHY_7.4.2.2": {
-      "desc": "Other aneurysm                                                                                          -", 
+      "desc": "Other aneurysm-", 
       "id": "HIERARCHY_7.4.2.2", 
       "parent": "HIERARCHY_7.4.2", 
       "name": "Other aneurysm"
@@ -1141,7 +1141,7 @@
       "name": "Other circulatory disease [117.]"
     }, 
     "HIERARCHY_7.3.1.2": {
-      "desc": "Occlusion of cerebral arteries                                                                          -", 
+      "desc": "Occlusion of cerebral arteries    -", 
       "id": "HIERARCHY_7.3.1.2", 
       "parent": "HIERARCHY_7.3.1", 
       "name": "Occlusion of cerebral arteries"
@@ -1159,7 +1159,7 @@
       "name": "Skin and subcutaneous tissue infections [197.]"
     }, 
     "HIERARCHY_12.1.2": {
-      "desc": "Other skin and subcutaneous infections                                                                  -", 
+      "desc": "Other skin and subcutaneous infections      -", 
       "id": "HIERARCHY_12.1.2", 
       "parent": "HIERARCHY_12.1", 
       "name": "Other skin and subcutaneous infections"
@@ -1171,25 +1171,25 @@
       "name": "Infectious and parasitic diseases"
     }, 
     "HIERARCHY_1.1.2.6": {
-      "desc": "Unspecified septicemia                                                                                  -", 
+      "desc": "Unspecified septicemia  -", 
       "id": "HIERARCHY_1.1.2.6", 
       "parent": "HIERARCHY_1.1.2", 
       "name": "Unspecified septicemia"
     }, 
     "HIERARCHY_8.2.1": {
-      "desc": "Emphysema                                                                                               -", 
+      "desc": "Emphysema     -", 
       "id": "HIERARCHY_8.2.1", 
       "parent": "HIERARCHY_8.2", 
       "name": "Emphysema"
     }, 
     "HIERARCHY_12.3.2": {
-      "desc": "Chronic ulcer of leg or foot                                                                            -", 
+      "desc": "Chronic ulcer of leg or foot      -", 
       "id": "HIERARCHY_12.3.2", 
       "parent": "HIERARCHY_12.3", 
       "name": "Chronic ulcer of leg or foot"
     }, 
     "HIERARCHY_12.3.1": {
-      "desc": "Decubitus ulcer                                                                                         -", 
+      "desc": "Decubitus ulcer         -", 
       "id": "HIERARCHY_12.3.1", 
       "parent": "HIERARCHY_12.3", 
       "name": "Decubitus ulcer"
@@ -1219,13 +1219,13 @@
       "name": "Other symptoms referable to limbs"
     }, 
     "HIERARCHY_7.2.11.1": {
-      "desc": "Congestive heart failure                                                                                -", 
+      "desc": "Congestive heart failure-", 
       "id": "HIERARCHY_7.2.11.1", 
       "parent": "HIERARCHY_7.2.11", 
       "name": "Congestive heart failure"
     }, 
     "HIERARCHY_7.2.11.2": {
-      "desc": "Heart failure                                                                                           -", 
+      "desc": "Heart failure -", 
       "id": "HIERARCHY_7.2.11.2", 
       "parent": "HIERARCHY_7.2.11", 
       "name": "Heart failure"
@@ -1447,7 +1447,7 @@
       "name": "Lumbosacral spondylosis without myelopathy"
     }, 
     "HIERARCHY_8.3.2.1": {
-      "desc": "Other asthma without status asthmaticus or exacerbation                                                 -", 
+      "desc": "Other asthma without status asthmaticus or exacerbation         -", 
       "id": "HIERARCHY_8.3.2.1", 
       "parent": "HIERARCHY_8.3.2", 
       "name": "Other asthma without status asthmaticus or exacerbation"
@@ -1513,13 +1513,13 @@
       "name": "Cancer of bladder [32.]"
     }, 
     "HIERARCHY_13.3.3.1": {
-      "desc": "Cervical radiculitis                                                                                    -", 
+      "desc": "Cervical radiculitis    -", 
       "id": "HIERARCHY_13.3.3.1", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Cervical radiculitis"
     }, 
     "HIERARCHY_8.8.3": {
-      "desc": "Other and unspecified lower respiratory disease                                                         -", 
+      "desc": "Other and unspecified lower respiratory disease       -", 
       "id": "HIERARCHY_8.8.3", 
       "parent": "HIERARCHY_8.8", 
       "name": "Other and unspecified lower respiratory disease"
@@ -1579,13 +1579,13 @@
       "name": "Malaise and fatigue [252.]"
     }, 
     "HIERARCHY_13.3.3.5": {
-      "desc": "\"Thoracic or lumbosacral neuritis or radiculitis; unspecif                                              -", 
+      "desc": "Thoracic or lumbosacral neuritis or radiculitis; unspecif      -", 
       "id": "HIERARCHY_13.3.3.5", 
       "parent": "HIERARCHY_13.3.3", 
-      "name": "\"Thoracic or lumbosacral neuritis or radiculitis; unspecif"
+      "name": "Thoracic or lumbosacral neuritis or radiculitis; unspecif"
     }, 
     "HIERARCHY_9.4.3.2": {
-      "desc": "Other specified gastritis                                                                               -", 
+      "desc": "Other specified gastritis         -", 
       "id": "HIERARCHY_9.4.3.2", 
       "parent": "HIERARCHY_9.4.3", 
       "name": "Other specified gastritis"
@@ -1615,7 +1615,7 @@
       "name": "Other nervous system disorders [95.]"
     }, 
     "HIERARCHY_13.3.3.7": {
-      "desc": "Other back pain and disorders                                                                           -", 
+      "desc": "Other back pain and disorders     -", 
       "id": "HIERARCHY_13.3.3.7", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Other back pain and disorders"
@@ -1633,13 +1633,13 @@
       "name": "Complications of surgical procedures or medical care [238.]"
     }, 
     "HIERARCHY_9.4.1.2": {
-      "desc": "Other esophageal disorders                                                                              -", 
+      "desc": "Other esophageal disorders        -", 
       "id": "HIERARCHY_9.4.1.2", 
       "parent": "HIERARCHY_9.4.1", 
       "name": "Other esophageal disorders"
     }, 
     "HIERARCHY_9.4.1.1": {
-      "desc": "Esophagitis                                                                                             -", 
+      "desc": "Esophagitis   -", 
       "id": "HIERARCHY_9.4.1.1", 
       "parent": "HIERARCHY_9.4.1", 
       "name": "Esophagitis"
@@ -1657,7 +1657,7 @@
       "name": "Unspecified whether generalized or localized"
     }, 
     "HIERARCHY_3.8.4": {
-      "desc": "Hypopotassemia                                                                                          -", 
+      "desc": "Hypopotassemia-", 
       "id": "HIERARCHY_3.8.4", 
       "parent": "HIERARCHY_3.8", 
       "name": "Hypopotassemia"
@@ -1669,13 +1669,13 @@
       "name": "Cancer of colon [14.]"
     }, 
     "HIERARCHY_3.8.5": {
-      "desc": "Other fluid and electrolyte disorders                                                                   -", 
+      "desc": "Other fluid and electrolyte disorders       -", 
       "id": "HIERARCHY_3.8.5", 
       "parent": "HIERARCHY_3.8", 
       "name": "Other fluid and electrolyte disorders"
     }, 
     "HIERARCHY_18": {
-      "desc": "Residual codes; unclassified; all E codes [259. and 260.]                                               -", 
+      "desc": "Residual codes; unclassified; all E codes [259. and 260.]       -", 
       "id": "HIERARCHY_18", 
       "parent": "", 
       "name": "Residual codes; unclassified; all E codes [259. and 260.]"
@@ -1717,7 +1717,7 @@
       "name": "Abnormality of gait"
     }, 
     "HIERARCHY_8.1.1.4": {
-      "desc": "Other pneumonia                                                                                         -", 
+      "desc": "Other pneumonia         -", 
       "id": "HIERARCHY_8.1.1.4", 
       "parent": "HIERARCHY_8.1.1", 
       "name": "Other pneumonia"
@@ -1759,7 +1759,7 @@
       "name": "Other"
     }, 
     "HIERARCHY_7.2.9.3": {
-      "desc": "Atrial fibrillation                                                                                     -", 
+      "desc": "Atrial fibrillation     -", 
       "id": "HIERARCHY_7.2.9.3", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Atrial fibrillation"
@@ -1771,13 +1771,13 @@
       "name": "Sacral region"
     }, 
     "HIERARCHY_8.2.3": {
-      "desc": "Obstructive chronic bronchitis                                                                          -", 
+      "desc": "Obstructive chronic bronchitis    -", 
       "id": "HIERARCHY_8.2.3", 
       "parent": "HIERARCHY_8.2", 
       "name": "Obstructive chronic bronchitis"
     }, 
     "HIERARCHY_8.2.2": {
-      "desc": "Chronic airway obstruction; not otherwise specified                                                     -", 
+      "desc": "Chronic airway obstruction; not otherwise specified   -", 
       "id": "HIERARCHY_8.2.2", 
       "parent": "HIERARCHY_8.2", 
       "name": "Chronic airway obstruction; not otherwise specified"
@@ -1789,13 +1789,13 @@
       "name": "Cervical region"
     }, 
     "HIERARCHY_8.2.4": {
-      "desc": "Other chronic pulmonary disease                                                                         -", 
+      "desc": "Other chronic pulmonary disease   -", 
       "id": "HIERARCHY_8.2.4", 
       "parent": "HIERARCHY_8.2", 
       "name": "Other chronic pulmonary disease"
     }, 
     "HIERARCHY_7.2.9.5": {
-      "desc": "Premature beats                                                                                         -", 
+      "desc": "Premature beats         -", 
       "id": "HIERARCHY_7.2.9.5", 
       "parent": "HIERARCHY_7.2.9", 
       "name": "Premature beats"
@@ -1807,25 +1807,25 @@
       "name": "V4585"
     }, 
     "HIERARCHY_7.2.1.3": {
-      "desc": "Nonrheumatic aortic valve disorders                                                                     -", 
+      "desc": "Nonrheumatic aortic valve disorders         -", 
       "id": "HIERARCHY_7.2.1.3", 
       "parent": "HIERARCHY_7.2.1", 
       "name": "Nonrheumatic aortic valve disorders"
     }, 
     "HIERARCHY_7.2.1.2": {
-      "desc": "Nonrheumatic mitral valve disorders                                                                     -", 
+      "desc": "Nonrheumatic mitral valve disorders         -", 
       "id": "HIERARCHY_7.2.1.2", 
       "parent": "HIERARCHY_7.2.1", 
       "name": "Nonrheumatic mitral valve disorders"
     }, 
     "HIERARCHY_7.2.1.1": {
-      "desc": "Chronic rheumatic disease of the heart valves                                                           -", 
+      "desc": "Chronic rheumatic disease of the heart valves         -", 
       "id": "HIERARCHY_7.2.1.1", 
       "parent": "HIERARCHY_7.2.1", 
       "name": "Chronic rheumatic disease of the heart valves"
     }, 
     "HIERARCHY_7.2.1.4": {
-      "desc": "Other heart valve disorders                                                                             -", 
+      "desc": "Other heart valve disorders       -", 
       "id": "HIERARCHY_7.2.1.4", 
       "parent": "HIERARCHY_7.2.1", 
       "name": "Other heart valve disorders"
@@ -1837,7 +1837,7 @@
       "name": "Old myocardial infarction"
     }, 
     "HIERARCHY_3.11.1": {
-      "desc": "Disorders of mineral metabolism                                                                         -", 
+      "desc": "Disorders of mineral metabolism   -", 
       "id": "HIERARCHY_3.11.1", 
       "parent": "HIERARCHY_3.11", 
       "name": "Disorders of mineral metabolism"
@@ -1873,13 +1873,13 @@
       "name": "Spinal stenosis, other than cervical"
     }, 
     "HIERARCHY_3.8.1": {
-      "desc": "Hyposmolality                                                                                           -", 
+      "desc": "Hyposmolality -", 
       "id": "HIERARCHY_3.8.1", 
       "parent": "HIERARCHY_3.8", 
       "name": "Hyposmolality"
     }, 
     "HIERARCHY_3.8.2": {
-      "desc": "Hypovolemia                                                                                             -", 
+      "desc": "Hypovolemia   -", 
       "id": "HIERARCHY_3.8.2", 
       "parent": "HIERARCHY_3.8", 
       "name": "Hypovolemia"
@@ -1933,7 +1933,7 @@
       "name": "Abdominal hernia [143.]"
     }, 
     "HIERARCHY_9.5.2": {
-      "desc": "Diaphragmatic hernia                                                                                    -", 
+      "desc": "Diaphragmatic hernia    -", 
       "id": "HIERARCHY_9.5.2", 
       "parent": "HIERARCHY_9.5", 
       "name": "Diaphragmatic hernia"
@@ -1951,19 +1951,19 @@
       "name": "Alzheimer's disease"
     }, 
     "HIERARCHY_6.4.1": {
-      "desc": "Epilepsy                                                                                                -", 
+      "desc": "Epilepsy      -", 
       "id": "HIERARCHY_6.4.1", 
       "parent": "HIERARCHY_6.4", 
       "name": "Epilepsy"
     }, 
     "HIERARCHY_2.15.2": {
-      "desc": "Chemotherapy                                                                                            -", 
+      "desc": "Chemotherapy  -", 
       "id": "HIERARCHY_2.15.2", 
       "parent": "HIERARCHY_2.15", 
       "name": "Chemotherapy"
     }, 
     "HIERARCHY_6.4.2": {
-      "desc": "Convulsions                                                                                             -", 
+      "desc": "Convulsions   -", 
       "id": "HIERARCHY_6.4.2", 
       "parent": "HIERARCHY_6.4", 
       "name": "Convulsions"
@@ -2059,7 +2059,7 @@
       "name": "Fracture of lower limb [230.]"
     }, 
     "HIERARCHY_6.8.1.2": {
-      "desc": "Other otitis media and related conditions                                                               -", 
+      "desc": "Other otitis media and related conditions   -", 
       "id": "HIERARCHY_6.8.1.2", 
       "parent": "HIERARCHY_6.8.1", 
       "name": "Other otitis media and related conditions"
@@ -2107,7 +2107,7 @@
       "name": "Anxiety states"
     }, 
     "HIERARCHY_7.4.1.2": {
-      "desc": "Peripheral vascular disease unspecified                                                                 -", 
+      "desc": "Peripheral vascular disease unspecified     -", 
       "id": "HIERARCHY_7.4.1.2", 
       "parent": "HIERARCHY_7.4.1", 
       "name": "Peripheral vascular disease unspecified"
@@ -2131,13 +2131,13 @@
       "name": "V762"
     }, 
     "HIERARCHY_8.1.5.2": {
-      "desc": "Chronic sinusitis                                                                                       -", 
+      "desc": "Chronic sinusitis       -", 
       "id": "HIERARCHY_8.1.5.2", 
       "parent": "HIERARCHY_8.1.5", 
       "name": "Chronic sinusitis"
     }, 
     "HIERARCHY_10.1.7.2": {
-      "desc": "Other and unspecified diseases of bladder and urethra                                                   -", 
+      "desc": "Other and unspecified diseases of bladder and urethra -", 
       "id": "HIERARCHY_10.1.7.2", 
       "parent": "HIERARCHY_10.1.7", 
       "name": "Other and unspecified diseases of bladder and urethra"
@@ -2269,13 +2269,13 @@
       "name": "Hepatitis [6.]"
     }, 
     "HIERARCHY_13.2.2.1": {
-      "desc": "Osteoarthritis; localized                                                                               -", 
+      "desc": "Osteoarthritis; localized         -", 
       "id": "HIERARCHY_13.2.2.1", 
       "parent": "HIERARCHY_13.2.2", 
       "name": "Osteoarthritis; localized"
     }, 
     "HIERARCHY_13.2.2.2": {
-      "desc": "Osteoarthritis; generalized and unspecified                                                             -", 
+      "desc": "Osteoarthritis; generalized and unspecified -", 
       "id": "HIERARCHY_13.2.2.2", 
       "parent": "HIERARCHY_13.2.2", 
       "name": "Osteoarthritis; generalized and unspecified"
@@ -2413,19 +2413,19 @@
       "name": "Cancer of lymphatic and hematopoietic tissue"
     }, 
     "HIERARCHY_13.3.3.2": {
-      "desc": "Spinal stenosis; lumbar region                                                                          -", 
+      "desc": "Spinal stenosis; lumbar region    -", 
       "id": "HIERARCHY_13.3.3.2", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Spinal stenosis; lumbar region"
     }, 
     "HIERARCHY_13.3.3.3": {
-      "desc": "Lumbago                                                                                                 -", 
+      "desc": "Lumbago       -", 
       "id": "HIERARCHY_13.3.3.3", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Lumbago"
     }, 
     "HIERARCHY_13.3.3.4": {
-      "desc": "Sciatica                                                                                                -", 
+      "desc": "Sciatica      -", 
       "id": "HIERARCHY_13.3.3.4", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Sciatica"
@@ -2437,7 +2437,7 @@
       "name": "Neoplasms of unspecified nature or uncertain behavior [44.]"
     }, 
     "HIERARCHY_13.3.3.6": {
-      "desc": "Backache; unspecified                                                                                   -", 
+      "desc": "Backache; unspecified   -", 
       "id": "HIERARCHY_13.3.3.6", 
       "parent": "HIERARCHY_13.3.3", 
       "name": "Backache; unspecified"
@@ -2455,13 +2455,13 @@
       "name": "Paralysis agitans"
     }, 
     "HIERARCHY_3.11.3": {
-      "desc": "Other and unspecified metabolic; nutritional; and endocrine disorders                                   -", 
+      "desc": "Other and unspecified metabolic; nutritional; and endocrine disorders     -", 
       "id": "HIERARCHY_3.11.3", 
       "parent": "HIERARCHY_3.11", 
       "name": "Other and unspecified metabolic; nutritional; and endocrine disorders"
     }, 
     "HIERARCHY_3.11.2": {
-      "desc": "Obesity                                                                                                -", 
+      "desc": "Obesity      -", 
       "id": "HIERARCHY_3.11.2", 
       "parent": "HIERARCHY_3.11", 
       "name": "Obesity"
@@ -2473,7 +2473,7 @@
       "name": "Obesity"
     }, 
     "HIERARCHY_10.3.9.2": {
-      "desc": "Other and unspecified female genital disorders                                                          -", 
+      "desc": "Other and unspecified female genital disorders        -", 
       "id": "HIERARCHY_10.3.9.2", 
       "parent": "HIERARCHY_10.3.9", 
       "name": "Other and unspecified female genital disorders"
@@ -2497,7 +2497,7 @@
       "name": "Abnormal glucose tolerance test"
     }, 
     "HIERARCHY_16.2.3.3": {
-      "desc": "Other fracture of upper limb                                                                            -", 
+      "desc": "Other fracture of upper limb      -", 
       "id": "HIERARCHY_16.2.3.3", 
       "parent": "HIERARCHY_16.2.3", 
       "name": "Other fracture of upper limb"
@@ -2533,25 +2533,25 @@
       "name": "Malaise and fatigue"
     }, 
     "HIERARCHY_1.3.3.3": {
-      "desc": "Other and unspecified viral infection                                                                   -", 
+      "desc": "Other and unspecified viral infection       -", 
       "id": "HIERARCHY_1.3.3.3", 
       "parent": "HIERARCHY_1.3.3", 
       "name": "Other and unspecified viral infection"
     }, 
     "HIERARCHY_8.6.1": {
-      "desc": "Respiratory failure                                                                                     -", 
+      "desc": "Respiratory failure     -", 
       "id": "HIERARCHY_8.6.1", 
       "parent": "HIERARCHY_8.6", 
       "name": "Respiratory failure"
     }, 
     "HIERARCHY_8.6.2": {
-      "desc": "Other respiratory insufficiency                                                                         -", 
+      "desc": "Other respiratory insufficiency   -", 
       "id": "HIERARCHY_8.6.2", 
       "parent": "HIERARCHY_8.6", 
       "name": "Other respiratory insufficiency"
     }, 
     "HIERARCHY_10.1.5.3": {
-      "desc": "Other and unspecified urinary calculus                                                                  -", 
+      "desc": "Other and unspecified urinary calculus      -", 
       "id": "HIERARCHY_10.1.5.3", 
       "parent": "HIERARCHY_10.1.5", 
       "name": "Other and unspecified urinary calculus"
@@ -2605,19 +2605,19 @@
       "name": "Spondylosis; intervertebral disc disorders; other back problems [205.]"
     }, 
     "HIERARCHY_13.3.2": {
-      "desc": "Intervertebral disc disorders                                                                           -", 
+      "desc": "Intervertebral disc disorders     -", 
       "id": "HIERARCHY_13.3.2", 
       "parent": "HIERARCHY_13.3", 
       "name": "Intervertebral disc disorders"
     }, 
     "HIERARCHY_13.3.1": {
-      "desc": "Spondylosis and allied disorders                                                                        -", 
+      "desc": "Spondylosis and allied disorders  -", 
       "id": "HIERARCHY_13.3.1", 
       "parent": "HIERARCHY_13.3", 
       "name": "Spondylosis and allied disorders"
     }, 
     "HIERARCHY_9.10.1": {
-      "desc": "Hemorrhage from gastrointestinal ulcer                                                                  -", 
+      "desc": "Hemorrhage from gastrointestinal ulcer      -", 
       "id": "HIERARCHY_9.10.1", 
       "parent": "HIERARCHY_9.10", 
       "name": "Hemorrhage from gastrointestinal ulcer"
@@ -2635,25 +2635,25 @@
       "name": "Secondary malignancies [42.]"
     }, 
     "HIERARCHY_6.2.3.2": {
-      "desc": "\"Other and unspecified hereditary and degenera                                                          -", 
+      "desc": "\"Other and unspecified hereditary and degenera        -", 
       "id": "HIERARCHY_6.2.3.2", 
       "parent": "HIERARCHY_6.2.3", 
       "name": "\"Other and unspecified hereditary and degenera"
     }, 
     "HIERARCHY_9.12.2": {
-      "desc": "Dysphagia                                                                                               -", 
+      "desc": "Dysphagia     -", 
       "id": "HIERARCHY_9.12.2", 
       "parent": "HIERARCHY_9.12", 
       "name": "Dysphagia"
     }, 
     "HIERARCHY_9.12.3": {
-      "desc": "Other and unspecified gastrointestinal disorders                                                        -", 
+      "desc": "Other and unspecified gastrointestinal disorders      -", 
       "id": "HIERARCHY_9.12.3", 
       "parent": "HIERARCHY_9.12", 
       "name": "Other and unspecified gastrointestinal disorders"
     }, 
     "HIERARCHY_9.12.1": {
-      "desc": "Constipation                                                                                            -", 
+      "desc": "Constipation  -", 
       "id": "HIERARCHY_9.12.1", 
       "parent": "HIERARCHY_9.12", 
       "name": "Constipation"
@@ -2701,7 +2701,7 @@
       "name": "Cancer of prostate [29.]"
     }, 
     "HIERARCHY_3.5.2": {
-      "desc": "Other malnutrition                                                                                      -", 
+      "desc": "Other malnutrition      -", 
       "id": "HIERARCHY_3.5.2", 
       "parent": "HIERARCHY_3.5", 
       "name": "Other malnutrition"
@@ -2761,13 +2761,13 @@
       "name": "Genitourinary symptoms and ill-defined conditions [163.]"
     }, 
     "HIERARCHY_8.1.1.3": {
-      "desc": "Pneumonia; organism unspecified                                                                         -", 
+      "desc": "Pneumonia; organism unspecified   -", 
       "id": "HIERARCHY_8.1.1.3", 
       "parent": "HIERARCHY_8.1.1", 
       "name": "Pneumonia; organism unspecified"
     }, 
     "HIERARCHY_8.1.1.2": {
-      "desc": "Other bacterial pneumonia                                                                               -", 
+      "desc": "Other bacterial pneumonia         -", 
       "id": "HIERARCHY_8.1.1.2", 
       "parent": "HIERARCHY_8.1.1", 
       "name": "Other bacterial pneumonia"
@@ -2779,13 +2779,13 @@
       "name": "Other bone disease and musculoskeletal deformities [212.]"
     }, 
     "HIERARCHY_9.6.4.1": {
-      "desc": "Diverticulosis                                                                                          -", 
+      "desc": "Diverticulosis-", 
       "id": "HIERARCHY_9.6.4.1", 
       "parent": "HIERARCHY_9.6.4", 
       "name": "Diverticulosis"
     }, 
     "HIERARCHY_9.6.4.2": {
-      "desc": "Diverticulitis                                                                                          -", 
+      "desc": "Diverticulitis-", 
       "id": "HIERARCHY_9.6.4.2", 
       "parent": "HIERARCHY_9.6.4", 
       "name": "Diverticulitis"
@@ -2803,7 +2803,7 @@
       "name": "Malaise and fatigue"
     }, 
     "HIERARCHY_9.8.2.4": {
-      "desc": "Other and unspecified liver disorders                                                                   -", 
+      "desc": "Other and unspecified liver disorders       -", 
       "id": "HIERARCHY_9.8.2.4", 
       "parent": "HIERARCHY_9.8.2", 
       "name": "Other and unspecified liver disorders"
@@ -2875,7 +2875,7 @@
       "name": "Mental illness"
     }, 
     "HIERARCHY_8.1.5.4": {
-      "desc": "Other and unspecified upper respiratory infections                                                      -", 
+      "desc": "Other and unspecified upper respiratory infections    -", 
       "id": "HIERARCHY_8.1.5.4", 
       "parent": "HIERARCHY_8.1.5", 
       "name": "Other and unspecified upper respiratory infections"
@@ -2893,7 +2893,7 @@
       "name": "Neoplasms"
     }, 
     "HIERARCHY_8.1.5.1": {
-      "desc": "Acute upper respiratory infections of multiple or unspecified sites                                     -", 
+      "desc": "Acute upper respiratory infections of multiple or unspecified sites       -", 
       "id": "HIERARCHY_8.1.5.1", 
       "parent": "HIERARCHY_8.1.5", 
       "name": "Acute upper respiratory infections of multiple or unspecified sites"
@@ -2905,7 +2905,7 @@
       "name": "Aortic valve disorders"
     }, 
     "HIERARCHY_7.4.1.1": {
-      "desc": "Atherosclerosis of arteries of extremities                                                              -", 
+      "desc": "Atherosclerosis of arteries of extremities  -", 
       "id": "HIERARCHY_7.4.1.1", 
       "parent": "HIERARCHY_7.4.1", 
       "name": "Atherosclerosis of arteries of extremities"
@@ -2941,7 +2941,7 @@
       "name": "Abdominal hernia [143.]"
     }, 
     "HIERARCHY_7.4.1.3": {
-      "desc": "Other peripheral and visceral atherosclerosis                                                           -", 
+      "desc": "Other peripheral and visceral atherosclerosis         -", 
       "id": "HIERARCHY_7.4.1.3", 
       "parent": "HIERARCHY_7.4.1", 
       "name": "Other peripheral and visceral atherosclerosis"

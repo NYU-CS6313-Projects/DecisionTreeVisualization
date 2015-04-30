@@ -1,0 +1,804 @@
+
+{
+  "id": "0", "rule": "Endocrine; nutritional; and metabolic diseases and immunity disorders <= 0.5000", "entropy": "0.702018700903", "samples": "3553",
+  "left": 
+  {
+    "id": "1", "rule": "Diseases of the blood and blood-forming organs <= 0.5000", "entropy": "0.426456461637", "samples": "1942",
+    "left": 
+    {
+      "id": "2", "rule": "dead <= 0.5000", "entropy": "0.401267268002", "samples": "1856",
+      "left": 
+      {
+        "id": "3", "rule": "Chronic kidney disease [158.] <= 0.5000", "entropy": "0.417613938776", "samples": "1741",
+        "left": 
+        {
+          "id": "4", "rule": "V5883 <= 0.5000", "entropy": "0.405701156239", "samples": "1716",
+          "left": 
+          {
+            "id": "5", "rule": "V4581 <= 0.5000", "entropy": "0.40020027269", "samples": "1712",
+            "left": 
+            {
+              "id": "6", "rule": "Allergic reactions [253.] <= 0.5000", "entropy": "0.393182605375", "samples": "1704",
+              "left": 
+              {
+                "id": "7", "rule": "Pneumonia, organism unspecified <= 0.5000", "entropy": "0.382472865025", "samples": "1678",
+                "left": 
+                {
+                  "id": "8", "rule": "Fracture of upper limb [229.] <= 0.5000", "entropy": "0.375338959828", "samples": "1668",
+                  "left": 
+                  {
+                    "id": "9", "rule": "Other gastrointestinal disorders [155.] <= 0.5000", "entropy": "0.368511413431", "samples": "1655",
+                    "left": 
+                    {
+                      "id": "10", "criterion": "entropy", "impurity": "0.374326642348", "samples": "1619", "rule": "[ 1502.   117.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "11", "criterion": "entropy", "impurity": "0.0", "samples": "36", "rule": "[ 36.   0.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "12", "rule": "Osteoarthritis [203.] <= 0.5000", "entropy": "0.890491640219", "samples": "13",
+                    "left": 
+                    {
+                      "id": "13", "criterion": "entropy", "impurity": "0.684038435639", "samples": "11", "rule": "[ 9.  2.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "14", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "15", "rule": "Other lower respiratory disease [133.] <= 0.5000", "entropy": "0.970950594455", "samples": "10",
+                  "left": 
+                  {
+                    "id": "16", "rule": "Abdominal pain [251.] <= 0.5000", "entropy": "0.918295834054", "samples": "6",
+                    "left": 
+                    {
+                      "id": "17", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 0.  4.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "18", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "19", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                  
+                  }                
+                }              
+              },
+              "right": 
+              {
+                "id": "20", "rule": "Other injuries and conditions due to external causes [244.] <= 0.5000", "entropy": "0.840358671609", "samples": "26",
+                "left": 
+                {
+                  "id": "21", "rule": "age_60_70 <= 0.5000", "entropy": "0.574635697838", "samples": "22",
+                  "left": 
+                  {
+                    "id": "22", "criterion": "entropy", "impurity": "0.0", "samples": "13", "rule": "[ 13.   0.]"                  
+                  },
+                  "right": 
+                  {
+                    "id": "23", "rule": "Neoplasms <= 0.5000", "entropy": "0.918295834054", "samples": "9",
+                    "left": 
+                    {
+                      "id": "24", "criterion": "entropy", "impurity": "0.811278124459", "samples": "4", "rule": "[ 1.  3.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "25", "criterion": "entropy", "impurity": "0.0", "samples": "5", "rule": "[ 5.  0.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "26", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 0.  4.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "27", "rule": "Diseases of the nervous system and sense organs <= 0.5000", "entropy": "1.0", "samples": "8",
+              "left": 
+              {
+                "id": "28", "rule": "Biliary tract disease [149.] <= 0.5000", "entropy": "0.721928094887", "samples": "5",
+                "left": 
+                {
+                  "id": "29", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                
+                },
+                "right": 
+                {
+                  "id": "30", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "31", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"              
+              }            
+            }          
+          },
+          "right": 
+          {
+            "id": "32", "rule": "Diseases of the musculoskeletal system and connective tissue <= 0.5000", "entropy": "0.811278124459", "samples": "4",
+            "left": 
+            {
+              "id": "33", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"            
+            },
+            "right": 
+            {
+              "id": "34", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 1.  0.]"            
+            }          
+          }        
+        },
+        "right": 
+        {
+          "id": "35", "rule": "Essential hypertension <= 0.5000", "entropy": "0.904381457724", "samples": "25",
+          "left": 
+          {
+            "id": "36", "rule": "Other eye disorders [91.] <= 0.5000", "entropy": "0.773226674288", "samples": "22",
+            "left": 
+            {
+              "id": "37", "rule": "Symptoms; signs; and ill-defined conditions and factors influencing health status <= 0.5000", "entropy": "0.609840304716", "samples": "20",
+              "left": 
+              {
+                "id": "38", "criterion": "entropy", "impurity": "0.0", "samples": "11", "rule": "[ 11.   0.]"              
+              },
+              "right": 
+              {
+                "id": "39", "rule": "Mental illness <= 0.5000", "entropy": "0.918295834054", "samples": "9",
+                "left": 
+                {
+                  "id": "40", "rule": "Chronic renal failure <= 0.5000", "entropy": "0.970950594455", "samples": "5",
+                  "left": 
+                  {
+                    "id": "41", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"                  
+                  },
+                  "right": 
+                  {
+                    "id": "42", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 2.  0.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "43", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "44", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"            
+            }          
+          },
+          "right": 
+          {
+            "id": "45", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"          
+          }        
+        }      
+      },
+      "right": 
+      {
+        "id": "46", "rule": "Other central nervous system disorders <= 0.5000", "entropy": "0.0720164716854", "samples": "115",
+        "left": 
+        {
+          "id": "47", "criterion": "entropy", "impurity": "0.0", "samples": "114", "rule": "[ 114.    0.]"        
+        },
+        "right": 
+        {
+          "id": "48", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"        
+        }      
+      }    
+    },
+    "right": 
+    {
+      "id": "49", "rule": "V4365 <= 0.5000", "entropy": "0.801932502083", "samples": "86",
+      "left": 
+      {
+        "id": "50", "rule": "Other disorders of stomach and duodenum [141.] <= 0.5000", "entropy": "0.754406203964", "samples": "83",
+        "left": 
+        {
+          "id": "51", "rule": "Osteoporosis <= 0.5000", "entropy": "0.716962251689", "samples": "81",
+          "left": 
+          {
+            "id": "52", "rule": "Anxiety states <= 0.5000", "entropy": "0.673946865194", "samples": "79",
+            "left": 
+            {
+              "id": "53", "rule": "Symptoms; signs; and ill-defined conditions <= 0.5000", "entropy": "0.624274101013", "samples": "77",
+              "left": 
+              {
+                "id": "54", "rule": "Skin and subcutaneous tissue infections [197.] <= 0.5000", "entropy": "0.742487569542", "samples": "57",
+                "left": 
+                {
+                  "id": "55", "rule": "Diseases of the circulatory system <= 0.5000", "entropy": "0.684038435639", "samples": "55",
+                  "left": 
+                  {
+                    "id": "56", "rule": "Eye disorders <= 0.5000", "entropy": "0.890491640219", "samples": "26",
+                    "left": 
+                    {
+                      "id": "57", "criterion": "entropy", "impurity": "0.811278124459", "samples": "24", "rule": "[ 18.   6.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "58", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "59", "rule": "Other <= 0.5000", "entropy": "0.362051251734", "samples": "29",
+                    "left": 
+                    {
+                      "id": "60", "criterion": "entropy", "impurity": "0.222284830686", "samples": "28", "rule": "[ 27.   1.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "61", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "62", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "63", "criterion": "entropy", "impurity": "0.0", "samples": "20", "rule": "[ 20.   0.]"              
+              }            
+            },
+            "right": 
+            {
+              "id": "64", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"            
+            }          
+          },
+          "right": 
+          {
+            "id": "65", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"          
+          }        
+        },
+        "right": 
+        {
+          "id": "66", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"        
+        }      
+      },
+      "right": 
+      {
+        "id": "67", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"      
+      }    
+    }  
+  },
+  "right": 
+  {
+    "id": "68", "rule": "Neoplasms <= 0.5000", "entropy": "0.898537263906", "samples": "1611",
+    "left": 
+    {
+      "id": "69", "rule": "Essential hypertension <= 0.5000", "entropy": "0.746375730592", "samples": "668",
+      "left": 
+      {
+        "id": "70", "rule": "dead <= 0.5000", "entropy": "0.581896947056", "samples": "381",
+        "left": 
+        {
+          "id": "71", "rule": "Pleurisy; pneumothorax; pulmonary collapse [130.] <= 0.5000", "entropy": "0.610194653043", "samples": "353",
+          "left": 
+          {
+            "id": "72", "rule": "Nausea and vomiting <= 0.5000", "entropy": "0.633444159985", "samples": "332",
+            "left": 
+            {
+              "id": "73", "rule": "Other thyroid disorders <= 0.5000", "entropy": "0.615910456734", "samples": "328",
+              "left": 
+              {
+                "id": "74", "rule": "Other upper respiratory infections [126.] <= 0.5000", "entropy": "0.537783841833", "samples": "244",
+                "left": 
+                {
+                  "id": "75", "rule": "Rehabilitation care; fitting of prostheses; and adjustment of devices [254.] <= 0.5000", "entropy": "0.572990233495", "samples": "221",
+                  "left": 
+                  {
+                    "id": "76", "rule": "Chronic renal failure <= 0.5000", "entropy": "0.551522931873", "samples": "219",
+                    "left": 
+                    {
+                      "id": "77", "criterion": "entropy", "impurity": "0.520157533494", "samples": "214", "rule": "[ 189.   25.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "78", "criterion": "entropy", "impurity": "0.970950594455", "samples": "5", "rule": "[ 2.  3.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "79", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "80", "criterion": "entropy", "impurity": "0.0", "samples": "23", "rule": "[ 23.   0.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "81", "rule": "Skin and subcutaneous tissue infections [197.] <= 0.5000", "entropy": "0.791858352567", "samples": "84",
+                "left": 
+                {
+                  "id": "82", "rule": "Schizophrenia and other psychotic disorders [659.] <= 0.5000", "entropy": "0.741246690523", "samples": "81",
+                  "left": 
+                  {
+                    "id": "83", "rule": "Congestive heart failure; nonhypertensive [108.] <= 0.5000", "entropy": "0.701206584454", "samples": "79",
+                    "left": 
+                    {
+                      "id": "84", "criterion": "entropy", "impurity": "0.761240149692", "samples": "68", "rule": "[ 53.  15.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "85", "criterion": "entropy", "impurity": "0.0", "samples": "11", "rule": "[ 11.   0.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "86", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "87", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "88", "rule": "Abnormal glucose tolerance test <= 0.5000", "entropy": "0.811278124459", "samples": "4",
+              "left": 
+              {
+                "id": "89", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"              
+              },
+              "right": 
+              {
+                "id": "90", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 1.  0.]"              
+              }            
+            }          
+          },
+          "right": 
+          {
+            "id": "91", "criterion": "entropy", "impurity": "0.0", "samples": "21", "rule": "[ 21.   0.]"          
+          }        
+        },
+        "right": 
+        {
+          "id": "92", "criterion": "entropy", "impurity": "0.0", "samples": "28", "rule": "[ 28.   0.]"        
+        }      
+      },
+      "right": 
+      {
+        "id": "93", "rule": "dead <= 0.5000", "entropy": "0.893294083011", "samples": "287",
+        "left": 
+        {
+          "id": "94", "rule": "Acute but ill-defined cerebrovascular accident <= 0.5000", "entropy": "0.915769152974", "samples": "266",
+          "left": 
+          {
+            "id": "95", "rule": "age_40_50 <= 0.5000", "entropy": "0.890851296603", "samples": "250",
+            "left": 
+            {
+              "id": "96", "rule": "Bipolar disorders [6571] <= 0.5000", "entropy": "0.90528537572", "samples": "240",
+              "left": 
+              {
+                "id": "97", "rule": "Bacterial infection <= 0.5000", "entropy": "0.864005584382", "samples": "213",
+                "left": 
+                {
+                  "id": "98", "rule": "Blindness and vision defects [89.] <= 0.5000", "entropy": "0.830311019184", "samples": "202",
+                  "left": 
+                  {
+                    "id": "99", "rule": "Skin and subcutaneous tissue infections [197.] <= 0.5000", "entropy": "0.864139255937", "samples": "185",
+                    "left": 
+                    {
+                      "id": "100", "criterion": "entropy", "impurity": "0.83498695278", "samples": "177", "rule": "[ 130.   47.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "101", "criterion": "entropy", "impurity": "0.811278124459", "samples": "8", "rule": "[ 2.  6.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "102", "criterion": "entropy", "impurity": "0.0", "samples": "17", "rule": "[ 17.   0.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "103", "rule": "Intervertebral disc disorders <= 0.5000", "entropy": "0.845350936622", "samples": "11",
+                  "left": 
+                  {
+                    "id": "104", "criterion": "entropy", "impurity": "0.0", "samples": "7", "rule": "[ 0.  7.]"                  
+                  },
+                  "right": 
+                  {
+                    "id": "105", "rule": "Headache; including migraine [84.] <= 0.5000", "entropy": "0.811278124459", "samples": "4",
+                    "left": 
+                    {
+                      "id": "106", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 3.  0.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "107", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                    
+                    }                  
+                  }                
+                }              
+              },
+              "right": 
+              {
+                "id": "108", "rule": "Other and unspecified genitourinary symptoms <= 0.5000", "entropy": "0.975119064941", "samples": "27",
+                "left": 
+                {
+                  "id": "109", "rule": "Other liver diseases [151.] <= 0.5000", "entropy": "1.0", "samples": "22",
+                  "left": 
+                  {
+                    "id": "110", "rule": "Acute upper respiratory infections of multiple or unspecified sites <= 0.5000", "entropy": "0.964078764808", "samples": "18",
+                    "left": 
+                    {
+                      "id": "111", "criterion": "entropy", "impurity": "0.836640741941", "samples": "15", "rule": "[  4.  11.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "112", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 3.  0.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "113", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "114", "criterion": "entropy", "impurity": "0.0", "samples": "5", "rule": "[ 0.  5.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "115", "criterion": "entropy", "impurity": "0.0", "samples": "10", "rule": "[ 10.   0.]"            
+            }          
+          },
+          "right": 
+          {
+            "id": "116", "rule": "Diabetes mellitus without complication [49.] <= 0.5000", "entropy": "0.896038232535", "samples": "16",
+            "left": 
+            {
+              "id": "117", "rule": "Mixed hyperlipidemia <= 0.5000", "entropy": "1.0", "samples": "10",
+              "left": 
+              {
+                "id": "118", "rule": "Inflammation; infection of eye (except that caused by TB or STD) [90.] <= 0.5000", "entropy": "0.863120568567", "samples": "7",
+                "left": 
+                {
+                  "id": "119", "criterion": "entropy", "impurity": "0.0", "samples": "5", "rule": "[ 5.  0.]"                
+                },
+                "right": 
+                {
+                  "id": "120", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "121", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"              
+              }            
+            },
+            "right": 
+            {
+              "id": "122", "criterion": "entropy", "impurity": "0.0", "samples": "6", "rule": "[ 0.  6.]"            
+            }          
+          }        
+        },
+        "right": 
+        {
+          "id": "123", "rule": "Constipation <= 0.5000", "entropy": "0.276195427648", "samples": "21",
+          "left": 
+          {
+            "id": "124", "criterion": "entropy", "impurity": "0.0", "samples": "20", "rule": "[ 20.   0.]"          
+          },
+          "right": 
+          {
+            "id": "125", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"          
+          }        
+        }      
+      }    
+    },
+    "right": 
+    {
+      "id": "126", "rule": "dead <= 0.5000", "entropy": "0.962877732562", "samples": "943",
+      "left": 
+      {
+        "id": "127", "rule": "Diseases of the genitourinary system <= 0.5000", "entropy": "0.974124879326", "samples": "895",
+        "left": 
+        {
+          "id": "128", "rule": "Biliary tract disease [149.] <= 0.5000", "entropy": "0.787840349204", "samples": "140",
+          "left": 
+          {
+            "id": "129", "rule": "Secondary malignancies [42.] <= 0.5000", "entropy": "0.758297152937", "samples": "137",
+            "left": 
+            {
+              "id": "130", "rule": "Diseases of the skin and subcutaneous tissue <= 0.5000", "entropy": "0.71582593106", "samples": "132",
+              "left": 
+              {
+                "id": "131", "rule": "Abdominal hernia [143.] <= 0.5000", "entropy": "0.529360865287", "samples": "75",
+                "left": 
+                {
+                  "id": "132", "rule": "Obstructive chronic bronchitis <= 0.5000", "entropy": "0.455831458441", "samples": "73",
+                  "left": 
+                  {
+                    "id": "133", "rule": "Difficulty in walking <= 0.5000", "entropy": "0.413816850304", "samples": "72",
+                    "left": 
+                    {
+                      "id": "134", "criterion": "entropy", "impurity": "0.322756958897", "samples": "68", "rule": "[ 64.   4.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "135", "criterion": "entropy", "impurity": "1.0", "samples": "4", "rule": "[ 2.  2.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "136", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "137", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "138", "rule": "Senile cataract <= 0.5000", "entropy": "0.879135766853", "samples": "57",
+                "left": 
+                {
+                  "id": "139", "rule": "Depressive disorders [6572] <= 0.5000", "entropy": "0.825626526158", "samples": "54",
+                  "left": 
+                  {
+                    "id": "140", "rule": "Gout and other crystal arthropathies [54.] <= 0.5000", "entropy": "0.730016630146", "samples": "49",
+                    "left": 
+                    {
+                      "id": "141", "criterion": "entropy", "impurity": "0.623570208213", "samples": "45", "rule": "[ 38.   7.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "142", "criterion": "entropy", "impurity": "0.811278124459", "samples": "4", "rule": "[ 1.  3.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "143", "rule": "Paralysis [82.] <= 0.5000", "entropy": "0.721928094887", "samples": "5",
+                    "left": 
+                    {
+                      "id": "144", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 0.  4.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "145", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 1.  0.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "146", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "147", "rule": "Other nervous system disorders [95.] <= 0.5000", "entropy": "0.721928094887", "samples": "5",
+              "left": 
+              {
+                "id": "148", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 0.  4.]"              
+              },
+              "right": 
+              {
+                "id": "149", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 1.  0.]"              
+              }            
+            }          
+          },
+          "right": 
+          {
+            "id": "150", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 0.  3.]"          
+          }        
+        },
+        "right": 
+        {
+          "id": "151", "rule": "Coma; stupor; and brain damage [85.] <= 0.5000", "entropy": "0.988548835687", "samples": "755",
+          "left": 
+          {
+            "id": "152", "rule": "Constipation <= 0.5000", "entropy": "0.981532074178", "samples": "714",
+            "left": 
+            {
+              "id": "153", "rule": "Atrial fibrillation and flutter <= 0.5000", "entropy": "0.97366806455", "samples": "672",
+              "left": 
+              {
+                "id": "154", "rule": "Dizziness and giddiness <= 0.5000", "entropy": "0.965328468271", "samples": "632",
+                "left": 
+                {
+                  "id": "155", "rule": "Impacted cerumen <= 0.5000", "entropy": "0.95145566309", "samples": "566",
+                  "left": 
+                  {
+                    "id": "156", "rule": "Retinal detachments; defects; vascular occlusion; and retinopathy [87.] <= 0.5000", "entropy": "0.959686893774", "samples": "544",
+                    "left": 
+                    {
+                      "id": "157", "criterion": "entropy", "impurity": "0.928139350856", "samples": "393", "rule": "[ 258.  135.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "158", "criterion": "entropy", "impurity": "0.999208938865", "samples": "151", "rule": "[ 78.  73.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "159", "rule": "Other acute and subacute forms of ischemic heart disease <= 0.5000", "entropy": "0.439496986922", "samples": "22",
+                    "left": 
+                    {
+                      "id": "160", "criterion": "entropy", "impurity": "0.0", "samples": "19", "rule": "[ 19.   0.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "161", "criterion": "entropy", "impurity": "0.918295834054", "samples": "3", "rule": "[ 1.  2.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "162", "rule": "Codes related to substance-related disorders [6632] <= 0.5000", "entropy": "0.989375583192", "samples": "66",
+                  "left": 
+                  {
+                    "id": "163", "rule": "Abdominal hernia [143.] <= 0.5000", "entropy": "0.999079718181", "samples": "56",
+                    "left": 
+                    {
+                      "id": "164", "criterion": "entropy", "impurity": "0.997502546369", "samples": "51", "rule": "[ 24.  27.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "165", "criterion": "entropy", "impurity": "0.0", "samples": "5", "rule": "[ 5.  0.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "166", "criterion": "entropy", "impurity": "0.0", "samples": "10", "rule": "[  0.  10.]"                  
+                  }                
+                }              
+              },
+              "right": 
+              {
+                "id": "167", "rule": "Other peripheral and visceral atherosclerosis <= 0.5000", "entropy": "0.954434002925", "samples": "40",
+                "left": 
+                {
+                  "id": "168", "rule": "Occlusion or stenosis of precerebral arteries [110.] <= 0.5000", "entropy": "0.887976319515", "samples": "36",
+                  "left": 
+                  {
+                    "id": "169", "rule": "V5869 <= 0.5000", "entropy": "0.989587521222", "samples": "25",
+                    "left": 
+                    {
+                      "id": "170", "criterion": "entropy", "impurity": "0.696212260125", "samples": "16", "rule": "[  3.  13.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "171", "criterion": "entropy", "impurity": "0.503258334776", "samples": "9", "rule": "[ 8.  1.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "172", "criterion": "entropy", "impurity": "0.0", "samples": "11", "rule": "[  0.  11.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "173", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                
+                }              
+              }            
+            },
+            "right": 
+            {
+              "id": "174", "rule": "Abnormal glucose tolerance test <= 0.5000", "entropy": "0.918295834054", "samples": "42",
+              "left": 
+              {
+                "id": "175", "rule": "Cancer of urinary organs <= 0.5000", "entropy": "0.83147438801", "samples": "38",
+                "left": 
+                {
+                  "id": "176", "rule": "Hyperplasia of prostate [164.] <= 0.5000", "entropy": "0.684038435639", "samples": "33",
+                  "left": 
+                  {
+                    "id": "177", "rule": "Acquired deformities <= 0.5000", "entropy": "0.863120568567", "samples": "21",
+                    "left": 
+                    {
+                      "id": "178", "criterion": "entropy", "impurity": "0.995727452085", "samples": "13", "rule": "[ 6.  7.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "179", "criterion": "entropy", "impurity": "0.0", "samples": "8", "rule": "[ 0.  8.]"                    
+                    }                  
+                  },
+                  "right": 
+                  {
+                    "id": "180", "criterion": "entropy", "impurity": "0.0", "samples": "12", "rule": "[  0.  12.]"                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "181", "rule": "Other non-epithelial cancer of skin [23.] <= 0.5000", "entropy": "0.721928094887", "samples": "5",
+                  "left": 
+                  {
+                    "id": "182", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                  
+                  },
+                  "right": 
+                  {
+                    "id": "183", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"                  
+                  }                
+                }              
+              },
+              "right": 
+              {
+                "id": "184", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 4.  0.]"              
+              }            
+            }          
+          },
+          "right": 
+          {
+            "id": "185", "rule": "Chronic obstructive pulmonary disease and bronchiectasis [127.] <= 0.5000", "entropy": "0.839004061368", "samples": "41",
+            "left": 
+            {
+              "id": "186", "rule": "Osteoporosis [206.] <= 0.5000", "entropy": "0.998363672594", "samples": "21",
+              "left": 
+              {
+                "id": "187", "rule": "Pain in limb <= 0.5000", "entropy": "0.918295834054", "samples": "15",
+                "left": 
+                {
+                  "id": "188", "rule": "Other esophageal disorders <= 0.5000", "entropy": "0.954434002925", "samples": "8",
+                  "left": 
+                  {
+                    "id": "189", "criterion": "entropy", "impurity": "0.0", "samples": "4", "rule": "[ 0.  4.]"                  
+                  },
+                  "right": 
+                  {
+                    "id": "190", "rule": "Maintenance chemotherapy; radiotherapy [45.] <= 0.5000", "entropy": "0.811278124459", "samples": "4",
+                    "left": 
+                    {
+                      "id": "191", "criterion": "entropy", "impurity": "0.0", "samples": "3", "rule": "[ 3.  0.]"                    
+                    },
+                    "right": 
+                    {
+                      "id": "192", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 0.  1.]"                    
+                    }                  
+                  }                
+                },
+                "right": 
+                {
+                  "id": "193", "criterion": "entropy", "impurity": "0.0", "samples": "7", "rule": "[ 7.  0.]"                
+                }              
+              },
+              "right": 
+              {
+                "id": "194", "criterion": "entropy", "impurity": "0.0", "samples": "6", "rule": "[ 0.  6.]"              
+              }            
+            },
+            "right": 
+            {
+              "id": "195", "rule": "Acute myocardial infarction [100.] <= 0.5000", "entropy": "0.286396957116", "samples": "20",
+              "left": 
+              {
+                "id": "196", "criterion": "entropy", "impurity": "0.0", "samples": "19", "rule": "[  0.  19.]"              
+              },
+              "right": 
+              {
+                "id": "197", "criterion": "entropy", "impurity": "0.0", "samples": "1", "rule": "[ 1.  0.]"              
+              }            
+            }          
+          }        
+        }      
+      },
+      "right": 
+      {
+        "id": "198", "rule": "Diabetes mellitus with complications [50.] <= 0.5000", "entropy": "0.249882292833", "samples": "48",
+        "left": 
+        {
+          "id": "199", "criterion": "entropy", "impurity": "0.0", "samples": "46", "rule": "[ 46.   0.]"        
+        },
+        "right": 
+        {
+          "id": "200", "criterion": "entropy", "impurity": "0.0", "samples": "2", "rule": "[ 0.  2.]"        
+        }      
+      }    
+    }  
+  }
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  <div id="left" class="col-md-8">
+  <div id="left" class="col-md-7">
 
     <div class="col-md-12">
          <div id="mainviz"> </div>
@@ -21,11 +21,11 @@
         <div class="panel-body">
           <div id="toolbar"> 
 
-            <div class="col-md-8">
+            <div class="col-md-6">
 
               <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="21" data-slider-step="1" data-slider-value="14" style="width:300px;"/>
               </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
 
               <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -56,17 +56,24 @@
     
   </div>
 
-  <div id="right" class="col-md-4">
-
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <img src="img/overview2.png" alt="overview" style="margin-left:-15px; width:160px;height:150px">
-        </div>
-      </div>
+  <div id="middle" class="col-md-1">
+    <div class="panel-body" style="align:center;">
+          <img src="img/overview3.png" alt="overview">
+          <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true">True</span>
+          </button>
+          <p></p>
+          <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true">False</span>
+          </button>
     </div>
 
-    <div class="col-md-6">
+  </div>
+
+  <div id="right" class="col-md-4">
+
+
+    <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Statistics</h3>
@@ -77,19 +84,19 @@
           <tbody>
           <tr>
             <td>Depth</td>
-            <td>20</td>
+            <td id = "depth"></td>
           </tr>
                     <tr>
             <td>Nodes</td>
-            <td>170</td>
+            <td id = "num_nodes"></td>
           </tr>
                     <tr>
             <td>Branch</td>
-            <td>170</td>
+            <td id = "branch_num"></td>
           </tr>   
           <tr>
             <td>Accuracy</td>
-            <td>72.98%</td>
+            <td id = "accuracy"></td>
           </tr>       
         </tbody>
 
@@ -128,12 +135,6 @@
         </div>
         <div class="panel-body" style="height:100px;overflow:scroll;">
         <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Attribute Name</th>
-          </tr>
-          </thead>
           <tbody>
           <div id="attr-list"></div>
           </tbody>
@@ -177,12 +178,11 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-
 <script src="js/colorbrewer.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-slider.js"></script>
 <script src="js/d3.v3.min.js"></script>
+<script src="data/realName.js"></script>
 <script src="js/newmainviz.js"></script>
 <script src="js/classdist.js"></script>
-<script src="js/app.js"></script>
+<!--<script src="js/app.js"></script>-->
