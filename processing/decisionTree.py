@@ -186,7 +186,7 @@ if __name__ == '__main__':
   clf = build_tree(Xtrain, ytrain, Xtest,ytest)
   # stat(clf)
   str1 = viz(clf, feature_names=feature)
-  print str1
+  # print str1
 
   obj = open('tree.json', 'wb')
   obj.write(str1)
@@ -194,12 +194,15 @@ if __name__ == '__main__':
 
   # with open('tree.json') as data_file:     
     # data = json.load(data_file)
-  data = json.loads(str1)
 
-  idd = np.arange(train.shape[0]).reshape(train.shape[0],1)
-  train_with_id = np.hstack([train,idd])
-  data['which'] = idd.tolist()
 
-  d = travel(data,train_with_id, feature_dct)
-  with open('tree_contains.json', 'wb') as fp:
-    json.dump(d, fp)
+    
+  # data = json.loads(str1)
+
+  # idd = np.arange(train.shape[0]).reshape(train.shape[0],1)
+  # train_with_id = np.hstack([train,idd])
+  # data['which'] = idd.tolist()
+
+  # d = travel(data,train_with_id, feature_dct)
+  # with open('tree_contains.json', 'wb') as fp:
+  #   json.dump(d, fp)

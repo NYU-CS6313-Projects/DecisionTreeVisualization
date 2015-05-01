@@ -26,8 +26,8 @@ function toJson(x)
   result.samples=x.samples;
   result.rule=x.rule;
  
-  if ( (!!x.left && !x.left.value) ||
-       (!!x.right && !x.right.value) ){
+  if ( (!!x.left && !x.left.rule) ||
+       (!!x.right && !x.right.rule) ){
     result.size = parseInt(x.samples);
     result.children = [];
   }
@@ -60,18 +60,48 @@ function toJson(x)
     
  
   var index = 0;
-  if (!!x.left && !x.left.value)
+  if (!!x.left && !x.left.rule)
     result.children[index++] = toJson(x.left);
  
-  if (!!x.right && !x.right.value)
+  if (!!x.right && !x.right.rule)
     result.children[index++] = toJson(x.right);
  
   return result;
   
 }
 
-treeJSON = d3.json("data/ourTree.json", function(error, treeData) {
+var treeData = null
+var data = null
 
+
+d3.json('data/tree_contains 2.json', function(error, _data){
+    if (error) return console.warn(error,'container');
+    data = _data;
+    finishLoading();
+
+});
+
+d3.json("data/ourTree.json", function(error, _treeData) {
+    if (error) return console.warn(error);
+    treeData = _treeData;
+    finishLoading();
+
+});
+
+function getByKey(data, key) {
+  var el = data;
+  key.forEach(function(k) {
+    console.log(el);
+    el = el[k];
+  });
+  return el;
+} 
+
+
+function finishLoading() {
+    console.log('h');
+    if (!data || !treeData) return;
+    console.log(getByKey(data, ['left','left','right','left','right']))
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
@@ -668,4 +698,4 @@ treeJSON = d3.json("data/ourTree.json", function(error, treeData) {
     }
     //console.log(theTable);
     $("#attr-list").append(theTable);
-});
+}
