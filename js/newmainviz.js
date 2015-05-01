@@ -23,8 +23,8 @@ function toJson(x)
   result.samples=x.samples;
   result.rule=x.rule;
  
-  if ( (!!x.left && !x.left.rule) ||
-       (!!x.right && !x.right.rule) ){
+  if ( (!!x.left && !x.left.value) ||
+       (!!x.right && !x.right.value) ){
     result.size = parseInt(x.samples);
     result.children = [];
   }
@@ -57,10 +57,10 @@ function toJson(x)
     
  
   var index = 0;
-  if (!!x.left && !x.left.rule)
+  if (!!x.left && !x.left.value)
     result.children[index++] = toJson(x.left);
  
-  if (!!x.right && !x.right.rule)
+  if (!!x.right && !x.right.value)
     result.children[index++] = toJson(x.right);
  
   return result;
@@ -72,17 +72,20 @@ var data = null
 
 
 d3.json('data/tree_contains 2.json', function(error, _data){
-    if (error) return console.warn(error,'container');
+    if (error) {
+        return console.warn(error,'container');
+    }
     data = _data;
     finishLoading();
 
 });
 
 d3.json("data/ourTree.json", function(error, _treeData) {
-    if (error) return console.warn(error);
+    if (error) {
+        return console.warn(error);
+    }
     treeData = _treeData;
     finishLoading();
-
 });
 
 function getByKey(data, key) {
@@ -96,9 +99,9 @@ function getByKey(data, key) {
 
 
 function finishLoading() {
-    console.log('h');
     if (!data || !treeData) return;
-    console.log(getByKey(data, ['left','left','right','left','right']))
+    console.log(getByKey(data, ['left','left']));
+
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
@@ -547,4 +550,4 @@ function finishLoading() {
     }
     //console.log(theTable);
     $("#attr-list").append(theTable);
-}
+};
