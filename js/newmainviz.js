@@ -150,7 +150,29 @@ function finishLoading() {
             })
         }
         return 1 + depth;
-    }   
+    }
+// ongoing accuracy calculation
+
+    var total_Right = 0;
+    var total_Wrong = 0;
+
+    function getAccuracy (obj){
+        if (!obj.children) {
+            var str = obj.rule;
+            str = str.replace(' ','');
+            str = str.split(".");
+            str[0] = str[0].replace('[', '');
+            str[1] = str[1].replace(']', '');
+            total_Right = total_Right + parseInt(str[0]);
+            total_Wrong = total_Wrong + parseInt(str[1]);
+            }
+        
+        else{
+            obj.children.forEach(function (d){
+                getAccuracy(d);
+            })
+        }
+    }
 
     function visit(parent, visitFn, childrenFn) {
         if (!parent) return;
@@ -182,6 +204,8 @@ function finishLoading() {
     //set up link width
 
     var dep = getDepth(toJson(treeData));
+    getAccuracy(toJson(treeData));
+
     d3.select("#num_nodes")
     .text(totalNodes);
     d3.select("#depth")
@@ -190,7 +214,7 @@ function finishLoading() {
     .text(totalNodes);
     // need revision to make it dynamic
     d3.select("#accuracy")
-    .text("80.15%");
+    .text(((total_Right/(total_Wrong+total_Right))*100).toFixed(2)+ "%");
 
 
     // sort the tree according to the node names
@@ -534,6 +558,7 @@ function finishLoading() {
             })
         }
     }
+
     var container = d3.select("#attr-list"); 
 
     getName(toJson(treeData));
