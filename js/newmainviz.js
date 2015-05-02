@@ -331,13 +331,14 @@ function finishLoading() {
 
     function getAccuracy (obj){
         if (!obj.children) {
-            var str = obj.rule;
-            str = str.replace(' ','');
-            str = str.split(".");
-            str[0] = str[0].replace('[', '');
-            str[1] = str[1].replace(']', '');
-            total_Right = total_Right + parseInt(str[0]);
-            total_Wrong = total_Wrong + parseInt(str[1]);
+            if (obj.leftVal > obj.rightVal){
+                total_Right = total_Right + obj.leftVal;
+                total_Wrong = total_Wrong + obj.rightVal;
+            }
+            else{
+                total_Right = total_Right + obj.rightVal;
+                total_Wrong = total_Wrong + obj.leftVal;
+            }
             }
         
         else{
@@ -386,6 +387,7 @@ function finishLoading() {
     // need revision to make it dynamic
     d3.select("#accuracy")
     .text(((total_Right/(total_Wrong+total_Right))*100).toFixed(2)+ "%");
+    console.log(total_Wrong+total_Right)
 
 
     // sort the tree according to the node names
