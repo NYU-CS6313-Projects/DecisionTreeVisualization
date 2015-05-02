@@ -10,7 +10,7 @@ var ydist = d3.scale.linear()
     .rangeRound([heightdist, 0]);
 
 var colordist = d3.scale.ordinal()
-    .range(["#7D0C0C", "#A6A6A6"]);
+    .range(["#7D0C0C", "#1f77b4"]);
 
 var xAxis = d3.svg.axis()
     .scale(xdist)

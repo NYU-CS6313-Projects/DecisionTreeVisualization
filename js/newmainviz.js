@@ -1,6 +1,3 @@
-//console.log(realName);
-//console.log(aliasName);
-
 function mapName(name){
     return realName[aliasName.indexOf(name)];
     
@@ -11,17 +8,24 @@ function toJson(x)
 
   var result = {};
   var labelName = "";
+  var nodeSample = 0;
+
+
   x.rule = x.rule.replace(' <= 0.5000','');
-  alias = mapName(x.rule);
-  if (alias!=undefined){
-    labelName = x.rule+" "+alias;
+  real = mapName(x.rule);
+  if (real!=undefined){
+    labelName = x.rule+"////"+real;
   } else {
     labelName = x.rule;
   }
+  labelName=labelName.replace('diagnosis__','D:');
+  labelName=labelName.replace('procedure__','P:');
+  labelName=labelName.replace('HIERARCHY_','CCS-');
   result.name = labelName;
   
   result.samples=x.samples;
   result.rule=x.rule;
+  result.id = x.id;
  
   if ( (!!x.left && !x.left.value) ||
        (!!x.right && !x.right.value) ){
@@ -30,40 +34,40 @@ function toJson(x)
   }
       
   else{ //leaf node
-    result.size = parseInt(x.samples); 
+        result.size = parseInt(x.samples); 
 
-    var str = result.rule;
-    str = str.replace(' ','');
-    str = str.split(".");
-           
+        var str = result.rule;
+        str = str.replace(' ','');
+        str = str.split(".");
+               
         str[0] = str[0].replace('[', '');
         str[1] = str[1].replace(']', '');
 
         var leftVal = parseInt(str[0]);
         var rightVal = parseInt(str[1]);
+        result.leftVal = leftVal;
+        result.rightVal = rightVal;
+
+        result.name = "[-"+leftVal+",+"+rightVal+"]";
 
         if (leftVal > rightVal){
-           result.name = "";
-           result.color="#A6A6A6";
+            result.color="#1f77b4";
         } else {
-         
-         //result.name = ""; //negative
-         result.name = "";
-         result.color = "#7D0C0C";
+             
+        //result.name = ""; //negative
+        //result.name = "";
+        result.color = "#7D0C0C";
         }
     } 
-
-  
-    
  
-  var index = 0;
-  if (!!x.left && !x.left.value)
-    result.children[index++] = toJson(x.left);
- 
-  if (!!x.right && !x.right.value)
-    result.children[index++] = toJson(x.right);
- 
-  return result;
+    var index = 0;
+    if (!!x.left && !x.left.value)
+        result.children[index++] = toJson(x.left);
+     
+    if (!!x.right && !x.right.value)
+        result.children[index++] = toJson(x.right);
+     
+    return result;
   
 }
 
@@ -91,7 +95,7 @@ d3.json("data/ourTree.json", function(error, _treeData) {
 function getByKey(data, key) {
   var el = data;
   key.forEach(function(k) {
-    console.log(el);
+    //console.log(el);
     el = el[k];
   });
   return el;
@@ -100,7 +104,7 @@ function getByKey(data, key) {
 
 function finishLoading() {
     if (!data || !treeData) return;
-    console.log(getByKey(data, ['left','left']));
+    //console.log(getByKey(data, ['left','left']));
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -139,6 +143,16 @@ function finishLoading() {
         return (minWidth + ((x/maxSample)*maxWidth));
     }
 
+    function isLeafNode(obj){
+        
+        if (obj.leftVal != undefined){
+            //console.log(obj.target.leftVal);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function getDepth (obj) {
         var depth = 0;
         if (obj.children) {
@@ -174,6 +188,17 @@ function finishLoading() {
         }
     }
 
+    function getLeft (obj) {
+        var leftCount = 0;
+        if (obj.children) {
+            obj.children.forEach(function (d) {
+                if (d.leftVal!=null){  
+                }
+            })
+        }
+    }
+       
+
     function visit(parent, visitFn, childrenFn) {
         if (!parent) return;
 
@@ -200,7 +225,7 @@ function finishLoading() {
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-    console.log(maxSample);
+    //console.log(maxSample);
     //set up link width
 
     var dep = getDepth(toJson(treeData));
@@ -336,6 +361,7 @@ function finishLoading() {
         d = toggleChildren(d);
         update(d);
         centerNode(d);
+
     }
 
 
@@ -384,13 +410,47 @@ function finishLoading() {
             .attr("transform", function(d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-            .on('click', click);
+            .on('click', click)
+            .attr('pointer-events', 'mouseover')
+            .on("mouseover", function(node) {
+                //console.log(getLeft(node));
+                //overCircle(node);
+            })
+            .on("mouseout", function(node) {
+                //outCircle(node);
+            });
+
 
         nodeEnter.append("circle")
             .attr('class', 'nodeCircle')
             .attr("r", 0)
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
+            });
+            
+        nodeEnter.append("rect")
+            .attr('width', function(d) {
+                if (d.id==0){
+                    return 150;
+                } else {
+                    return 50;
+                }
+            })
+            .attr('height',30)
+            .attr('fill', 'white')
+            .attr('x',function(d) {
+                if (d.id==0){
+                    return -75;
+                } else {
+                    return -25;
+                }
+            })
+            .attr('y', 0)
+            .style("visibility",function(d) {
+                if (isLeafNode(d)){
+                    //console.log(d);
+                    return "hidden";
+                }
             });
 
         nodeEnter.append("text")
@@ -399,13 +459,11 @@ function finishLoading() {
             // })
             .attr("dy", ".35em")
             .attr('class', 'nodeText')
-            .attr("text-anchor", function(d) {
-                return d.children || d._children ? "end" : "start";
-            })
+            .attr("text-anchor", "middle") 
             .each(function(d) {
                 var t = d3.select(this);
-                var pos = 0;
-                d.name.split(" ").forEach(function(n) {
+                var pos = 10;
+                d.name.split("////").forEach(function(n) { 
                     t.append("tspan").text(n).attr({
                         "y": pos,
                         "x": 0
@@ -428,7 +486,8 @@ function finishLoading() {
             })
             .on("mouseout", function(node) {
                 //outCircle(node);
-            });
+            })
+            .style("visibility","hidden");
 
         // Update the text to reflect whether node has children or not.
         node.select('text')
@@ -442,7 +501,8 @@ function finishLoading() {
             .attr("r", 4.5)
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
-            });
+            })
+            .style("visibility","hidden");
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
@@ -477,14 +537,23 @@ function finishLoading() {
             .attr("transform", "rotate(-270) scale(1,-1)")
             //.attr("transform", "scale(-1,1)")
             .style("stroke", function(d){
-                return d.target.color;
+                if (isLeafNode(d.target)){
+                    return d.target.color;
+                } else {
+                    return "#1f77b4";
+                }
             })
             .style("stroke-width", function(d){
-                return getWidth(d.target.samples);
+                if (isLeafNode(d.target)){
+                    return getWidth(d.target.samples);
+                } else {
+                    return getWidth(d.target.samples)/2;
+                }
+                
             });
 
         // Enter any new links at the parent's previous position.
-        link.enter().insert("path", "g")
+        var linkEnter = link.enter().insert("path", "g")
             .attr("class", "link")
             .attr("d", function(d) {
                 var o = {
@@ -500,13 +569,19 @@ function finishLoading() {
             //.attr("transform", "scale(-1,1)")
 
             .style("stroke", function(d){
-                return d.target.color;
+                if (isLeafNode(d.target)){
+                    return d.target.color;
+                } else {
+                    return "#1f77b4";
+                }
             })
             .style("stroke-width", function(d){
-                return getWidth(d.target.samples);
-
+                if (isLeafNode(d)){
+                    return getWidth(d.target.samples);
+                } else {
+                    return getWidth(d.target.samples)/2;
+                }
             });
-
 
         // Transition links to their new position.
         link.transition()
@@ -528,6 +603,8 @@ function finishLoading() {
             })
             .remove();
 
+
+
         // Stash the old positions for transition.
         nodes.forEach(function(d) {
             d.x0 = d.x;
@@ -546,6 +623,7 @@ function finishLoading() {
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
 
     var list1 = [];
     function getName (obj){
@@ -568,6 +646,7 @@ function finishLoading() {
     for (var i = 0, tr, td; i < arrayLength; i++) {
         tr = document.createElement('tr');
         td = document.createElement('td');
+        list1[i] = list1[i].replace("////"," ");
         td.appendChild(document.createTextNode(list1[i]));
         
         tr.appendChild(td);
@@ -575,4 +654,6 @@ function finishLoading() {
     }
     //console.log(theTable);
     $("#attr-list").append(theTable);
+
+
 };
