@@ -50,9 +50,19 @@ def travel(dct, data, name_dct, indent=''):
 			v = dct['left']
 			idx = name_dct[dct['rule'][:-10]]+1
 			to_left = data[data[:,idx]<0.5]
-			# store['left'] = {'which' : to_left[:,-1].tolist()}
 			v['which'] = to_left[:,-1].tolist()
-			# v['result'] = to_left[:,1].tolist()
+			v['truth'] = to_left[:,1].tolist()
+			unique, counts = np.unique(to_left[:,1], return_counts=True)	
+			if unique[0] == 1:
+				unique = np.insert(unique,0,0)
+				counts = np.insert(counts,0,0)
+				v[unique[0]] = counts[0] 
+			v[unique[0]] = counts[0] 
+			try:
+				v[unique[1]] = counts[1]
+			except:
+				unique = np.append(unique,1)
+				v[unique[1]] = 0
 			dct['left'] = travel(v, to_left, name_dct, ind)
 		if 'right' in dct:
 			print ind + 'right' + dct['right']['id']
@@ -60,27 +70,42 @@ def travel(dct, data, name_dct, indent=''):
 			idx = name_dct[dct['rule'][:-10]]+1		
 			to_right = data[data[:,idx]>=0.5]
 			v['which'] = to_right[:,-1].tolist()
-			# v['result'] = to_right[:,1].tolist()
+			v['truth'] = to_right[:,1].tolist()
+			unique, counts = np.unique(to_right[:,1], return_counts=True)	
+			if unique[0] == 1:
+				unique = np.insert(unique,0,0)
+				counts = np.insert(counts,0,0)
+				v[unique[0]] = counts[0] 
+			v[unique[0]] = counts[0] 
+			try:
+				v[unique[1]] = counts[1]
+			except:
+				unique = np.append(unique,1)
+				v[unique[1]] = 0
 			dct['right'] = travel(v, to_right, name_dct, ind)
 	else:
+		dct['which'] = data[data[:,-1]].tolist()
+		# dct['truth']
 		print ind +'lllll'
 	return dct
 
 if __name__ == '__main__':
-	with open('tree.json') as data_file:    	
+	with open('ourTree.json') as data_file:    	
 		dct = json.load(data_file)
+
 	train,test, n_to_p_dct, p_to_n_dct= read('output.csv')
+	ytrain = train[:,1]
 
 	idd = np.arange(train.shape[0]).reshape(train.shape[0],1)
 
 	train_with_id = np.hstack([train,idd])
 	dct['which'] = idd.tolist()
-	# dct['result'] = dct[:,1].tolist()
-	# store= {}
-	# store['which'] = idd.tolist()
-
+	dct['truth'] = ytrain.tolist()
+	unique, counts = np.unique(ytrain, return_counts=True)	
+	dct[unique[0]] = counts[0] 
+	dct[unique[1]] = counts[1]
+ 
 	d = travel(dct,train_with_id, n_to_p_dct)
-	#print d
 	with open('tree_contains.json', 'wb') as fp:
 		json.dump(d, fp)
 	

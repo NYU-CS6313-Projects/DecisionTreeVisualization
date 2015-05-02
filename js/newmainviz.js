@@ -5,7 +5,6 @@ function mapName(name){
 
 function toJson(x) 
 {
-
   var result = {};
   var labelName = "";
   var nodeSample = 0;
@@ -58,7 +57,7 @@ function toJson(x)
         //result.name = "";
         result.color = "#7D0C0C";
         }
-    } 
+    }
  
     var index = 0;
     if (!!x.left && !x.left.value)
@@ -75,10 +74,8 @@ var treeData = null
 var data = null
 
 
-d3.json('data/tree_contains 2.json', function(error, _data){
-    if (error) {
-        return console.warn(error,'container');
-    }
+d3.json('data/tree_contains.json', function(error, _data){
+    if (error) return console.warn(error,'container');
     data = _data;
     finishLoading();
 
@@ -92,19 +89,114 @@ d3.json("data/ourTree.json", function(error, _treeData) {
     finishLoading();
 });
 
-function getByKey(data, key) {
+function statsOfLeaf (data,key){
+    var el = data;
+    key.forEach(function(k) {
+        el = el[k];
+    });
+    var tail = key.slice(-1)[0];
+
+    var bro;
+    if (tail === 'right') {
+        bro = 'left';
+    } else {
+        bro = 'right';
+    }
+    var el_bro = data;
+    key.pop();
+    key.push(bro);
+    key.forEach(function(k){
+        el_bro[k];
+    });
+    return key;
+} 
+
+function splitLeaf(data, key) {
   var el = data;
   key.forEach(function(k) {
-    //console.log(el);
     el = el[k];
   });
   return el;
 } 
 
+function delLeaves(data, key) {
+  function statsOfLeaf (data,key){
+    var el = data;
+    key.forEach(function(k) {
+        el = el[k];
+    });
+
+    pos = el[1];
+    neg = el[0];
+    truth = el['truth'];
+    if (pos < neg) {
+        tp = 0
+        fp = 0
+        tn = neg
+        fn = pos
+    } else {
+        tn = 0
+        fn = 0
+        tp = pos
+        fp = neg
+    }
+
+    
+    var tail = key.slice(-1)[0];
+    var bro;
+    if (tail === 'right') {
+        bro = 'left';
+    } else {
+        bro = 'right';
+    }
+    var el_bro = data;
+    key.pop();
+    key.push(bro);
+    key.forEach(function(k){
+        el_bro[k];
+        console.log(el_bro)
+
+    });
+    pos = el_bro[1];
+    neg = el_bro[0];
+    truth = el_bro['truth'];
+    if (pos < neg) {
+        tp_bro = 0
+        fp_bro = 0
+        tn_bro = neg
+        fn_bro = pos
+    } else {
+        tn_bro = 0
+        fn_bro = 0
+        tp_bro = pos
+        fp_bro = neg
+    }
+
+    console.log(tp,fp,tn,fn)
+    console.log(tp_bro, fp_bro, tn_bro, fn_bro)
+
+    return key;
+    } 
+
+  console.log(statsOfLeaf(data, ['right','left','right']))
+
+  key.pop();
+  var el = data;
+  key.forEach(function(k) {
+    // console.log(el);
+    el = el[k];
+  });
+  POS = el[1];
+  NEG = el[0];
+  rule = [POS, NEG];
+  return POS;
+} 
+
 
 function finishLoading() {
     if (!data || !treeData) return;
-    //console.log(getByKey(data, ['left','left']));
+    console.log(delLeaves(data, ['right','left','right']));
+
 
     // Calculate total nodes, max label length
     var totalNodes = 0;

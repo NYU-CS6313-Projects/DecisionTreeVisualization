@@ -33,8 +33,8 @@ def read(file):
   feature_id = np.arange(len(feature))
   feature_dct = dict(zip(feature,feature_id))
   position_dct = dict(zip(feature_id,feature))
-  train = data[data[:,0]=='0',1:].astype(int)
-  test = data[data[:,0] =='1',1:].astype(int)
+  train = data[data[:,0]=='0'].astype(int)
+  test = data[data[:,0] =='1'].astype(int)
   return train, test, feature, feature_dct, position_dct
 
 def depth_cv(Xtrain,ytrain):
