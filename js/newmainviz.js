@@ -533,23 +533,6 @@ function finishLoading() {
         var link = svgGroup.selectAll("path.link")
             .data(links, function(d) {
                 return d.target.id;
-            })
-            .attr("transform", "rotate(-270) scale(1,-1)")
-            //.attr("transform", "scale(-1,1)")
-            .style("stroke", function(d){
-                if (isLeafNode(d.target)){
-                    return d.target.color;
-                } else {
-                    return "#1f77b4";
-                }
-            })
-            .style("stroke-width", function(d){
-                if (isLeafNode(d.target)){
-                    return getWidth(d.target.samples);
-                } else {
-                    return getWidth(d.target.samples)/2;
-                }
-                
             });
 
         // Enter any new links at the parent's previous position.
@@ -572,7 +555,7 @@ function finishLoading() {
                 if (isLeafNode(d.target)){
                     return d.target.color;
                 } else {
-                    return "#1f77b4";
+                    return;
                 }
             })
             .style("stroke-width", function(d){
@@ -644,13 +627,16 @@ function finishLoading() {
     var theTable = document.createElement('table');
     // Note, don't forget the var keyword!
     for (var i = 0, tr, td; i < arrayLength; i++) {
-        tr = document.createElement('tr');
-        td = document.createElement('td');
-        list1[i] = list1[i].replace("////"," ");
-        td.appendChild(document.createTextNode(list1[i]));
+
+        if (list1[i].charAt(0) !='['){
+            tr = document.createElement('tr');
+            td = document.createElement('td');
+            list1[i] = list1[i].replace("////"," ");
+            td.appendChild(document.createTextNode(list1[i]));
+            tr.appendChild(td);
+            theTable.appendChild(tr);
+        }
         
-        tr.appendChild(td);
-        theTable.appendChild(tr);
     }
     //console.log(theTable);
     $("#attr-list").append(theTable);
