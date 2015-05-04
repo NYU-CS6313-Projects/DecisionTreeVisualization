@@ -1,21 +1,34 @@
 function mapName(name){
-    return realName[aliasName.indexOf(name)];
-    
+    return realName[aliasName.indexOf(name)]; 
 }
+
+function uniq(a) { //remove duplicates
+        var prims = {"boolean":{}, "number":{}, "string":{}}, objs = [];
+
+        return a.filter(function(item) {
+            var type = typeof item;
+            if(type in prims)
+                return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
+            else
+                return objs.indexOf(item) >= 0 ? false : objs.push(item);
+        });
+    }
 
 function toJson(x) 
 {
   var result = {};
   var labelName = "";
   var nodeSample = 0;
-
-
+  
+  result.id = x.id;
+  result.depth = 0;
+  result.color = "";
   x.rule = x.rule.replace(' <= 0.5000','');
   real = mapName(x.rule);
   if (real!=undefined){
-    labelName = x.rule+"////"+real;
+    labelName = x.id + "////"+ x.rule+"////"+real;
   } else {
-    labelName = x.rule;
+    labelName = x.id + "////"+  x.rule;
   }
   labelName=labelName.replace('diagnosis__','D:');
   labelName=labelName.replace('procedure__','P:');
@@ -24,7 +37,7 @@ function toJson(x)
   
   result.samples=x.samples;
   result.rule=x.rule;
-  result.id = x.id;
+  
  
   if ( (!!x.left && !x.left.value) ||
        (!!x.right && !x.right.value) ){
@@ -72,7 +85,6 @@ function toJson(x)
 
 var treeData = null
 var data = null
-
 
 d3.json('data/tree_contains.json', function(error, _data){
     if (error) return console.warn(error,'container');
@@ -154,7 +166,7 @@ function delLeaves(data, key) {
     key.push(bro);
     key.forEach(function(k){
         el_bro[k];
-        console.log(el_bro)
+        //console.log(el_bro)
 
     });
     pos = el_bro[1];
@@ -172,13 +184,13 @@ function delLeaves(data, key) {
         fp_bro = neg
     }
 
-    console.log(tp,fp,tn,fn)
-    console.log(tp_bro, fp_bro, tn_bro, fn_bro)
+    //console.log(tp,fp,tn,fn)
+    //console.log(tp_bro, fp_bro, tn_bro, fn_bro)
 
     return key;
     } 
 
-  console.log(statsOfLeaf(data, ['right','left','right']))
+  //console.log(statsOfLeaf(data, ['right','left','right']))
 
   key.pop();
   var el = data;
@@ -195,7 +207,7 @@ function delLeaves(data, key) {
 
 function finishLoading() {
     if (!data || !treeData) return;
-    console.log(delLeaves(data, ['right','left','right']));
+    //console.log(delLeaves(data, ['right','left','right']));
 
 
     // Calculate total nodes, max label length
@@ -214,6 +226,9 @@ function finishLoading() {
     var i = 0;
     var duration = 750;
     var root;
+    var linkedByIndex = {};
+    var maxDepth = 0;
+    var depthMap = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]; //change it in smarter way!!!!
 
     // size of the diagram
     var viewerWidth = screen.width*0.6;
@@ -229,8 +244,6 @@ function finishLoading() {
             return [d.y, d.x];
         });
 
-    // A recursive helper function for performing some setup by walking through all nodes
-
     function getWidth(x){
         return (minWidth + ((x/maxSample)*maxWidth));
     }
@@ -244,12 +257,27 @@ function finishLoading() {
             return false;
         }
     }
+    
+    function getDepth(parent, child){
+        var newChild = child;
+        var newParent = parent;
+        var depth = 0;
 
-    function getDepth (obj) {
+        if ((parent.id != 0)&&(parent.id == undefined)){
+            newChild = parent;
+            newParent = parent.parent;
+            depth = getDepth(newParent, newChild);
+            
+        }
+
+        return 1+depth;
+    }
+
+    function getMaxDepth (obj) {
         var depth = 0;
         if (obj.children) {
             obj.children.forEach(function (d) {
-                var tmpDepth = getDepth(d)
+                var tmpDepth = getMaxDepth(d)
                 if (tmpDepth > depth) {
                     depth = tmpDepth;
                 }
@@ -257,6 +285,13 @@ function finishLoading() {
         }
         return 1 + depth;
     }
+
+    function neighboring(parent, child) {
+        return linkedByIndex[parent.id + "," + child.id];
+    }
+
+
+
 // ongoing accuracy calculation
 
     var total_Right = 0;
@@ -276,16 +311,6 @@ function finishLoading() {
         else{
             obj.children.forEach(function (d){
                 getAccuracy(d);
-            })
-        }
-    }
-
-    function getLeft (obj) {
-        var leftCount = 0;
-        if (obj.children) {
-            obj.children.forEach(function (d) {
-                if (d.leftVal!=null){  
-                }
             })
         }
     }
@@ -313,20 +338,17 @@ function finishLoading() {
         maxSample = Math.max(maxSample,d.samples);
 
     }, function(d) {
-        //collapse(d);
+        d.depth = getDepth(d); //assign depth to each node
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-    //console.log(maxSample);
-    //set up link width
-
-    var dep = getDepth(toJson(treeData));
+    maxDepth = getMaxDepth(toJson(treeData));
     getAccuracy(toJson(treeData));
 
     d3.select("#num_nodes")
     .text(totalNodes);
     d3.select("#depth")
-    .text(dep-1);
+    .text(maxDepth-1);
     d3.select("#branch_num")
     .text(totalNodes);
     // need revision to make it dynamic
@@ -425,7 +447,7 @@ function finishLoading() {
         x = -source.x0;
         y = -source.y0;
         x = x * scale + viewerWidth / 2;
-        y = y * scale + viewerHeight / 2;
+        y = y * scale + viewerHeight / 8;
         d3.select('g').transition()
             .duration(duration)
             .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -449,11 +471,14 @@ function finishLoading() {
     // Toggle children on click.
 
     function click(d) {
-        if (d3.event.defaultPrevented) return; // click suppressed
-        d = toggleChildren(d);
-        update(d);
-        centerNode(d);
-
+        if (state != ""){
+            alert(state);
+        } else {
+            if (d3.event.defaultPrevented) return; // click suppressed
+            d = toggleChildren(d);
+            update(d);
+            centerNode(d);
+        }
     }
 
 
@@ -523,18 +548,18 @@ function finishLoading() {
         nodeEnter.append("rect")
             .attr('width', function(d) {
                 if (d.id==0){
-                    return 150;
+                    return 400;
                 } else {
-                    return 50;
+                    return 70;
                 }
             })
-            .attr('height',30)
+            .attr('height',45)
             .attr('fill', 'white')
             .attr('x',function(d) {
                 if (d.id==0){
-                    return -75;
+                    return -200;
                 } else {
-                    return -25;
+                    return -35;
                 }
             })
             .attr('y', 0)
@@ -654,17 +679,31 @@ function finishLoading() {
                 if (isLeafNode(d)){
                     return getWidth(d.target.samples);
                 } else {
-                    return getWidth(d.target.samples)/2;
+                    return getWidth(d.target.samples);
                 }
             });
 
         // Transition links to their new position.
-        link.transition()
+        var linkUpdate = link.transition()
             .duration(duration)
-            .attr("d", diagonal);
+            .attr("d", diagonal)
+            .style("stroke", function(d){
+                if (isLeafNode(d.target)){
+                    return d.target.color;
+                } else {
+                    return;
+                }
+            })
+            .style("stroke-width", function(d){
+                if (isLeafNode(d)){
+                    return getWidth(d.target.samples);
+                } else {
+                    return getWidth(d.target.samples);
+                }
+            });
 
         // Transition exiting nodes to the parent's new position.
-        link.exit().transition()
+        var linkExit = link.exit().transition()
             .duration(duration)
             .attr("d", function(d) {
                 var o = {
@@ -684,20 +723,34 @@ function finishLoading() {
         nodes.forEach(function(d) {
             d.x0 = d.x;
             d.y0 = d.y;
+
+            var curDepthMap = depthMap[d.depth];
+            curDepthMap[curDepthMap.length] = d.id;
         });
+
+        
+        links.forEach(function(d) {
+            linkedByIndex[d.source.id + "," + d.target.id] = d;
+        });
+
     }
+
+
+
+
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
     var svgGroup = baseSvg.append("g");
 
     // Define the root
     root = toJson(treeData);
-    root.x0 = viewerHeight / 2;
-    root.y0 = 0;
+    root.x0 = viewerHeight/2;
+    root.y0 = viewerWidth/2;
 
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
 
 
     var list1 = [];
@@ -713,7 +766,6 @@ function finishLoading() {
     }
 
     var container = d3.select("#attr-list"); 
-
     getName(toJson(treeData));
     var arrayLength = list1.length;
     var theTable = document.createElement('table');
@@ -724,6 +776,7 @@ function finishLoading() {
             tr = document.createElement('tr');
             td = document.createElement('td');
             list1[i] = list1[i].replace("////"," ");
+            list1[i] = list1[i].replace("////"," ");
             td.appendChild(document.createTextNode(list1[i]));
             tr.appendChild(td);
             theTable.appendChild(tr);
@@ -733,5 +786,55 @@ function finishLoading() {
     //console.log(theTable);
     $("#attr-list").append(theTable);
 
+    var allNodes = [];
+    for (i =0 ; i< totalNodes ; i++){
+        var targetNode = tree.nodes(root).filter(function(d) {
+            return d['id'] === String(i);
+        })[0];
+        allNodes[allNodes.length] = targetNode;
+    }
+
+    //PRUNING BY DEPTH
+    $("#pruneNode").click(function() {
+        sliderDepth = $("#ex6SliderVal").text();
+        allNodes.forEach(function(node){
+            console.log(node);
+            if (node!=undefined){
+                expand(node);
+            }
+        })
+
+        var node_ids = depthMap[sliderDepth];
+        node_ids = uniq(node_ids);
+        var nodes = [];
+
+        node_ids.forEach(function(node_id){
+            var targetNode = tree.nodes(root).filter(function(d) {
+                return d['id'] === node_id;
+            })[0];
+
+            var names = targetNode['name'].split("////");
+            if (names.length!=1){ //not leaf node
+                targetNode['name'] = names[0]+"////"+names[1]+"////"+"[-"+100+",+"+50+"]";
+            }
+            
+            nodes[nodes.length] = targetNode;
+            
+        });
+
+        nodes.forEach(function(node){
+            toggleChildren(node);
+        })
+
+        toggleChildren(root);
+        update(root);
+
+        setTimeout(function(){
+            toggleChildren(root);
+            update(root);
+
+        },1000);
+
+    });
 
 };
