@@ -904,6 +904,9 @@ function finishLoading() {
     //PRUNING BY DEPTH
     $("#pruneNode").click(function() {
         sliderDepth = $("#ex6SliderVal").text();
+        d3.select("#depth")
+        .text(sliderDepth);
+
         allNodes.forEach(function(node){
             console.log(node);
             if (node!=undefined){
