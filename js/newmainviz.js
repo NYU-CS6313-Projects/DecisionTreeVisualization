@@ -14,6 +14,21 @@ function uniq(a) { //remove duplicates
         });
     }
 
+
+function searchPath(path, obj, target) {
+    for (var k in obj) {
+        if (obj.hasOwnProperty(k))
+            if (obj[k] === target)
+                return path + "['" + k + "']"
+            else if (typeof obj[k] === "object") {
+                var result = search(path + "['" + k + "']", obj[k], target);
+                if (result)
+                    return result;
+            }
+    }
+    return false;
+}
+
 function toJson(x) 
 {
   var result = {};
@@ -23,13 +38,18 @@ function toJson(x)
   result.id = x.id;
   result.depth = 0;
   result.color = "";
+  result.from = "";
+  result.path = "";
+
   x.rule = x.rule.replace(' <= 0.5000','');
   real = mapName(x.rule);
+
   if (real!=undefined){
     labelName = x.id + "////"+ x.rule+"////"+real;
   } else {
     labelName = x.id + "////"+  x.rule;
   }
+
   labelName=labelName.replace('diagnosis__','D:');
   labelName=labelName.replace('procedure__','P:');
   labelName=labelName.replace('HIERARCHY_','CCS-');
@@ -286,6 +306,18 @@ function finishLoading() {
         return 1 + depth;
     }
 
+
+    function getPath(obj){
+        path = "";
+        while ((obj.id!=0)&&(obj.id != undefined)){ //parent
+            path = obj.from + "," + path;
+            obj = obj.parent;
+        }
+        path = path.substring(0,path.length-1);
+        path = "[" + path + "]";
+        return path;
+    }
+
     function neighboring(parent, child) {
         return linkedByIndex[parent.id + "," + child.id];
     }
@@ -438,16 +470,18 @@ function finishLoading() {
         //updateTempConnector();
     };
 
-
-
     // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
+
+    function setScale(val){
+        zoomListener.scale(val);
+    }
 
     function centerNode(source) {
         scale = zoomListener.scale();
         x = -source.x0;
         y = -source.y0;
         x = x * scale + viewerWidth / 2;
-        y = y * scale + viewerHeight / 8;
+        y = y * scale + viewerHeight / 10;
         d3.select('g').transition()
             .duration(duration)
             .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -728,12 +762,17 @@ function finishLoading() {
             curDepthMap[curDepthMap.length] = d.id;
         });
 
+        //assign left and right for each node
+
+
         
         links.forEach(function(d) {
             linkedByIndex[d.source.id + "," + d.target.id] = d;
         });
 
     }
+
+
 
 
 
@@ -746,10 +785,43 @@ function finishLoading() {
     root = toJson(treeData);
     root.x0 = viewerHeight/2;
     root.y0 = viewerWidth/2;
+    setScale(0.3);
 
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
+    var allNodes = [];
+    for (i =0 ; i< totalNodes ; i++){
+        var targetNode = tree.nodes(root).filter(function(d) {
+            return d['id'] === String(i);
+        })[0];
+        allNodes[allNodes.length] = targetNode;
+    }
+
+    for (i=1; i<depthMap.length;i++){
+
+        nodes = depthMap[i];
+        flag = "right";
+        for (j=0 ; j< nodes.length; j++){
+
+            var targetNode = tree.nodes(root).filter(function(d) {
+            return d['id'] === nodes[j];
+            })[0];
+            targetNode['from'] = flag;
+            if (flag=="right"){
+                flag = "left";
+            } else {
+                flag = "right"; 
+            }
+        }
+    }
+
+    allNodes.forEach(function(node){
+        if (node!=undefined){
+            node.path = getPath(node);
+        }
+    })
 
 
 
@@ -783,16 +855,9 @@ function finishLoading() {
         }
         
     }
-    //console.log(theTable);
     $("#attr-list").append(theTable);
 
-    var allNodes = [];
-    for (i =0 ; i< totalNodes ; i++){
-        var targetNode = tree.nodes(root).filter(function(d) {
-            return d['id'] === String(i);
-        })[0];
-        allNodes[allNodes.length] = targetNode;
-    }
+
 
     //PRUNING BY DEPTH
     $("#pruneNode").click(function() {
@@ -815,7 +880,7 @@ function finishLoading() {
 
             var names = targetNode['name'].split("////");
             if (names.length!=1){ //not leaf node
-                targetNode['name'] = names[0]+"////"+names[1]+"////"+"[-"+100+",+"+50+"]";
+                targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+100+",+"+50+"]";
             }
             
             nodes[nodes.length] = targetNode;
@@ -823,6 +888,7 @@ function finishLoading() {
         });
 
         nodes.forEach(function(node){
+            console.log(node);
             toggleChildren(node);
         })
 
