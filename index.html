@@ -117,10 +117,34 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Attribute Distribution</h3>
+          <h3 class="panel-title">Confusion Matrix</h3>
         </div>
         <div class="panel-body">
-          <div id="attrDist"></div>
+          <div id="attrDist">
+          <table class="table table-condensed">
+          <tbody>
+          <tr>
+            <td>True Positive</td>
+            <td id = "tp"></td>
+
+            <td>False Negative</td>
+            <td id = "fn"></td>
+          </tr>
+          <tr>
+            <td>False Positive</td>
+            <td id = "fp"></td>
+
+            <td>True Negative</td>
+            <td id = "tn"></td>
+          </tr>       
+        </tbody>
+
+  
+          </table>
+
+
+          </div>
+          </div>
         </div>
     </div>
 

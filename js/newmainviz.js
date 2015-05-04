@@ -329,15 +329,36 @@ function finishLoading() {
     var total_Right = 0;
     var total_Wrong = 0;
 
+    var total_Real_Positive = 0;
+    var total_Real_Negative = 0;
+
+    var total_Predict_Positive = 0;
+    var total_Predict_Negative = 0;
+
+    var TP = 0;
+    var FP = 0;
+    var TN = 0;
+    var FN = 0;
+
     function getAccuracy (obj){
         if (!obj.children) {
+            total_Real_Negative = total_Real_Negative + obj.leftVal;
+            total_Real_Positive = total_Real_Positive+ obj.rightVal;
+
             if (obj.leftVal > obj.rightVal){
                 total_Right = total_Right + obj.leftVal;
                 total_Wrong = total_Wrong + obj.rightVal;
+                TN = TN + obj.leftVal;
+                FN = FN +obj.rightVal;
+                total_Predict_Negative = total_Predict_Negative + obj.leftVal + obj.rightVal;
             }
             else{
                 total_Right = total_Right + obj.rightVal;
                 total_Wrong = total_Wrong + obj.leftVal;
+                TP = TP + obj.rightVal;
+                FP = FP + obj.leftVal;
+                total_Predict_Positive = total_Predict_Positive + obj.leftVal + obj.rightVal;
+
             }
             }
         
@@ -377,6 +398,8 @@ function finishLoading() {
 
     maxDepth = getMaxDepth(toJson(treeData));
     getAccuracy(toJson(treeData));
+    console.log(total_Right);
+    console.log(total_Wrong);
 
     d3.select("#num_nodes")
     .text(totalNodes);
@@ -387,7 +410,21 @@ function finishLoading() {
     // need revision to make it dynamic
     d3.select("#accuracy")
     .text(((total_Right/(total_Wrong+total_Right))*100).toFixed(2)+ "%");
-    console.log(total_Wrong+total_Right)
+
+    d3.select("#tp")
+    .text(TP);
+    d3.select("#fp")
+    .text(FP);
+    d3.select('#tn')
+    .text(TN);
+    d3.select('#fn')
+    .text(FN);
+    
+    console.log(total_Real_Negative);
+    console.log(total_Real_Positive);
+    console.log(total_Predict_Positive);
+    console.log(total_Predict_Negative);
+    console.log(TP,FP,TN,FN);
 
 
     // sort the tree according to the node names
