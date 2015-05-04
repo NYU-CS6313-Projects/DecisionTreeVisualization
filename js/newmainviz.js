@@ -840,22 +840,25 @@ function finishLoading() {
     var container = d3.select("#attr-list"); 
     getName(toJson(treeData));
     var arrayLength = list1.length;
-    var theTable = document.createElement('table');
+    var new_ul = document.createElement('div');
+    new_ul.id = "attr_button_group";
+    new_ul.className = "btn-group-vertical";
+    groupWidth = "width:"+String(screen.width/3.4)+"px;";
+    new_ul.style.cssText = groupWidth;
     // Note, don't forget the var keyword!
     for (var i = 0, tr, td; i < arrayLength; i++) {
 
         if (list1[i].charAt(0) !='['){
-            tr = document.createElement('tr');
-            td = document.createElement('td');
+            new_li = document.createElement('button');
+            new_li.className = "btn btn-default";
             list1[i] = list1[i].replace("////"," ");
             list1[i] = list1[i].replace("////"," ");
-            td.appendChild(document.createTextNode(list1[i]));
-            tr.appendChild(td);
-            theTable.appendChild(tr);
+            new_li.appendChild(document.createTextNode(list1[i]));
+            new_ul.appendChild(new_li);
         }
         
     }
-    $("#attr-list").append(theTable);
+    $("#attr-list").append(new_ul);
 
 
 
