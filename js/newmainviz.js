@@ -357,27 +357,6 @@ function finishLoading() {
         return linkedByIndex[parent.id + "," + child.id];
     }
 
-
-
-<<<<<<< Updated upstream
-// ongoing accuracy calculation
-
-=======
-    var total_Right = 0;
-    var total_Wrong = 0;
-
-    var total_Real_Positive = 0;
-    var total_Real_Negative = 0;
-
-    var total_Predict_Positive = 0;
-    var total_Predict_Negative = 0;
-
-    var TP = 0;
-    var FP = 0;
-    var TN = 0;
-    var FN = 0;
->>>>>>> Stashed changes
-
     function getAccuracy (obj){
         if (!obj.children) {
             total_Real_Negative = total_Real_Negative + obj.leftVal;
@@ -936,11 +915,6 @@ function finishLoading() {
                 var targetNode = tree.nodes(root).filter(function(d) {
                     return d['id'] === new_li.id;
                 })[0];
-
-
-                targetNode.select("rect")
-                    .duration(duration)
-                    .attr('fill', 'yellow');
 
             }
         }
