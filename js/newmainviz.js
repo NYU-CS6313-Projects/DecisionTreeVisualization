@@ -1,3 +1,17 @@
+var total_Right = 0;
+var total_Wrong = 0;
+
+var total_Real_Positive = 0;
+var total_Real_Negative = 0;
+
+var total_Predict_Positive = 0;
+var total_Predict_Negative = 0;
+
+var TP = 0;
+var FP = 0;
+var TN = 0;
+var FN = 0;
+
 function mapName(name){
     return realName[aliasName.indexOf(name)]; 
 }
@@ -326,19 +340,6 @@ function finishLoading() {
 
 // ongoing accuracy calculation
 
-    var total_Right = 0;
-    var total_Wrong = 0;
-
-    var total_Real_Positive = 0;
-    var total_Real_Negative = 0;
-
-    var total_Predict_Positive = 0;
-    var total_Predict_Negative = 0;
-
-    var TP = 0;
-    var FP = 0;
-    var TN = 0;
-    var FN = 0;
 
     function getAccuracy (obj){
         if (!obj.children) {
@@ -939,6 +940,9 @@ function finishLoading() {
 
         toggleChildren(root);
         update(root);
+
+        
+
 
         setTimeout(function(){
             toggleChildren(root);
