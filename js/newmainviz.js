@@ -43,7 +43,7 @@ function searchPath(path, obj, target) {
     return false;
 }
 
-function toJson(x) 
+function toJson(x,y) 
 {
   var result = {};
   var labelName = "";
@@ -54,6 +54,10 @@ function toJson(x)
   result.color = "";
   result.from = "";
   result.path = "";
+  result.leftVal = "";
+  result.rightVal = "";
+
+  
 
   x.rule = x.rule.replace(' <= 0.5000','');
   real = mapName(x.rule);
@@ -77,9 +81,14 @@ function toJson(x)
        (!!x.right && !x.right.value) ){
     result.size = parseInt(x.samples);
     result.children = [];
+    if (y!= undefined && y.left!=undefined && y.right!=undefined){
+        result.leftVal = y[0];
+        result.rightVal = y[1];
+    }
+    
   }
       
-  else{ //leaf node
+  else{ 
         result.size = parseInt(x.samples); 
 
         var str = result.rule;
@@ -89,10 +98,14 @@ function toJson(x)
         str[0] = str[0].replace('[', '');
         str[1] = str[1].replace(']', '');
 
+
+
         var leftVal = parseInt(str[0]);
         var rightVal = parseInt(str[1]);
-        result.leftVal = leftVal;
-        result.rightVal = rightVal;
+
+            result.leftVal = leftVal;
+            result.rightVal = rightVal;
+
 
         result.name = "[-"+leftVal+",+"+rightVal+"]";
 
@@ -107,25 +120,32 @@ function toJson(x)
     }
  
     var index = 0;
-    if (!!x.left && !x.left.value)
-        result.children[index++] = toJson(x.left);
-     
-    if (!!x.right && !x.right.value)
-        result.children[index++] = toJson(x.right);
-     
+    if (y!= undefined && y.left!=undefined && y.right!=undefined){
+
+        if (!!x.left && !x.left.value)
+            result.children[index++] = toJson(x.left,y.left);
+         
+        if (!!x.right && !x.right.value)
+            result.children[index++] = toJson(x.right,y.right);
+        }
+ 
     return result;
   
 }
 
 var treeData = null
 var data = null
+var csvData = null
 
-d3.json('data/tree_contains.json', function(error, _data){
-    if (error) return console.warn(error,'container');
-    data = _data;
-    finishLoading();
 
-});
+
+//var start = new Date().getTime();
+
+
+
+//var end = new Date().getTime();
+//var time = end - start;
+//alert('Execution time: ' + time);
 
 d3.json("data/ourTree.json", function(error, _treeData) {
     if (error) {
@@ -270,7 +290,8 @@ function finishLoading() {
 
     var tree = d3.layout.tree()
         //.size([viewerHeight, viewerWidth])
-        .nodeSize([50]);
+        .nodeSize([50])
+        .separation(function(a, b) { return ((a.parent == root) && (b.parent == root)) ? 1 : 1; }); //TO DO : change according to children or not
 
     // define a d3 diagonal projection for use by the node paths later on.
     var diagonal = d3.svg.diagonal()
@@ -338,8 +359,24 @@ function finishLoading() {
 
 
 
+<<<<<<< Updated upstream
 // ongoing accuracy calculation
 
+=======
+    var total_Right = 0;
+    var total_Wrong = 0;
+
+    var total_Real_Positive = 0;
+    var total_Real_Negative = 0;
+
+    var total_Predict_Positive = 0;
+    var total_Predict_Negative = 0;
+
+    var TP = 0;
+    var FP = 0;
+    var TN = 0;
+    var FN = 0;
+>>>>>>> Stashed changes
 
     function getAccuracy (obj){
         if (!obj.children) {
@@ -387,7 +424,7 @@ function finishLoading() {
     }
 
     // Call visit function to establish maxLabelLength
-    visit(toJson(treeData), function(d) {
+    visit(toJson(treeData,data), function(d) {
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,d.samples);
@@ -397,8 +434,8 @@ function finishLoading() {
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-    maxDepth = getMaxDepth(toJson(treeData));
-    getAccuracy(toJson(treeData));
+    maxDepth = getMaxDepth(toJson(treeData,data));
+    getAccuracy(toJson(treeData,data));
     console.log(total_Right);
     console.log(total_Wrong);
 
@@ -803,26 +840,22 @@ function finishLoading() {
         });
 
         //assign left and right for each node
-
-
         
         links.forEach(function(d) {
             linkedByIndex[d.source.id + "," + d.target.id] = d;
         });
 
+
+
+
+
     }
-
-
-
-
-
-
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
     var svgGroup = baseSvg.append("g");
 
     // Define the root
-    root = toJson(treeData);
+    root = toJson(treeData,data);
     root.x0 = viewerHeight/2;
     root.y0 = viewerWidth/2;
     setScale(0.3);
@@ -838,6 +871,7 @@ function finishLoading() {
         })[0];
         allNodes[allNodes.length] = targetNode;
     }
+
 
     for (i=1; i<depthMap.length;i++){
 
@@ -878,7 +912,7 @@ function finishLoading() {
     }
 
     var container = d3.select("#attr-list"); 
-    getName(toJson(treeData));
+    getName(toJson(treeData,data));
     var arrayLength = list1.length;
     var new_ul = document.createElement('div');
     new_ul.id = "attr_button_group";
@@ -891,10 +925,24 @@ function finishLoading() {
         if (list1[i].charAt(0) !='['){
             new_li = document.createElement('button');
             new_li.className = "btn btn-default";
-            list1[i] = list1[i].replace("////"," ");
-            list1[i] = list1[i].replace("////"," ");
-            new_li.appendChild(document.createTextNode(list1[i]));
-            new_ul.appendChild(new_li);
+            var nameArray = list1[i].split("////");
+            var nameLabel = nameArray[0]+" "+nameArray[1]+" "+nameArray[2];
+            new_li.appendChild(document.createTextNode(nameLabel));
+            new_ul.appendChild(new_li)
+            new_li.id=nameArray[0];
+
+            new_li.onclick = function(){
+
+                var targetNode = tree.nodes(root).filter(function(d) {
+                    return d['id'] === new_li.id;
+                })[0];
+
+
+                targetNode.select("rect")
+                    .duration(duration)
+                    .attr('fill', 'yellow');
+
+            }
         }
         
     }
@@ -909,7 +957,6 @@ function finishLoading() {
         .text(sliderDepth);
 
         allNodes.forEach(function(node){
-            console.log(node);
             if (node!=undefined){
                 expand(node);
             }
@@ -934,7 +981,6 @@ function finishLoading() {
         });
 
         nodes.forEach(function(node){
-            console.log(node);
             toggleChildren(node);
         })
 
@@ -953,3 +999,18 @@ function finishLoading() {
     });
 
 };
+
+d3.json('data/tree_contains.json', function(error, _data){
+    if (error) return console.warn(error,'container');
+    data = _data;
+    finishLoading();
+
+});
+
+
+d3.csv('data/output.csv', function(error, _data){
+    if (error) return console.warn(error,'container');
+    csvData = _data;
+    //finishLoading();
+
+});
