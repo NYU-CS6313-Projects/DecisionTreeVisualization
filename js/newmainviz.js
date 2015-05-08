@@ -75,47 +75,48 @@ function toJson(x,y)
   
   result.samples=x.samples;
   result.rule=x.rule;
+      if (y!= undefined && y.left!=undefined && y.right!=undefined){
+        result.leftVal = y[0];
+        result.rightVal = y[1];
+    }
   
  
   if ( (!!x.left && !x.left.value) ||
        (!!x.right && !x.right.value) ){
     result.size = parseInt(x.samples);
     result.children = [];
-    if (y!= undefined && y.left!=undefined && y.right!=undefined){
-        result.leftVal = y[0];
-        result.rightVal = y[1];
-    }
+
     
   }
       
   else{ 
         result.size = parseInt(x.samples); 
 
-        var str = result.rule;
-        str = str.replace(' ','');
-        str = str.split(".");
+        //var str = result.rule;
+        //str = str.replace(' ','');
+        //str = str.split(".");
                
-        str[0] = str[0].replace('[', '');
-        str[1] = str[1].replace(']', '');
+        //str[0] = str[0].replace('[', '');
+        //str[1] = str[1].replace(']', '');
 
 
 
-        var leftVal = parseInt(str[0]);
-        var rightVal = parseInt(str[1]);
+        //var leftVal = parseInt(str[0]);
+        //var rightVal = parseInt(str[1]);
 
-            result.leftVal = leftVal;
-            result.rightVal = rightVal;
+        //result.leftVal = leftVal;
+        //result.rightVal = rightVal;
 
 
-        result.name = "[-"+leftVal+",+"+rightVal+"]";
+        result.name = "[-"+result.leftVal+",+"+result.rightVal+"]";
 
-        if (leftVal > rightVal){
-            result.color="#1f77b4";
+        if (result.leftVal > result.rightVal){
+            result.color="#1f77b4"; //blue
         } else {
              
         //result.name = ""; //negative
         //result.name = "";
-        result.color = "#7D0C0C";
+        result.color = "#7D0C0C"; //red
         }
     }
  
@@ -137,17 +138,13 @@ var treeData = null
 var data = null
 var csvData = null
 
-
-
 //var start = new Date().getTime();
-
-
 
 //var end = new Date().getTime();
 //var time = end - start;
 //alert('Execution time: ' + time);
 
-d3.json("data/ourTree.json", function(error, _treeData) {
+d3.json(tree_file, function(error, _treeData) {
     if (error) {
         return console.warn(error);
     }
@@ -291,7 +288,7 @@ function finishLoading() {
     var tree = d3.layout.tree()
         //.size([viewerHeight, viewerWidth])
         .nodeSize([50])
-        .separation(function(a, b) { return ((a.parent == root) && (b.parent == root)) ? 1 : 1; }); //TO DO : change according to children or not
+        .separation(function(a, b) { return 3}); //TO DO : change according to children or not
 
     // define a d3 diagonal projection for use by the node paths later on.
     var diagonal = d3.svg.diagonal()
@@ -299,8 +296,25 @@ function finishLoading() {
             return [d.y, d.x];
         });
 
-    function getWidth(x){
-        return (minWidth + ((x/maxSample)*maxWidth));
+    function getLeftWidth(x){
+        samples = x.leftVal + x.rightVal;
+        if (x.leftVal != 0){
+            percentage = (x.leftVal/maxSample);
+            return (minWidth + ((percentage*maxWidth)));
+        } else {
+            return 0;
+        }
+        
+    }
+
+    function getRightWidth(x){
+        samples = x.leftVal + x.rightVal;
+        if (x.rightVal != 0){
+            percentage = (x.rightVal/maxSample);
+            return (minWidth + ((percentage*maxWidth)));
+        } else {
+            return 0;
+        }
     }
 
     function isLeafNode(obj){
@@ -406,17 +420,19 @@ function finishLoading() {
     visit(toJson(treeData,data), function(d) {
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
-        maxSample = Math.max(maxSample,d.samples);
+        maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
 
     }, function(d) {
         d.depth = getDepth(d); //assign depth to each node
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
+    console.log(maxSample)
+
     maxDepth = getMaxDepth(toJson(treeData,data));
     getAccuracy(toJson(treeData,data));
-    console.log(total_Right);
-    console.log(total_Wrong);
+    //console.log(total_Right);
+    //console.log(total_Wrong);
 
     d3.select("#num_nodes")
     .text(totalNodes);
@@ -437,11 +453,11 @@ function finishLoading() {
     d3.select('#fn')
     .text(FN);
     
-    console.log(total_Real_Negative);
-    console.log(total_Real_Positive);
-    console.log(total_Predict_Positive);
-    console.log(total_Predict_Negative);
-    console.log(TP,FP,TN,FN);
+    //console.log(total_Real_Negative);
+    //console.log(total_Real_Positive);
+    //console.log(total_Predict_Positive);
+    //console.log(total_Predict_Negative);
+    //console.log(TP,FP,TN,FN);
 
 
     // sort the tree according to the node names
@@ -567,7 +583,7 @@ function finishLoading() {
             if (d3.event.defaultPrevented) return; // click suppressed
             d = toggleChildren(d);
             update(d);
-            centerNode(d);
+            //centerNode(d);
         }
     }
 
@@ -611,6 +627,8 @@ function finishLoading() {
                 return d.id || (d.id = ++i);
             });
 
+
+
         // Enter any new nodes at the parent's previous position.
         var nodeEnter = node.enter().append("g")
             .attr("class", "node")
@@ -627,7 +645,6 @@ function finishLoading() {
                 //outCircle(node);
             });
 
-
         nodeEnter.append("circle")
             .attr('class', 'nodeCircle')
             .attr("r", 0)
@@ -640,7 +657,7 @@ function finishLoading() {
                 if (d.id==0){
                     return 400;
                 } else {
-                    return 70;
+                    return 200;
                 }
             })
             .attr('height',45)
@@ -649,14 +666,14 @@ function finishLoading() {
                 if (d.id==0){
                     return -200;
                 } else {
-                    return -35;
+                    return -100;
                 }
             })
             .attr('y', 0)
             .style("visibility",function(d) {
                 if (isLeafNode(d)){
                     //console.log(d);
-                    return "hidden";
+                    return "visible";
                 }
             });
 
@@ -742,8 +759,15 @@ function finishLoading() {
                 return d.target.id;
             });
 
+        var link2 = svgGroup.selectAll("path.link")
+            .data(links, function(d) {
+                return d.target.id;
+            });
+
+
+
         // Enter any new links at the parent's previous position.
-        var linkEnter = link.enter().insert("path", "g")
+        var linkEnter = link.enter().insert("path", "g").classed("foo",true)
             .attr("class", "link")
             .attr("d", function(d) {
                 var o = {
@@ -760,16 +784,16 @@ function finishLoading() {
 
             .style("stroke", function(d){
                 if (isLeafNode(d.target)){
-                    return d.target.color;
+                    return "#1f77b4";
                 } else {
                     return;
                 }
             })
             .style("stroke-width", function(d){
                 if (isLeafNode(d)){
-                    return getWidth(d.target.samples);
+                    return getLeftWidth(d.target);
                 } else {
-                    return getWidth(d.target.samples);
+                    return getLeftWidth(d.target);
                 }
             });
 
@@ -779,16 +803,62 @@ function finishLoading() {
             .attr("d", diagonal)
             .style("stroke", function(d){
                 if (isLeafNode(d.target)){
-                    return d.target.color;
+                    return "#1f77b4";
                 } else {
                     return;
                 }
             })
             .style("stroke-width", function(d){
                 if (isLeafNode(d)){
-                    return getWidth(d.target.samples);
+                    return getLeftWidth(d.target);
                 } else {
-                    return getWidth(d.target.samples);
+                    return getLeftWidth(d.target);
+                }
+            });
+
+        var linkEnter2 = link2.enter().insert("path", "g")
+            .attr("class", "link")
+            .attr("d", function(d) {
+                var o = {
+                    x: source.x0,
+                    y: source.y0
+                };
+                return diagonal({
+                    source: o,
+                    target: o
+                });
+            })
+            .attr("transform", "rotate(-270) scale(1,-1) translate(0,10)")
+            .style("stroke", function(d){
+                if (isLeafNode(d.target)){
+                    return "#7D0C0C";
+                } else {
+                    return;
+                }
+            })
+            .style("stroke-width", function(d){
+                if (isLeafNode(d)){
+                    return getRightWidth(d.target);
+                } else {
+                    return getRightWidth(d.target);
+                }
+            });
+
+        var linkUpdate2 = link2.transition()
+            .duration(duration)
+            .attr("d", diagonal)
+            .style("stroke", function(d){
+                if (isLeafNode(d.target)){
+                    return "#7D0C0C";
+                } else {
+                    return;
+                }
+            })
+            .style("stroke-width", function(d){
+                if (isLeafNode(d)){
+                    return getRightWidth(d.target);
+                } else {
+                    return getRightWidth(d.target);
                 }
             });
 
@@ -806,6 +876,31 @@ function finishLoading() {
                 });
             })
             .remove();
+
+        var linkExit2 = link2.exit().transition()
+            .duration(duration)
+            .attr("d", function(d) {
+                var o = {
+                    x: source.x,
+                    y: source.y
+                };
+                return diagonal({
+                    source: o,
+                    target: o
+                });
+            })
+            .remove();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -826,8 +921,6 @@ function finishLoading() {
 
 
 
-
-
     }
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
@@ -843,6 +936,47 @@ function finishLoading() {
     update(root);
     centerNode(root);
 
+    /*
+
+    var couplingParent1 = tree.nodes(root).filter(function(d) {
+            return d['id'] === '1';
+        })[0];
+    var couplingChild1 = tree.nodes(root).filter(function(d) {
+            return d['id'] === '77';
+        })[0];
+
+    
+    multiParents = [{
+                    parent: couplingParent1,
+                    child: couplingChild1
+                }];
+    
+    multiParents.forEach(function(multiPair) {
+            svgGroup.append("path", "g")
+            .attr("class", "link")
+            .attr("transform", "rotate(-270) scale(1,-1)")
+                .attr("d", function() {
+                    var oTarget = {
+                        x: multiPair.parent.x0,
+                        y: multiPair.parent.y0
+                    };
+                    var oSource = {
+                        x: multiPair.child.x0,
+                        y: multiPair.child.y0
+                    };
+                    /*if (multiPair.child.depth === multiPair.couplingParent1.depth) {
+                        return "M" + oSource.y + " " + oSource.x + " L" + (oTarget.y + ((Math.abs((oTarget.x - oSource.x))) * 0.25)) + " " + oTarget.x + " " + oTarget.y + " " + oTarget.x;
+                    
+                    return diagonal({
+                        source: oSource,
+                        target: oTarget
+                    });
+                });
+        }); 
+
+*/
+
+
     var allNodes = [];
     for (i =0 ; i< totalNodes ; i++){
         var targetNode = tree.nodes(root).filter(function(d) {
@@ -850,6 +984,8 @@ function finishLoading() {
         })[0];
         allNodes[allNodes.length] = targetNode;
     }
+
+    console.log(allNodes)
 
 
     for (i=1; i<depthMap.length;i++){
@@ -961,8 +1097,6 @@ function finishLoading() {
         toggleChildren(root);
         update(root);
 
-        
-
 
         setTimeout(function(){
             toggleChildren(root);
@@ -974,17 +1108,9 @@ function finishLoading() {
 
 };
 
-d3.json('data/tree_contains.json', function(error, _data){
+d3.json(detailed_tree_file, function(error, _data){
     if (error) return console.warn(error,'container');
     data = _data;
     finishLoading();
-
-});
-
-
-d3.csv('data/output.csv', function(error, _data){
-    if (error) return console.warn(error,'container');
-    csvData = _data;
-    //finishLoading();
 
 });
