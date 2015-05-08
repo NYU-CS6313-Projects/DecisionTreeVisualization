@@ -828,7 +828,6 @@ function finishLoading() {
                     target: o
                 });
             })
-            .attr("transform", "rotate(-270) scale(1,-1) translate(0,10)")
             .style("stroke", function(d){
                 if (isLeafNode(d.target)){
                     return "#7D0C0C";
@@ -842,7 +841,15 @@ function finishLoading() {
                 } else {
                     return getRightWidth(d.target);
                 }
+            })
+            .attr("transform", function(d){
+                console.log(getLeftWidth(d.target.id));
+                console.log(getLeftWidth(d.target));
+                console.log(getRightWidth(d.target));
+                return "rotate(-270) scale(1,-1) translate(0,"+String(getLeftWidth(d.target))+")";
             });
+
+                
 
         var linkUpdate2 = link2.transition()
             .duration(duration)
