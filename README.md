@@ -6,8 +6,6 @@ The data in this interactive decision tree application is from the CMS Linkable 
 
 To run this application locally, simply pull the entire directory and run index.html.
 
-A live demo can be found here.
-
 Our final proposal will be posted here when complete.
 
 Our final video presentation will be posted here when complete.
