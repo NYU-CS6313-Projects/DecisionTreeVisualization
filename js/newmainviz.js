@@ -363,22 +363,29 @@ function finishLoading() {
 
     function getAccuracy (obj){
         if (!obj.children) {
-            total_Real_Negative = total_Real_Negative + obj.leftVal;
-            total_Real_Positive = total_Real_Positive+ obj.rightVal;
+            var str = obj.rule;
+            str = str.replace(' ','');
+            str = str.split(".");
+            str[0] = str[0].replace('[', '');
+            str[1] = str[1].replace(']', '');
+            console.log(str[0])
+            
+            total_Real_Negative = total_Real_Negative + parseInt(str[0]);
+            total_Real_Positive = total_Real_Positive+ parseInt(str[1]);
 
-            if (obj.leftVal > obj.rightVal){
-                total_Right = total_Right + obj.leftVal;
-                total_Wrong = total_Wrong + obj.rightVal;
-                TN = TN + obj.leftVal;
-                FN = FN +obj.rightVal;
-                total_Predict_Negative = total_Predict_Negative + obj.leftVal + obj.rightVal;
+            if (parseInt(str[0]) > parseInt(str[1])){
+                total_Right = total_Right + parseInt(str[0]);
+                total_Wrong = total_Wrong + parseInt(str[1]);
+                TN = TN + parseInt(str[0]);
+                FN = FN +parseInt(str[1]);
+                total_Predict_Negative = total_Predict_Negative + parseInt(str[1]) + parseInt(str[0]);
             }
             else{
-                total_Right = total_Right + obj.rightVal;
-                total_Wrong = total_Wrong + obj.leftVal;
-                TP = TP + obj.rightVal;
-                FP = FP + obj.leftVal;
-                total_Predict_Positive = total_Predict_Positive + obj.leftVal + obj.rightVal;
+                total_Right = total_Right + parseInt(str[1]);
+                total_Wrong = total_Wrong + parseInt(str[0]);
+                TP = TP + parseInt(str[1]);
+                FP = FP + parseInt(str[0]);
+                total_Predict_Positive = total_Predict_Positive + parseInt(str[1]) + parseInt(str[0]);
 
             }
             }
@@ -408,6 +415,7 @@ function finishLoading() {
 
     // Call visit function to establish maxLabelLength
     visit(toJson(treeData,data), function(d) {
+        console.log(d);
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
