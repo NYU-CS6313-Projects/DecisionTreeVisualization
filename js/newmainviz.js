@@ -379,9 +379,13 @@ function finishLoading() {
             str = str.replace(' ','');
             str = str.split(".");
             str[0] = str[0].replace('[', '');
+<<<<<<< Updated upstream
             str[1] = str[1].replace(']', '');
             // console.log(str[0])
             
+=======
+            str[1] = str[1].replace(']', '');            
+>>>>>>> Stashed changes
             total_Real_Negative = total_Real_Negative + parseInt(str[0]);
             total_Real_Positive = total_Real_Positive+ parseInt(str[1]);
 
@@ -427,7 +431,10 @@ function finishLoading() {
 
     // Call visit function to establish maxLabelLength
     visit(toJson(treeData,data), function(d) {
+<<<<<<< Updated upstream
         // console.log(d);
+=======
+>>>>>>> Stashed changes
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
@@ -1102,8 +1109,9 @@ function finishLoading() {
             var names = targetNode['name'].split("////");
             if (names.length!=1){ //not leaf node
                 targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+100+",+"+50+"]";
+                console.log(names[1]);
             }
-            
+            console.log(targetNode);
             nodes[nodes.length] = targetNode;
             
         });
