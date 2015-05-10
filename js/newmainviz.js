@@ -134,10 +134,13 @@ function toJson(x,y)
   
 }
 
+// treeData, depth = 20, contains which, truth keys.
 var treeData = null
+// data, depth =20, directly from the python tree output. 
 var data = null
-var csvData = null
-/// tree_large contain the tree with n more layers
+// var csvData = null
+
+/// tree_large, depth = 30,  contain which, truth keys.
 var tree_large = null
 
 
@@ -182,36 +185,35 @@ function statsOfLeaf (data,key){
     return [tp, tn, fp, fn]
 } 
 function splitLeaf(data_larger, key) {
-    function getel(data_larger,key){
-        var el = data_larger;
+    var el = data_larger;
+    function getel(key){
         key.forEach(function(k) {    
         el = el[k];
     });
         return el
     }
     /// the calculation of the right child
-    key_right = key.push('right')
-    var el_right = getel(data_larger, key_right)
+    key.push('right')
+    var el_right = getel(key)
     right_n = el_right[0];
     right_p = el_right[1];
     right_rule = el_right['rule'];
-    right_con = statsOfLeaf(data_larger, key_right);
+    right_con = statsOfLeaf(data_larger, key);
     /// the calculation of the left child
     key.pop()
-    key_left = key.push('left')
-    var el_left = getel(data_larger, key_left)
+    key.push('left')
+    var el_left = getel(key)
     left_n = el_left[0];
     left_p = el_left[1];
     left_rule = el_left['rule'];
     left_con = statsOfLeaf(data_larger, key);
     /// the calculation of the parent
     key.pop()
-    var el = getel(data_larger,key)
-    con = statsOfLeaf(data_larger,key)
+    parent_con = statsOfLeaf(data_larger,key)
     /// changing in the confusion matrix
     var con_change =[]
-    for(var i = 0; i < leaf_con.length; i++){
-       con_change.push(leaf_con[i] + bro_con[i] - parent_con[i]);
+    for(var i = 0; i < left_con.length; i++){
+       con_change.push(left_con[i] + right_con[i] - parent_con[i]);
     }
     /// the dict of the children and the changes in confusion matrix
     var children = {'left':{'samples':[], 'rule': left_rule, 0: right_n , 1: right_p}, 'right':{'samples':[], 'rule':right_rule, 0: right_n, 1: right_p}, 'confusion':con_change}
@@ -245,8 +247,8 @@ function finishLoading() {
     if (!data || !treeData) return;
     // console.log(delLeaves(data, ['left','left','left','left','right']));
     // console.log(delLeaves(data, ['left','left','right']));
-
-    console.log(splitLeaf(data,['right','left']))
+    // the input data for the next line should change to 'tree_large'+ path
+    console.log(splitLeaf(data,['right','left','right']))
 
 
     // Calculate total nodes, max label length
