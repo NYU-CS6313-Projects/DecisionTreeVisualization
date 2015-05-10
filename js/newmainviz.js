@@ -137,12 +137,9 @@ function toJson(x,y)
 var treeData = null
 var data = null
 var csvData = null
+/// tree_large contain the tree with n more layers
+var tree_large = null
 
-//var start = new Date().getTime();
-
-//var end = new Date().getTime();
-//var time = end - start;
-//alert('Execution time: ' + time);
 
 d3.json(tree_file, function(error, _treeData) {
     if (error) {
@@ -152,113 +149,104 @@ d3.json(tree_file, function(error, _treeData) {
     finishLoading();
 });
 
+
+function bro_key(key){
+    tail = key.slice(-1)[0];
+    if (tail === 'right') {
+        bro = 'left';
+    } else {
+        bro = 'right';
+    }
+    key.pop();
+    key.push(bro);
+    return key;
+}
 function statsOfLeaf (data,key){
     var el = data;
     key.forEach(function(k) {
         el = el[k];
     });
-    var tail = key.slice(-1)[0];
-
-    var bro;
-    if (tail === 'right') {
-        bro = 'left';
+    p = el[1];
+    n = el[0];
+    if (p < n) {
+        tp = 0;
+        fp = 0;
+        tn = n 
+        fn = p
     } else {
-        bro = 'right';
+        tn = 0;
+        fn = 0;
+        tp = p
+        fp = n
     }
-    var el_bro = data;
-    key.pop();
-    key.push(bro);
-    key.forEach(function(k){
-        el_bro[k];
-    });
-    return key;
+    return [tp, tn, fp, fn]
 } 
-
-function splitLeaf(data, key) {
-  var el = data;
-  key.forEach(function(k) {
-    el = el[k];
-  });
-  return el;
-} 
-
-function delLeaves(data, key) {
-  function statsOfLeaf (data,key){
-    var el = data;
-    key.forEach(function(k) {
+function splitLeaf(data_larger, key) {
+    function getel(data_larger,key){
+        var el = data_larger;
+        key.forEach(function(k) {    
         el = el[k];
     });
-
-    pos = el[1];
-    neg = el[0];
-    truth = el['truth'];
-    if (pos < neg) {
-        tp = 0
-        fp = 0
-        tn = neg
-        fn = pos
-    } else {
-        tn = 0
-        fn = 0
-        tp = pos
-        fp = neg
+        return el
     }
-
-    
-    var tail = key.slice(-1)[0];
-    var bro;
-    if (tail === 'right') {
-        bro = 'left';
-    } else {
-        bro = 'right';
+    /// the calculation of the right child
+    key_right = key.push('right')
+    var el_right = getel(data_larger, key_right)
+    right_n = el_right[0];
+    right_p = el_right[1];
+    right_rule = el_right['rule'];
+    right_con = statsOfLeaf(data_larger, key_right);
+    /// the calculation of the left child
+    key.pop()
+    key_left = key.push('left')
+    var el_left = getel(data_larger, key_left)
+    left_n = el_left[0];
+    left_p = el_left[1];
+    left_rule = el_left['rule'];
+    left_con = statsOfLeaf(data_larger, key);
+    /// the calculation of the parent
+    key.pop()
+    var el = getel(data_larger,key)
+    con = statsOfLeaf(data_larger,key)
+    /// changing in the confusion matrix
+    var con_change =[]
+    for(var i = 0; i < leaf_con.length; i++){
+       con_change.push(leaf_con[i] + bro_con[i] - parent_con[i]);
     }
-    var el_bro = data;
-    key.pop();
-    key.push(bro);
-    key.forEach(function(k){
-        el_bro[k];
-        //console.log(el_bro)
-
-    });
-    pos = el_bro[1];
-    neg = el_bro[0];
-    truth = el_bro['truth'];
-    if (pos < neg) {
-        tp_bro = 0
-        fp_bro = 0
-        tn_bro = neg
-        fn_bro = pos
-    } else {
-        tn_bro = 0
-        fn_bro = 0
-        tp_bro = pos
-        fp_bro = neg
+    /// the dict of the children and the changes in confusion matrix
+    var children = {'left':{'samples':[], 'rule': left_rule, 0: right_n , 1: right_p}, 'right':{'samples':[], 'rule':right_rule, 0: right_n, 1: right_p}, 'confusion':con_change}
+    return children;
+} 
+function delLeaves(data, key) {
+    leaf_con = statsOfLeaf(data, key);
+    bro = bro_key(key);
+    bro_con = statsOfLeaf(data, bro);
+    // console.log(leaf_con);
+    // console.log(bro_con);
+    key.pop()
+    parent_con = statsOfLeaf(data,key)
+    // console.log(parent_con)
+    var con_change=[];
+    for(var i = 0; i < leaf_con.length; i++){
+       con_change.push(- leaf_con[i] - bro_con[i] + parent_con[i]);
     }
-
-    //console.log(tp,fp,tn,fn)
-    //console.log(tp_bro, fp_bro, tn_bro, fn_bro)
-
-    return key;
-    } 
-
-  //console.log(statsOfLeaf(data, ['right','left','right']))
-
-  key.pop();
-  var el = data;
-  key.forEach(function(k) {
-    // console.log(el);
-    el = el[k];
-  });
-  POS = el[1];
-  NEG = el[0];
-  rule = [POS, NEG];
-  return POS;
+    var el = data;
+      key.forEach(function(k) {
+        el = el[k];
+      });
+    pos_parent = el[1]
+    neg_parent = el[0]
+    var change = {"confusion":con_change, 'samples':[pos_parent,neg_parent], 'attibute':el['rule']};
+    return change
 } 
 
 
 function finishLoading() {
     if (!data || !treeData) return;
-    //console.log(delLeaves(data, ['right','left','right']));
+    // console.log(delLeaves(data, ['left','left','left','left','right']));
+    // console.log(delLeaves(data, ['left','left','right']));
+
+    console.log(splitLeaf(data,['right','left']))
 
 
     // Calculate total nodes, max label length
@@ -427,7 +415,8 @@ function finishLoading() {
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-    console.log(maxSample)
+    // console.log(maxSample)
+
 
     maxDepth = getMaxDepth(toJson(treeData,data));
     getAccuracy(toJson(treeData,data));
@@ -534,7 +523,7 @@ function finishLoading() {
     }
 
     var overCircle = function(d) {
-        console.log(d.name);
+        // console.log(d.name);
         //updateTempConnector();
     };
     var outCircle = function(d) {
@@ -843,9 +832,9 @@ function finishLoading() {
                 }
             })
             .attr("transform", function(d){
-                console.log(getLeftWidth(d.target.id));
-                console.log(getLeftWidth(d.target));
-                console.log(getRightWidth(d.target));
+                // console.log(getLeftWidth(d.target.id));
+                // console.log(getLeftWidth(d.target));
+                // console.log(getRightWidth(d.target));
                 return "rotate(-270) scale(1,-1) translate(0,"+String(getLeftWidth(d.target))+")";
             });
 
@@ -992,7 +981,7 @@ function finishLoading() {
         allNodes[allNodes.length] = targetNode;
     }
 
-    console.log(allNodes)
+    // console.log(allNodes)
 
 
     for (i=1; i<depthMap.length;i++){
@@ -1119,5 +1108,11 @@ d3.json(detailed_tree_file, function(error, _data){
     if (error) return console.warn(error,'container');
     data = _data;
     finishLoading();
-
 });
+
+// var csvData = null
+// d3.csv('/data/output.csv',function(error,_data)){
+//     if(error) return console.warn(error);
+//     csvData= _data;
+// //     finishLoading();
+// });
