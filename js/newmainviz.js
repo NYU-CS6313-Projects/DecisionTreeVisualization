@@ -194,24 +194,25 @@ function splitLeaf(data_larger, key) {
     });
         return el
     }
+    console.log
     /// the calculation of the right child
-    key.push('right')
-    var el_right = getel(key)
+    key.push('right');
+    var el_right = getel(key);
     right_n = el_right[0];
     right_p = el_right[1];
     right_rule = el_right['rule'];
     right_con = statsOfLeaf(data_larger, key);
     /// the calculation of the left child
-    key.pop()
-    key.push('left')
-    var el_left = getel(key)
+    key.pop();
+    key.push('left');
+    var el_left = getel(key);
     left_n = el_left[0];
     left_p = el_left[1];
     left_rule = el_left['rule'];
     left_con = statsOfLeaf(data_larger, key);
     /// the calculation of the parent
     key.pop()
-    parent_con = statsOfLeaf(data_larger,key)
+    parent_con = statsOfLeaf(data_larger,key);
     /// changing in the confusion matrix
     var con_change =[]
     for(var i = 0; i < left_con.length; i++){
@@ -244,13 +245,22 @@ function delLeaves(data, key) {
     return change
 } 
 
-
+function test(data,key){
+    var el = data;
+    key.forEach(function(k) {
+        el = el[k];
+    });
+    console.log(el['which'])
+    console.log(el)
+    console.log('baa')
+}
 function finishLoading() {
     if (!data || !treeData) return;
     // console.log(delLeaves(data, ['left','left','left','left','right']));
     // console.log(delLeaves(data, ['left','left','right']));
     // the input data for the next line should change to 'tree_large'+ path
-    console.log(splitLeaf(data,['right','left','right']))
+    // console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
+    // console.log(test(data,['right','right','right','right','right','right','right']))
 
 
     // Calculate total nodes, max label length
@@ -370,7 +380,7 @@ function finishLoading() {
             str = str.split(".");
             str[0] = str[0].replace('[', '');
             str[1] = str[1].replace(']', '');
-            console.log(str[0])
+            // console.log(str[0])
             
             total_Real_Negative = total_Real_Negative + parseInt(str[0]);
             total_Real_Positive = total_Real_Positive+ parseInt(str[1]);
@@ -417,7 +427,7 @@ function finishLoading() {
 
     // Call visit function to establish maxLabelLength
     visit(toJson(treeData,data), function(d) {
-        console.log(d);
+        // console.log(d);
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
@@ -1122,11 +1132,11 @@ d3.json(detailed_tree_file, function(error, _data){
     finishLoading();
 });
 
-var csvData = null
-d3.csv('/data/output.csv',function(error,_data){
-    if(error) return console.warn(error);
-    csvData= _data;
-//     finishLoading();
-});
+// var csvData = null
+// d3.csv('/data/output.csv',function(error,_data){
+//     if(error) return console.warn(error);
+//     csvData= _data;
+// //     finishLoading();
+// });
 
 
