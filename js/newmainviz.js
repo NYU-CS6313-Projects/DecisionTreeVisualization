@@ -134,6 +134,8 @@ function toJson(x,y)
   
 }
 
+
+
 // treeData, depth = 20, contains which, truth keys.
 var treeData = null
 // data, depth =20, directly from the python tree output. 
@@ -1120,9 +1122,11 @@ d3.json(detailed_tree_file, function(error, _data){
     finishLoading();
 });
 
-// var csvData = null
-// d3.csv('/data/output.csv',function(error,_data)){
-//     if(error) return console.warn(error);
-//     csvData= _data;
-// //     finishLoading();
-// });
+var csvData = null
+d3.csv('/data/output.csv',function(error,_data){
+    if(error) return console.warn(error);
+    csvData= _data;
+//     finishLoading();
+});
+
+
