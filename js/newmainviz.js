@@ -695,11 +695,18 @@ function finishLoading() {
 
                 var rect = g.append('rect')
                     .classed('info', true)
+<<<<<<< Updated upstream
                     .attr('width', 600)
                     .attr('height',220)
                     .attr('fill', "#E9E9F2")
+=======
+                    .attr('width', 1300)
+                    .attr('height',300)
+                    .attr('fill', "green")
+>>>>>>> Stashed changes
                     .attr('x',200)
-                    .attr('y', 200);
+                    .attr('y', 200)
+                    .attr('z', 2);
 
                 var info = g.append('text')
                     .classed('info', true)
@@ -1206,20 +1213,53 @@ function finishLoading() {
         var TN_1 = 0;
         var FN_1 = 0;
 
+        for (i = 1; i < sliderDepth;i++){
+            nodes = depthMap[i];
+            flag = "right";
+            for (j=0 ; j< nodes.length; j++){
+                var targetNode = tree.nodes(root).filter(function(d) {
+                return d['id'] === nodes[j];
+            })[0];
+                if (!targetNode.children){
+                    total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
+                    total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
+                    a = parseInt(targetNode.leftVal);
+                    b = parseInt(targetNode.rightVal);
+                    if (a > b){
+                        total_R = total_R + a;
+                        total_W = total_W + b;
+                        TN_1 = TN_1 + a;
+                        FN_1 = FN_1 +b;
+                        total_Predict_Neg = total_Predict_Neg + a + b;}
+                        else{
+                total_R = total_R + b;
+                total_W = total_W + a;
+                TP_1 = TP_1 + b;
+                FP_1 = FP_1 + a;
+                total_Predict_Po = total_Predict_Po + a + b;
+            }
+        }
+            targetNode['from'] = flag;
+            if (flag=="right"){
+                flag = "left";
+            } else {
+                flag = "right"; 
+            }
+    }
+    }
+
         node_ids.forEach(function(node_id){
             var targetNode = tree.nodes(root).filter(function(d) {
                 return d['id'] === node_id;
             })[0];
-
             var names = targetNode['name'].split("////");
 
             if (names.length!=1){ //not leaf node
                 targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+parseInt(targetNode.leftVal)+",+"+parseInt(targetNode.rightVal)+"]";
-                }
+            }
+
             total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
             total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
-            console.log(targetNode.leftVal);
-
             a = parseInt(targetNode.leftVal);
             b = parseInt(targetNode.rightVal);
             if (a > b){
@@ -1235,7 +1275,7 @@ function finishLoading() {
                 TP_1 = TP_1 + b;
                 FP_1 = FP_1 + a;
                 total_Predict_Po = total_Predict_Po + a + b;
-            }
+            }        
             nodes[nodes.length] = targetNode;
             
         });
@@ -1287,6 +1327,11 @@ function finishLoading() {
                     axis : {
                         x : {
                             type: 'categorized'
+                        },
+                        y : {
+                            tick: {
+                                count: 5
+                            }
                         }
                     }
                 });
