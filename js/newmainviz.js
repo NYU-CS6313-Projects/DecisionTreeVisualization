@@ -200,6 +200,7 @@ function splitLeaf(data_larger, key) {
     var el_right = getel(key);
     right_n = el_right[0];
     right_p = el_right[1];
+    right_sample = right_n + right_p
     right_rule = el_right['rule'];
     right_con = statsOfLeaf(data_larger, key);
     /// the calculation of the left child
@@ -208,6 +209,7 @@ function splitLeaf(data_larger, key) {
     var el_left = getel(key);
     left_n = el_left[0];
     left_p = el_left[1];
+    left_sample = left_n + left_p
     left_rule = el_left['rule'];
     left_con = statsOfLeaf(data_larger, key);
     /// the calculation of the parent
@@ -219,7 +221,7 @@ function splitLeaf(data_larger, key) {
        con_change.push(left_con[i] + right_con[i] - parent_con[i]);
     }
     /// the dict of the children and the changes in confusion matrix
-    var children = {'left':{'samples':[], 'rule': left_rule, 0: right_n , 1: right_p}, 'right':{'samples':[], 'rule':right_rule, 0: right_n, 1: right_p}, 'confusion':con_change}
+    var children = {'left':{'samples':left_sample, 'rule': left_rule, "0": right_n , "1": right_p}, 'right':{'samples':right_sample, 'rule':right_rule, 0: right_n, 1: right_p}, 'confusion':con_change}
     return children;
 } 
 function delLeaves(data, key) {
@@ -259,7 +261,7 @@ function finishLoading() {
     // console.log(delLeaves(data, ['left','left','left','left','right']));
     // console.log(delLeaves(data, ['left','left','right']));
     // the input data for the next line should change to 'tree_large'+ path
-    // console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
+    console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
     // console.log(test(data,['right','right','right','right','right','right','right']))
 
 

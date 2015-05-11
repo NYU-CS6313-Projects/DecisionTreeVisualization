@@ -71,7 +71,7 @@ def travel(dct, data, name_dct, indent=''):
 			to_right = data[data[:,idx]>=0.5]
 			v['which'] = to_right[:,-1].tolist()
 			v['truth'] = to_right[:,1].tolist()
-			unique, counts = np.unique(to_right[:,1], return_counts=True)	
+			unique, counts = np.unique(to_right[:,1]#, return_counts=True)	
 			if unique[0] == 1:
 				unique = np.insert(unique,0,0)
 				counts = np.insert(counts,0,0)
@@ -90,7 +90,7 @@ def travel(dct, data, name_dct, indent=''):
 	return dct
 
 if __name__ == '__main__':
-	with open('ourTree.json') as data_file:    	
+	with open('tree_19_node.json') as data_file:    	
 		dct = json.load(data_file)
 
 	train,test, n_to_p_dct, p_to_n_dct= read('output.csv')
