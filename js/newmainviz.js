@@ -237,11 +237,8 @@ function delLeaves(data, key) {
     leaf_con = statsOfLeaf(data, key);
     bro = bro_key(key);
     bro_con = statsOfLeaf(data, bro);
-    // console.log(leaf_con);
-    // console.log(bro_con);
     key.pop()
     parent_con = statsOfLeaf(data,key)
-    // console.log(parent_con)
     var con_change=[];
     for(var i = 0; i < leaf_con.length; i++){
        con_change.push(- leaf_con[i] - bro_con[i] + parent_con[i]);
@@ -261,15 +258,9 @@ function test(data,key){
     key.forEach(function(k) {
         el = el[k];
     });
-    console.log(el['which'])
-    console.log(el)
-    console.log('baa')
 }
 function finishLoading() {
     if (!data || !treeData) return;
-
-    console.log(depthchange(data, 4));
-
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -373,8 +364,8 @@ function finishLoading() {
             obj = obj.parent;
         }
         path = path.substring(0,path.length-1);
-        path = "[" + path + "]";
-        return path;
+        var arrayPath = path.split(",")
+        return arrayPath;
     }
 
     function neighboring(parent, child) {
@@ -388,7 +379,6 @@ function finishLoading() {
             str = str.split(".");
             str[0] = str[0].replace('[', '');
             str[1] = str[1].replace(']', '');
-            // console.log(str[0])
         
             total_Real_Negative = total_Real_Negative + parseInt(str[0]);
             total_Real_Positive = total_Real_Positive+ parseInt(str[1]);
@@ -435,7 +425,6 @@ function finishLoading() {
 
     // Call visit function to establish maxLabelLength
     visit(toJson(treeData,data), function(d) {
-        // console.log(d);
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
@@ -445,13 +434,10 @@ function finishLoading() {
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-    // console.log(maxSample)
 
 
     maxDepth = getMaxDepth(toJson(treeData,data));
     getAccuracy(toJson(treeData,data));
-    //console.log(total_Right);
-    //console.log(total_Wrong);
 
     d3.select("#num_nodes")
     .text(totalNodes);
@@ -472,12 +458,6 @@ function finishLoading() {
     d3.select('#fn')
     .text(FN);
     
-    //console.log(total_Real_Negative);
-    //console.log(total_Real_Positive);
-    //console.log(total_Predict_Positive);
-    //console.log(total_Predict_Negative);
-    //console.log(TP,FP,TN,FN);
-
 
     // sort the tree according to the node names
 
@@ -572,7 +552,20 @@ function finishLoading() {
         x = -source.x0;
         y = -source.y0;
         x = x * scale + viewerWidth / 2;
-        y = y * scale + viewerHeight / 2;
+        y = y * scale + viewerHeight / 4;
+        d3.select('g').transition()
+            .duration(duration)
+            .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+        zoomListener.scale(scale);
+        zoomListener.translate([x, y]);
+    }
+
+    function initializeCenterNode(source) {
+        scale = zoomListener.scale();
+        x = -source.x0;
+        y = -source.y0;
+        x = x * scale + viewerWidth / 2;
+        y = y * scale + viewerHeight / 8;
         d3.select('g').transition()
             .duration(duration)
             .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -621,17 +614,47 @@ function finishLoading() {
 
                 },1000);
             } else if (state == "addNode"){
-                console.log(d.path);
-                console.log(splitLeaf(tree_large,d.path));
+                //console.log(d.path);
+                //alert(d.path);
+                newChildren = splitLeaf(tree_large,d.path);
+                console.log(newChildren);
+                newChildren.rule = newChildren.rule.replace(' <= 0.5000','');
+                var newName = mapName(newChildren.rule);
+                newName = targetNode['id']+"////"+newChildren.rule+"////"+newName;
+                console.log(newName);
+                targetNode['name'] = newName;
+                targetNode['children'] = [];
+                newChildren['right']['name'] = '[-'+newChildren['right'][0]+',+'+newChildren['right'][1]+']';
+                newChildren['left']['name'] = '[-'+newChildren['left'][0]+',+'+newChildren['left'][1]+']';
+                newChildren['right']['leftVal'] = newChildren['right'][0]
+                newChildren['right']['rightVal'] =newChildren['right'][1] 
+                newChildren['left']['leftVal'] =newChildren['left'][0]
+                newChildren['left']['rightVal'] =newChildren['left'][1]
+                targetNode['children'][0] = newChildren.right;
+                targetNode['children'][1] = newChildren.left;
+
+                toggleChildren(root);
+                update(root);
+
+
+                setTimeout(function(){
+
+                    toggleChildren(root);
+                    update(root);
+
+                },1000);
+
+
+                
+
+
             }
             
 
- 
-
         } else {
-            if (d3.event.defaultPrevented) return; // click suppressed
-            d = toggleChildren(d);
-            update(d);
+            //if (d3.event.defaultPrevented) return; // click suppressed
+            //d = toggleChildren(d);
+            //update(d);
             //centerNode(d);
         }
     }
@@ -685,47 +708,40 @@ function finishLoading() {
             .attr("transform", function(d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-            //.on('click', showInfo)
+            .on('click', click)
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
                 var g = d3.select(this); // The node
                 // The class is used to remove the additional text later
-                console.log(node.leftVal);
-                console.log(node.rightVal);
+                //console.log(node.leftVal);
+                //console.log(node.rightVal);
 
                 var rect = g.append('rect')
                     .classed('info', true)
-<<<<<<< Updated upstream
                     .attr('width', 600)
                     .attr('height',220)
                     .attr('fill', "#E9E9F2")
-=======
-                    .attr('width', 1300)
-                    .attr('height',300)
-                    .attr('fill', "green")
->>>>>>> Stashed changes
-                    .attr('x',200)
-                    .attr('y', 200)
-                    .attr('z', 2);
+                    .attr('x',50)
+                    .attr('y', 50);
 
                 var info = g.append('text')
                     .classed('info', true)
-                    .attr('x', 200)
-                    .attr('y', 250)
+                    .attr('x', 60)
+                    .attr('y', 110)
                     .text('Patients            :' + (node.leftVal +node.rightVal) + " (" + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%)" )
                     .style('font-size', "40px");
 
                 var info = g.append('text')
                     .classed('info', true)
-                    .attr('x', 200)
-                    .attr('y', 320)
+                    .attr('x', 60)
+                    .attr('y', 170)
                     .style('font-size', "40px")
                     .text('Diabetes(+) : ' + node.rightVal + " (" + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
 
                 var info = g.append('text')
                     .classed('info', true)
-                    .attr('x', 200)
-                    .attr('y', 390)
+                    .attr('x', 60)
+                    .attr('y', 230)
                     .style('font-size', "40px")
                     .text('Diabetes(-)  :  ' + node.leftVal + " (" + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
          
@@ -784,6 +800,7 @@ function finishLoading() {
             .attr('class', 'nodeText')
             .attr("text-anchor", "middle") 
             .each(function(d) {
+                console.log(d);
                 var t = d3.select(this);
                 var pos = 10;
                 d.name.split("////").forEach(function(n) { 
@@ -1027,7 +1044,7 @@ function finishLoading() {
 
     // Layout the tree initially and center on the root node.
     update(root);
-    centerNode(root);
+    initializeCenterNode(root);
 
     /*
 
@@ -1213,53 +1230,20 @@ function finishLoading() {
         var TN_1 = 0;
         var FN_1 = 0;
 
-        for (i = 1; i < sliderDepth;i++){
-            nodes = depthMap[i];
-            flag = "right";
-            for (j=0 ; j< nodes.length; j++){
-                var targetNode = tree.nodes(root).filter(function(d) {
-                return d['id'] === nodes[j];
-            })[0];
-                if (!targetNode.children){
-                    total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
-                    total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
-                    a = parseInt(targetNode.leftVal);
-                    b = parseInt(targetNode.rightVal);
-                    if (a > b){
-                        total_R = total_R + a;
-                        total_W = total_W + b;
-                        TN_1 = TN_1 + a;
-                        FN_1 = FN_1 +b;
-                        total_Predict_Neg = total_Predict_Neg + a + b;}
-                        else{
-                total_R = total_R + b;
-                total_W = total_W + a;
-                TP_1 = TP_1 + b;
-                FP_1 = FP_1 + a;
-                total_Predict_Po = total_Predict_Po + a + b;
-            }
-        }
-            targetNode['from'] = flag;
-            if (flag=="right"){
-                flag = "left";
-            } else {
-                flag = "right"; 
-            }
-    }
-    }
-
         node_ids.forEach(function(node_id){
             var targetNode = tree.nodes(root).filter(function(d) {
                 return d['id'] === node_id;
             })[0];
+
             var names = targetNode['name'].split("////");
 
             if (names.length!=1){ //not leaf node
                 targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+parseInt(targetNode.leftVal)+",+"+parseInt(targetNode.rightVal)+"]";
-            }
-
+                }
             total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
             total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
+            //console.log(targetNode.leftVal);
+
             a = parseInt(targetNode.leftVal);
             b = parseInt(targetNode.rightVal);
             if (a > b){
@@ -1275,7 +1259,7 @@ function finishLoading() {
                 TP_1 = TP_1 + b;
                 FP_1 = FP_1 + a;
                 total_Predict_Po = total_Predict_Po + a + b;
-            }        
+            }
             nodes[nodes.length] = targetNode;
             
         });
@@ -1327,11 +1311,6 @@ function finishLoading() {
                     axis : {
                         x : {
                             type: 'categorized'
-                        },
-                        y : {
-                            tick: {
-                                count: 5
-                            }
                         }
                     }
                 });
