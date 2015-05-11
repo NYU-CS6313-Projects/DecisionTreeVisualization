@@ -711,7 +711,9 @@ function finishLoading() {
             .on('click', click)
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
-                var g = d3.select(this); // The node
+
+                if (state == ""){
+                    var g = d3.select(this); // The node
                 // The class is used to remove the additional text later
                 //console.log(node.leftVal);
                 //console.log(node.rightVal);
@@ -745,6 +747,8 @@ function finishLoading() {
                     .style('font-size', "40px")
                     .text('Diabetes(-)  :  ' + node.leftVal + " (" + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
          
+                }
+                
             })
             .on("mouseout", function(node) {
                 d3.select(this).select('rect.info').remove();
