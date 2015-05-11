@@ -92,20 +92,20 @@ function toJson(x,y)
   else{ 
         result.size = parseInt(x.samples); 
 
-        //var str = result.rule;
-        //str = str.replace(' ','');
-        //str = str.split(".");
+        var str = result.rule;
+        str = str.replace(' ','');
+        str = str.split(".");
                
-        //str[0] = str[0].replace('[', '');
-        //str[1] = str[1].replace(']', '');
+        str[0] = str[0].replace('[', '');
+        str[1] = str[1].replace(']', '');
 
 
 
-        //var leftVal = parseInt(str[0]);
-        //var rightVal = parseInt(str[1]);
+        var leftVal = parseInt(str[0]);
+        var rightVal = parseInt(str[1]);
 
-        //result.leftVal = leftVal;
-        //result.rightVal = rightVal;
+        result.leftVal = leftVal;
+        result.rightVal = rightVal;
 
 
         result.name = "[-"+result.leftVal+",+"+result.rightVal+"]";
@@ -990,7 +990,7 @@ function finishLoading() {
         allNodes[allNodes.length] = targetNode;
     }
 
-    // console.log(allNodes)
+    console.log(allNodes)
 
 
     for (i=1; i<depthMap.length;i++){
