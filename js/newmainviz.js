@@ -1111,6 +1111,16 @@ function finishLoading() {
         var node_ids = depthMap[sliderDepth];
         node_ids = uniq(node_ids);
         var nodes = [];
+        var total_R = 0;
+        var total_W = 0;
+        var total_Real_Po = 0;
+        var total_Real_Neg = 0;
+        var total_Predict_Po = 0;
+        var total_Predict_Neg = 0;
+        var TP_1 = 0;
+        var FP_1 = 0;
+        var TN_1 = 0;
+        var FN_1 = 0;
 
         node_ids.forEach(function(node_id){
             var targetNode = tree.nodes(root).filter(function(d) {
@@ -1118,11 +1128,28 @@ function finishLoading() {
             })[0];
 
             var names = targetNode['name'].split("////");
+
             if (names.length!=1){ //not leaf node
-                targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+100+",+"+50+"]";
-                console.log(names[1]);
+                targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+parseInt(targetNode.leftVal)+",+"+parseInt(targetNode.rightVal)+"]";
+                }
+            total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
+            total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
+            a = parseInt(targetNode.leftVal);
+            b = parseInt(targetNode.rightVal);
+            if (a > b){
+                total_R = total_R + a;
+                total_W = total_W + b;
+                TN_1 = TN_1 + a;
+                FN_1 = FN_1 +b;
+                total_Predict_Neg = total_Predict_Neg + a + b;
+                }
+            else{
+                total_R = total_R + b;
+                total_W = total_W + a;
+                TP_1 = TP_1 + b;
+                FP_1 = FP_1 + a;
+                total_Predict_Po = total_Predict_Po + a + b;
             }
-            console.log(targetNode);
             nodes[nodes.length] = targetNode;
             
         });
@@ -1133,6 +1160,22 @@ function finishLoading() {
 
         toggleChildren(root);
         update(root);
+
+        d3.select("#accuracy")
+        .text(((total_R/(total_W+total_R))*100).toFixed(2)+ "%");
+
+        d3.select("#tp")
+        .text(TP_1);
+
+        d3.select("#fp")
+        .text(FP_1);
+
+        d3.select('#tn')
+        .text(TN_1);
+
+        d3.select('#fn')
+        .text(FN_1);
+
 
 
         setTimeout(function(){
