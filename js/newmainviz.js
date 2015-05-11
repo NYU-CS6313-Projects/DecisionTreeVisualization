@@ -283,7 +283,7 @@ function finishLoading() {
     var depthMap = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]; //change it in smarter way!!!!
 
     // size of the diagram
-    var viewerWidth = screen.width*0.6;
+    var viewerWidth = screen.width*0.75;
     var viewerHeight = screen.height;
 
     var tree = d3.layout.tree()
