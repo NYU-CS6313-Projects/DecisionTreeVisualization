@@ -1134,6 +1134,8 @@ function finishLoading() {
                 }
             total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
             total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
+            console.log(targetNode.leftVal);
+
             a = parseInt(targetNode.leftVal);
             b = parseInt(targetNode.rightVal);
             if (a > b){
@@ -1176,13 +1178,35 @@ function finishLoading() {
         d3.select('#fn')
         .text(FN_1);
 
-
-
         setTimeout(function(){
             toggleChildren(root);
             update(root);
 
         },1000);
+
+        setTimeout(function () {
+            var chart = c3.generate({
+                data:{
+                    x :'x',
+                    columns: [
+                    ['x', 'True Data', 'Predicted Data'],
+                    ['Positive (Diabetes)', total_Real_Po, total_Predict_Po], 
+                    ['Negative', total_Real_Neg, total_Predict_Neg],
+                    ],
+                    groups:[
+                    ['Negative', 'Positive (Diabetes)']
+                    ],
+                    type: 'bar',
+                    colors: {
+                        'Positive (Diabetes)': '#7D0C0C',
+                        'Negative': '#1f77b4'}, },
+                    axis : {
+                        x : {
+                            type: 'categorized'
+                        }
+                    }
+                });
+        }, 2000);
 
     });
 
