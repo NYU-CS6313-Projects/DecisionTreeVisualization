@@ -261,7 +261,7 @@ function finishLoading() {
     // console.log(delLeaves(data, ['left','left','left','left','right']));
     // console.log(delLeaves(data, ['left','left','right']));
     // the input data for the next line should change to 'tree_large'+ path
-    console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
+    //console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
     // console.log(test(data,['right','right','right','right','right','right','right']))
 
 
@@ -551,7 +551,7 @@ function finishLoading() {
         //updateTempConnector();
     };
     var outCircle = function(d) {
-        selectedNode = null;
+        //selectedNode = null;
         //updateTempConnector();
     };
 
@@ -601,6 +601,7 @@ function finishLoading() {
     }
 
 
+
     function update(source) {
         // Compute the new height, function counts total children of root node and sets tree height accordingly.
         // This prevents the layout looking squashed when new nodes are made visible or looking sparse when nodes are removed
@@ -648,14 +649,30 @@ function finishLoading() {
             .attr("transform", function(d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-            .on('click', click)
+            //.on('click', showInfo)
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
-                //console.log(getLeft(node));
-                //overCircle(node);
+                var g = d3.select(this); // The node
+                // The class is used to remove the additional text later
+                var rect = g.append('rect')
+                    .classed('info', true)
+                    .attr('width', 500)
+                    .attr('height',500)
+                    .attr('fill', "red")
+                    .attr('x',200)
+                    .attr('y', 200)
+                    .style("visibility","visible");
+
+                var info = g.append('text')
+                    .classed('info', true)
+                    .attr('x', 200)
+                    .attr('y', 100)
+                    .text('More info');
+         
             })
             .on("mouseout", function(node) {
-                //outCircle(node);
+                d3.select(this).select('rect.info').remove();
+                d3.select(this).select('text.info').remove();
             });
 
         nodeEnter.append("circle")
@@ -674,7 +691,13 @@ function finishLoading() {
                 }
             })
             .attr('height',45)
-            .attr('fill', 'white')
+            .attr('fill', function(d){
+                if (selectedNode == d.id){
+                    return "yellow";
+                } else {
+                    return "white";
+                }
+            })
             .attr('x',function(d) {
                 if (d.id==0){
                     return -200;
@@ -1058,6 +1081,7 @@ function finishLoading() {
                 var targetNode = tree.nodes(root).filter(function(d) {
                 return d['id'] === this_id;
                 })[0];
+                selectedNode = this_id;
 
                 centerNode(targetNode);
                 };
@@ -1084,6 +1108,8 @@ function finishLoading() {
         var targetNode = tree.nodes(root).filter(function(d) {
             return d['id'] === this_id;
         })[0];
+        selectedNode = this_id;
+
 
         centerNode(targetNode);
 
