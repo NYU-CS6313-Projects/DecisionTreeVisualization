@@ -86,7 +86,7 @@ def travel(dct, data, name_dct, indent=''):
 	return dct
 
 if __name__ == '__main__':
-	with open('tree_19_node.json') as data_file:    	
+	with open('tree_25_node.json') as data_file:    	
 		dct = json.load(data_file)
 
 	train, test, n_to_p_dct,= read('output.csv')
@@ -103,6 +103,6 @@ if __name__ == '__main__':
  
 
 	d = travel(dct,train_with_id, n_to_p_dct)
-	with open('20depth_all_data.json', 'wb') as fp:
+	with open('tree_25_node_data', 'wb') as fp:
 		json.dump(d, fp)
 	# # 

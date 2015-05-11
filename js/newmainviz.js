@@ -194,7 +194,7 @@ function splitLeaf(data_larger, key) {
     });
         return el
     }
-    console.log
+    
     /// the calculation of the right child
     key.push('right');
     var el_right = getel(key);

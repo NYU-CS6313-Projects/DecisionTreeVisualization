@@ -181,7 +181,7 @@ if __name__ == '__main__':
   str1 = viz(clf, feature_names=feature)
   # print str1
 
-  obj = open('tree_20.json', 'wb')
+  obj = open('tree_25_node_data.json', 'wb')
   obj.write(str1)
   obj.close
 
