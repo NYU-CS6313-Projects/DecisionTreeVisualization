@@ -598,7 +598,37 @@ function finishLoading() {
 
     function click(d) {
         if (state != ""){
-            alert(state);
+            var node_id = d.id;
+            var targetNode = tree.nodes(root).filter(function(d) {
+                return d['id'] === node_id;
+            })[0];
+
+            
+            if (state == "deleteNode"){
+                var names = targetNode['name'].split("////");
+
+                if (names.length!=1){ //not leaf node
+                targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+parseInt(targetNode.leftVal)+",+"+parseInt(targetNode.rightVal)+"]";
+                }
+
+                toggleChildren(d);
+
+                toggleChildren(root);
+                update(root);
+
+                setTimeout(function(){
+                    toggleChildren(root);
+                    update(root);
+
+                },1000);
+            } else if (state == "addNode"){
+                console.log(d.path);
+                console.log(splitLeaf(tree_large,d.path));
+            }
+            
+
+ 
+
         } else {
             if (d3.event.defaultPrevented) return; // click suppressed
             d = toggleChildren(d);
