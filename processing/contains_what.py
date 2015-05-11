@@ -70,8 +70,12 @@ def travel(dct, data, name_dct, indent=''):
 			to_right = data[data[:,idx]>=0.5]
 			v['which'] = to_right[:,-1].tolist()
 			v['truth'] = to_right[:,1].tolist()
+<<<<<<< HEAD
 			unique, counts = np.unique(to_right[:,0], return_counts=True)	
 			print unique
+=======
+			unique, counts = np.unique(to_right[:,1]#, return_counts=True)	
+>>>>>>> origin/master
 			if unique[0] == 1:
 				unique = np.insert(unique,0,0)
 				counts = np.insert(counts,0,0)
