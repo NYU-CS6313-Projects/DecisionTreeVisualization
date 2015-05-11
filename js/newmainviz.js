@@ -770,7 +770,7 @@ function finishLoading() {
                 if (d.id==0 || d.id==1 || d.id==2){
                     return 400;
                 } else {
-                    return 50;
+                    return 80;
                 }
             })
             .attr('height',45)
@@ -785,7 +785,7 @@ function finishLoading() {
                 if (d.id==0 || d.id==1 || d.id==2){
                     return -200;
                 } else {
-                    return -25;
+                    return -40;
                 }
             })
             .attr('y', 0)
