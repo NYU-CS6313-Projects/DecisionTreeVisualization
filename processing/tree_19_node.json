@@ -12,7 +12,15 @@
         "id": "13", "rule": "diagnosis__HIERARCHY_4 <= 0.5000", "entropy": "0.406205553835", "samples": "9526",
         "left": 
         {
-          "id": "33", "criterion": "entropy", "impurity": "0.396400777279", "samples": "9213", "rule": "[ 8491.   722.]"        
+          "id": "33", "rule": "info__age_60_70 <= 0.5000", "entropy": "0.396400777279", "samples": "9213",
+          "left": 
+          {
+            "id": "43", "criterion": "entropy", "impurity": "0.373780777652", "samples": "7349", "rule": "[ 6819.   530.]"          
+          },
+          "right": 
+          {
+            "id": "44", "criterion": "entropy", "impurity": "0.478447266447", "samples": "1864", "rule": "[ 1672.   192.]"          
+          }        
         },
         "right": 
         {
@@ -29,11 +37,27 @@
       "id": "10", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.5922034868", "samples": "2782",
       "left": 
       {
-        "id": "19", "criterion": "entropy", "impurity": "0.521103744548", "samples": "2117", "rule": "[ 1869.   248.]"      
+        "id": "19", "rule": "diagnosis__HIERARCHY_3 <= 0.5000", "entropy": "0.521103744548", "samples": "2117",
+        "left": 
+        {
+          "id": "45", "criterion": "entropy", "impurity": "0.447298604921", "samples": "1308", "rule": "[ 1186.   122.]"        
+        },
+        "right": 
+        {
+          "id": "46", "criterion": "entropy", "impurity": "0.624039281672", "samples": "809", "rule": "[ 683.  126.]"        
+        }      
       },
       "right": 
       {
-        "id": "20", "criterion": "entropy", "impurity": "0.770197682357", "samples": "665", "rule": "[ 515.  150.]"      
+        "id": "20", "rule": "diagnosis__HIERARCHY_6.7 <= 0.5000", "entropy": "0.770197682357", "samples": "665",
+        "left": 
+        {
+          "id": "39", "criterion": "entropy", "impurity": "0.677276351035", "samples": "470", "rule": "[ 386.   84.]"        
+        },
+        "right": 
+        {
+          "id": "40", "criterion": "entropy", "impurity": "0.923338888994", "samples": "195", "rule": "[ 129.   66.]"        
+        }      
       }    
     }  
   },
@@ -52,7 +76,15 @@
         },
         "right": 
         {
-          "id": "26", "criterion": "entropy", "impurity": "0.695744830079", "samples": "566", "rule": "[ 460.  106.]"        
+          "id": "26", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.695744830079", "samples": "566",
+          "left": 
+          {
+            "id": "37", "criterion": "entropy", "impurity": "0.572108447204", "samples": "384", "rule": "[ 332.   52.]"          
+          },
+          "right": 
+          {
+            "id": "38", "criterion": "entropy", "impurity": "0.877223623073", "samples": "182", "rule": "[ 128.   54.]"          
+          }        
         }      
       },
       "right": 
@@ -70,7 +102,15 @@
             "id": "18", "rule": "diagnosis__HIERARCHY_4 <= 0.5000", "entropy": "0.897004382051", "samples": "1835",
             "left": 
             {
-              "id": "27", "criterion": "entropy", "impurity": "0.833373392243", "samples": "1108", "rule": "[ 815.  293.]"            
+              "id": "27", "rule": "diagnosis__7393 <= 0.5000", "entropy": "0.833373392243", "samples": "1108",
+              "left": 
+              {
+                "id": "47", "criterion": "entropy", "impurity": "0.810516699628", "samples": "1042", "rule": "[ 782.  260.]"              
+              },
+              "right": 
+              {
+                "id": "48", "criterion": "entropy", "impurity": "1.0", "samples": "66", "rule": "[ 33.  33.]"              
+              }            
             },
             "right": 
             {
@@ -123,7 +163,15 @@
           "id": "12", "rule": "diagnosis__HIERARCHY_10.1.4 <= 0.5000", "entropy": "0.993561603903", "samples": "3485",
           "left": 
           {
-            "id": "21", "criterion": "entropy", "impurity": "0.975331591045", "samples": "1974", "rule": "[ 1169.   805.]"          
+            "id": "21", "rule": "diagnosis__2724 <= 0.5000", "entropy": "0.975331591045", "samples": "1974",
+            "left": 
+            {
+              "id": "41", "criterion": "entropy", "impurity": "0.930442401413", "samples": "737", "rule": "[ 482.  255.]"            
+            },
+            "right": 
+            {
+              "id": "42", "criterion": "entropy", "impurity": "0.991133798683", "samples": "1237", "rule": "[ 687.  550.]"            
+            }          
           },
           "right": 
           {
