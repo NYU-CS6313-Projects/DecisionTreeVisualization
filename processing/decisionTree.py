@@ -54,10 +54,11 @@ def depth_cv(Xtrain,ytrain):
   plt.show()
 
 def build_tree(Xtrain, ytrain, Xtest,ytest):
-  clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20, max_leaf_nodes=19)
+  clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20, max_leaf_nodes=25)
   clf = clf.fit(Xtrain, ytrain)
   myPredictions = clf.predict(Xtest)
   correctClass = accuracy_score(ytest, myPredictions)
+  print correctClass
   dot_data = StringIO.StringIO()
   tree.export_graphviz(clf, out_file=dot_data)
   graph = pydot.graph_from_dot_data(dot_data.getvalue())
