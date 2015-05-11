@@ -282,7 +282,7 @@ function finishLoading() {
 
     // panning variables
     var panSpeed = 200;
-    var panBoundary = 7; // Within 20px from edges will pan when dragging.
+    var panBoundary = 20; // Within 20px from edges will pan when dragging.
     // Misc. variables
     var i = 0;
     var duration = 750;
@@ -695,9 +695,9 @@ function finishLoading() {
 
                 var rect = g.append('rect')
                     .classed('info', true)
-                    .attr('width', 1300)
-                    .attr('height',500)
-                    .attr('fill', "green")
+                    .attr('width', 600)
+                    .attr('height',220)
+                    .attr('fill', "#E9E9F2")
                     .attr('x',200)
                     .attr('y', 200);
 
@@ -705,25 +705,22 @@ function finishLoading() {
                     .classed('info', true)
                     .attr('x', 200)
                     .attr('y', 250)
-                    .text('More info');
+                    .text('Patients            :' + (node.leftVal +node.rightVal) + " (" + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%)" )
+                    .style('font-size', "40px");
 
                 var info = g.append('text')
                     .classed('info', true)
                     .attr('x', 200)
-                    .attr('y', 330)
-                    .text('Patients Number: ' + (node.leftVal +node.rightVal) + " , Percentage: " + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%" );
+                    .attr('y', 320)
+                    .style('font-size', "40px")
+                    .text('Diabetes(+) : ' + node.rightVal + " (" + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
 
                 var info = g.append('text')
                     .classed('info', true)
                     .attr('x', 200)
-                    .attr('y', 380)
-                    .text('Number of Real Positive Patients: ' + node.rightVal + " , Percentage: " + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%" );
-
-                var info = g.append('text')
-                    .classed('info', true)
-                    .attr('x', 200)
-                    .attr('y', 430)
-                    .text('Number of Real Negative Patients: ' + node.leftVal + " , Percentage: " + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%" );
+                    .attr('y', 390)
+                    .style('font-size', "40px")
+                    .text('Diabetes(-)  :  ' + node.leftVal + " (" + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
          
             })
             .on("mouseout", function(node) {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ f<!DOCTYPE html>
 <meta charset="utf-8">
 <title>Decision Tree Visualization</title>
 <head>
@@ -18,7 +18,7 @@
 
             <div class="col-md-6">
 
-              <input id="ex6" type="text" style="width:300px;" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="20"/&t<span id="ex6CurrentSliderValLabel"><p>Current Tree Depth: <span id="ex6SliderVal">20</span></p></span>
+              <input id="ex6" type="text" style="width:300px;" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="20"/&t<span id="ex6CurrentSliderValLabel"><p>Current Tree Depth: <span id="ex6SliderVal">7</span></p></span>
 
 
 
@@ -119,22 +119,22 @@
         <div class="panel-heading">
           <h3 class="panel-title">Confusion Matrix</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="height:115px;position:relative;"> 
           <div id="attrDist">
           <table class="table table-condensed">
             <tbody>
             <tr>
               <td> </td>
-              <td>Positive (Predicted)</td>
-              <td>Negative (Predicted)</td>
+              <td>Positive</td>
+              <td>Negative</td>
             </tr>
             <tr>
-              <td>Positive (Actual)</td>
+              <td>True</td>
               <td id = "tp"></td>
               <td id = "fn"></td>
             </tr>
             <tr>
-              <td>Negative (Actual)</td>
+              <td>False</td>
               <td id = "fp"></td>
               <td id = "tn"></td>
             </tr>       
@@ -148,7 +148,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">Predicted Values</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="height:90px;overflow:scroll;">
           <div id="chart" class = "c3" style="height:100px;position:relative;"></div>
         </div>
     </div>
