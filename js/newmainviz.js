@@ -205,6 +205,7 @@ function splitLeaf(data_larger, key) {
     
     /// the calculation of the right child
     key.push('right');
+    console.log(key)
     var el_right = getel(key);
     right_n = el_right[0];
     right_p = el_right[1];
@@ -268,7 +269,7 @@ function finishLoading() {
     if (!data || !treeData) return;
 
     // console.log(depthchange(data, 4));
-    console.log(splitLeaf(tree_large, 4));
+    console.log(splitLeaf(tree_large, ['right','right']));
 
 
     // Calculate total nodes, max label length
@@ -597,38 +598,11 @@ function finishLoading() {
 
     function click(d) {
         if (state != ""){
-            var node_id = d.id;
-            var targetNode = tree.nodes(root).filter(function(d) {
-                return d['id'] === node_id;
-            })[0];
-
-            
-            if (state == "deleteNode"){
-                var names = targetNode['name'].split("////");
-
-                if (names.length!=1){ //not leaf node
-                targetNode['name'] = names[0]+"////"+names[1]+"////"+names[2]+"////"+"[-"+parseInt(targetNode.leftVal)+",+"+parseInt(targetNode.rightVal)+"]";
-                }
-
-                toggleChildren(d);
-
-                toggleChildren(root);
-                update(root);
-
-                setTimeout(function(){
-                    toggleChildren(root);
-                    update(root);
-
-                },1000);
-            }
-            
-
- 
-
+            alert(state);
         } else {
-            //if (d3.event.defaultPrevented) return; // click suppressed
-            //d = toggleChildren(d);
-            //update(d);
+            if (d3.event.defaultPrevented) return; // click suppressed
+            d = toggleChildren(d);
+            update(d);
             //centerNode(d);
         }
     }
@@ -682,13 +656,11 @@ function finishLoading() {
             .attr("transform", function(d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-            .on('click', click)
+            //.on('click', showInfo)
             .attr('pointer-events', 'mouseover')
             .on("mouseover", function(node) {
-                if (state == ""){
-                    var g = d3.select(this); // The node
+                var g = d3.select(this); // The node
                 // The class is used to remove the additional text later
-                
                 var rect = g.append('rect')
                     .classed('info', true)
                     .attr('width', 500)
@@ -703,9 +675,6 @@ function finishLoading() {
                     .attr('x', 200)
                     .attr('y', 100)
                     .text('More info');
-                    
-                } 
-                
          
             })
             .on("mouseout", function(node) {
@@ -1003,6 +972,46 @@ function finishLoading() {
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
+    /*
+
+    var couplingParent1 = tree.nodes(root).filter(function(d) {
+            return d['id'] === '1';
+        })[0];
+    var couplingChild1 = tree.nodes(root).filter(function(d) {
+            return d['id'] === '77';
+        })[0];
+
+    
+    multiParents = [{
+                    parent: couplingParent1,
+                    child: couplingChild1
+                }];
+    
+    multiParents.forEach(function(multiPair) {
+            svgGroup.append("path", "g")
+            .attr("class", "link")
+            .attr("transform", "rotate(-270) scale(1,-1)")
+                .attr("d", function() {
+                    var oTarget = {
+                        x: multiPair.parent.x0,
+                        y: multiPair.parent.y0
+                    };
+                    var oSource = {
+                        x: multiPair.child.x0,
+                        y: multiPair.child.y0
+                    };
+                    /*if (multiPair.child.depth === multiPair.couplingParent1.depth) {
+                        return "M" + oSource.y + " " + oSource.x + " L" + (oTarget.y + ((Math.abs((oTarget.x - oSource.x))) * 0.25)) + " " + oTarget.x + " " + oTarget.y + " " + oTarget.x;
+                    
+                    return diagonal({
+                        source: oSource,
+                        target: oTarget
+                    });
+                });
+        }); 
+
+*/
 
 
     var allNodes = [];
