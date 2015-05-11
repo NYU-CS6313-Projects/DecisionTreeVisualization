@@ -21,8 +21,13 @@ setTimeout(function () {
         axis : {
             x : {
                 type: 'categorized'
+            },
+            y : {
+                tick: {
+                        count: 5
+                    }
             }
-            }
+        }
         });
 }, 2000);
 
