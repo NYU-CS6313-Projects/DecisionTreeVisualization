@@ -379,13 +379,9 @@ function finishLoading() {
             str = str.replace(' ','');
             str = str.split(".");
             str[0] = str[0].replace('[', '');
-<<<<<<< Updated upstream
             str[1] = str[1].replace(']', '');
             // console.log(str[0])
-            
-=======
-            str[1] = str[1].replace(']', '');            
->>>>>>> Stashed changes
+        
             total_Real_Negative = total_Real_Negative + parseInt(str[0]);
             total_Real_Positive = total_Real_Positive+ parseInt(str[1]);
 
@@ -431,10 +427,7 @@ function finishLoading() {
 
     // Call visit function to establish maxLabelLength
     visit(toJson(treeData,data), function(d) {
-<<<<<<< Updated upstream
         // console.log(d);
-=======
->>>>>>> Stashed changes
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
         maxSample = Math.max(maxSample,(d.leftVal+d.rightVal));
@@ -571,7 +564,7 @@ function finishLoading() {
         x = -source.x0;
         y = -source.y0;
         x = x * scale + viewerWidth / 2;
-        y = y * scale + viewerHeight / 10;
+        y = y * scale + viewerHeight / 2;
         d3.select('g').transition()
             .duration(duration)
             .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -916,19 +909,6 @@ function finishLoading() {
             })
             .remove();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Stash the old positions for transition.
         nodes.forEach(function(d) {
             d.x0 = d.x;
@@ -1068,20 +1048,21 @@ function finishLoading() {
             var nameArray = list1[i].split("////");
             var nameLabel = nameArray[0]+" "+nameArray[1]+" "+nameArray[2];
             new_li.appendChild(document.createTextNode(nameLabel));
-            new_ul.appendChild(new_li)
+            new_ul.appendChild(new_li);
             new_li.id=nameArray[0];
-
-            new_li.onclick = function(){
-
+            new_li.onclick = function () {
+                this_id = this.id;
                 var targetNode = tree.nodes(root).filter(function(d) {
-                    return d['id'] === new_li.id;
+                return d['id'] === this_id;
                 })[0];
 
-            }
+                centerNode(targetNode);
+                };
         }
         
     }
     $("#attr-list").append(new_ul);
+
 
 
 
