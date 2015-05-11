@@ -1031,6 +1031,7 @@ function finishLoading() {
         }
     }
 
+
     var container = d3.select("#attr-list"); 
     getName(toJson(treeData,data));
     var arrayLength = list1.length;
@@ -1063,7 +1064,36 @@ function finishLoading() {
     }
     $("#attr-list").append(new_ul);
 
+    //AUTOCOMPLETE SEARCH ATTRIBUTE BOX
+    var nameLabels = [];
+    
+    for (var i = 0 ; i<list1.length ; i++){
+         if (list1[i].charAt(0) !='['){
+            var nameArray = list1[i].split("////");
+            var nameLabel = nameArray[0]+" "+nameArray[1]+" "+nameArray[2];
+            nameLabels[nameLabels.length] = nameLabel
+        }
+    }
 
+    $("#searchAttrButton").click(function(){
+        searchValue =  document.getElementById("searchAttr").value;
+        var nameArray = searchValue.split(" ");
+        var this_id = nameArray[0];
+        var targetNode = tree.nodes(root).filter(function(d) {
+            return d['id'] === this_id;
+        })[0];
+
+        centerNode(targetNode);
+
+    })
+
+    $("#searchAttr").typeahead({ source:nameLabels });
+
+    $("#searchAttr").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#searchAttrButton").click();
+        }
+    });
 
 
     //PRUNING BY DEPTH

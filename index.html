@@ -41,6 +41,16 @@
               <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
               </button>
+              
+              <div class="input-group">
+                
+                <input id="searchAttr" type="text" data-provide="typeahead" class="form-control" placeholder="Search for attribute...">
+                <span class="input-group-btn">
+                <button id="searchAttrButton" class="btn btn-default" type="button">Go!</button>
+                </span>
+
+
+              </div><!-- /input-group -->
             </div>
 
           </div>
@@ -100,6 +110,7 @@
         </div>
         </div>
       </div>
+    </div>
 
     <div class="col-md-12">
 
@@ -141,16 +152,25 @@
         </div>
     </div>
 
+
+
     <div class="panel panel-default" >
         <div class="panel-heading">
           <h3 class="panel-title">Attribute List</h3>
         </div>
         <div class="panel-body" style="height:100px;overflow:scroll;">
-        <table class="table table-condensed">
-          <tbody>
-          <div id="attr-list"></div>
-          </tbody>
-        </table>
+        <!--
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+          <table class="table table-condensed">
+            <tbody>
+            <div id="attr-list"></div>
+            </tbody>
+          </table>
         </div>
     </div>
 
@@ -161,7 +181,10 @@
 </body>
 <script src="js/config.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <script src="js/colorbrewer.js"></script>
+
+<script src="js/typeahead.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-slider.js"></script> <!--http://seiyria.github.io/bootstrap-slider/-->
 <script src="js/d3.v3.min.js"></script>
