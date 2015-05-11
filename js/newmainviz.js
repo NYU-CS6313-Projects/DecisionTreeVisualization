@@ -148,6 +148,8 @@ d3.json(tree_file, function(error, _treeData) {
 });
 
 
+
+
 d3.json('data/tree_20depth_data.json', function(error, _treeData) {
     if (error) {
         return console.warn(error);
@@ -202,15 +204,14 @@ function splitLeaf(data_larger, key) {
     });
         return el
     }
+    rule = el['rule']
     
     /// the calculation of the right child
     key.push('right');
-    console.log(key)
     var el_right = getel(key);
     right_n = el_right[0];
     right_p = el_right[1];
     right_sample = right_n + right_p
-    right_rule = el_right['rule'];
     right_con = statsOfLeaf(data_larger, key);
     /// the calculation of the left child
     key.pop();
@@ -219,7 +220,6 @@ function splitLeaf(data_larger, key) {
     left_n = el_left[0];
     left_p = el_left[1];
     left_sample = left_n + left_p
-    left_rule = el_left['rule'];
     left_con = statsOfLeaf(data_larger, key);
     /// the calculation of the parent
     key.pop()
@@ -230,7 +230,7 @@ function splitLeaf(data_larger, key) {
        con_change.push(left_con[i] + right_con[i] - parent_con[i]);
     }
     /// the dict of the children and the changes in confusion matrix
-    var children = {'left':{'samples':left_sample, 'rule': left_rule, "0": right_n , "1": right_p}, 'right':{'samples':right_sample, 'rule':right_rule, 0: right_n, 1: right_p}, 'confusion':con_change}
+    var children = {'left':{'samples':left_sample, "0": left_n , "1": left_p}, 'right':{'samples':right_sample, 0: right_n, 1: right_p}, 'rule': rule, 'confusion':con_change}
     return children;
 } 
 function delLeaves(data, key) {
@@ -268,8 +268,7 @@ function test(data,key){
 function finishLoading() {
     if (!data || !treeData) return;
 
-    // console.log(depthchange(data, 4));
-    console.log(splitLeaf(tree_large, ['right','right']));
+    console.log(depthchange(data, 4));
 
 
     // Calculate total nodes, max label length
@@ -283,7 +282,7 @@ function finishLoading() {
 
     // panning variables
     var panSpeed = 200;
-    var panBoundary = 20; // Within 20px from edges will pan when dragging.
+    var panBoundary = 7; // Within 20px from edges will pan when dragging.
     // Misc. variables
     var i = 0;
     var duration = 750;
