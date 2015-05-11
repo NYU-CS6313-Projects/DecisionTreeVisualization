@@ -134,15 +134,8 @@ function toJson(x,y)
   
 }
 
-
-
-// treeData, depth = 20, contains which, truth keys.
 var treeData = null
-// data, depth =20, directly from the python tree output. 
 var data = null
-// var csvData = null
-
-/// tree_large, depth = 30,  contain which, truth keys.
 var tree_large = null
 
 
@@ -153,6 +146,21 @@ d3.json(tree_file, function(error, _treeData) {
     treeData = _treeData;
     finishLoading();
 });
+
+
+d3.json('data/tree_20depth_data.json', function(error, _treeData) {
+    if (error) {
+        return console.warn(error);
+    }
+    tree_large= _treeData;
+    finishLoading();
+});
+
+
+function depthchange(json, depth){
+    console.log(depth)
+}
+
 
 
 function bro_key(key){
@@ -258,11 +266,9 @@ function test(data,key){
 }
 function finishLoading() {
     if (!data || !treeData) return;
-    // console.log(delLeaves(data, ['left','left','left','left','right']));
-    // console.log(delLeaves(data, ['left','left','right']));
-    // the input data for the next line should change to 'tree_large'+ path
-    //console.log(splitLeaf(data,['right','right','right','right','right','right','right','right','right']))
-    // console.log(test(data,['right','right','right','right','right','right','right']))
+
+    // console.log(depthchange(data, 4));
+    console.log(splitLeaf(tree_large, 4));
 
 
     // Calculate total nodes, max label length
