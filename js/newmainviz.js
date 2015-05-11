@@ -767,10 +767,10 @@ function finishLoading() {
             
         nodeEnter.append("rect")
             .attr('width', function(d) {
-                if (d.id==0){
+                if (d.id==0 || d.id==1 || d.id==2){
                     return 400;
                 } else {
-                    return 200;
+                    return 50;
                 }
             })
             .attr('height',45)
@@ -782,10 +782,10 @@ function finishLoading() {
                 }
             })
             .attr('x',function(d) {
-                if (d.id==0){
+                if (d.id==0 || d.id==1 || d.id==2){
                     return -200;
                 } else {
-                    return -100;
+                    return -25;
                 }
             })
             .attr('y', 0)
