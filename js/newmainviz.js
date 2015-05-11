@@ -661,24 +661,47 @@ function finishLoading() {
             .on("mouseover", function(node) {
                 var g = d3.select(this); // The node
                 // The class is used to remove the additional text later
+                console.log(node.leftVal);
+                console.log(node.rightVal);
+
                 var rect = g.append('rect')
                     .classed('info', true)
-                    .attr('width', 500)
+                    .attr('width', 1300)
                     .attr('height',500)
-                    .attr('fill', "red")
+                    .attr('fill', "green")
                     .attr('x',200)
-                    .attr('y', 200)
-                    .style("visibility","visible");
+                    .attr('y', 200);
 
                 var info = g.append('text')
                     .classed('info', true)
                     .attr('x', 200)
-                    .attr('y', 100)
+                    .attr('y', 250)
                     .text('More info');
+
+                var info = g.append('text')
+                    .classed('info', true)
+                    .attr('x', 200)
+                    .attr('y', 330)
+                    .text('Patients Number: ' + (node.leftVal +node.rightVal) + " , Percentage: " + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%" );
+
+                var info = g.append('text')
+                    .classed('info', true)
+                    .attr('x', 200)
+                    .attr('y', 380)
+                    .text('Number of Real Positive Patients: ' + node.rightVal + " , Percentage: " + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%" );
+
+                var info = g.append('text')
+                    .classed('info', true)
+                    .attr('x', 200)
+                    .attr('y', 430)
+                    .text('Number of Real Negative Patients: ' + node.leftVal + " , Percentage: " + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%" );
          
             })
             .on("mouseout", function(node) {
                 d3.select(this).select('rect.info').remove();
+                d3.select(this).select('text.info').remove();
+                d3.select(this).select('text.info').remove();
+                d3.select(this).select('text.info').remove();
                 d3.select(this).select('text.info').remove();
             });
 
