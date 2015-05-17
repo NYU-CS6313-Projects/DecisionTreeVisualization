@@ -54,7 +54,7 @@ def depth_cv(Xtrain,ytrain):
   plt.show()
 
 def build_tree(Xtrain, ytrain, Xtest,ytest):
-  clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20, max_leaf_nodes=25)
+  clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_leaf = 1, max_depth=20, max_leaf_nodes = 25)
   clf = clf.fit(Xtrain, ytrain)
   myPredictions = clf.predict(Xtest)
   correctClass = accuracy_score(ytest, myPredictions)
@@ -181,11 +181,8 @@ if __name__ == '__main__':
   str1 = viz(clf, feature_names=feature)
   # print str1
 
-<<<<<<< HEAD
-  obj = open('tree_25_node_data.json', 'wb')
-=======
+
   obj = open('tree_25_node.json', 'wb')
->>>>>>> origin/master
   obj.write(str1)
   obj.close
 

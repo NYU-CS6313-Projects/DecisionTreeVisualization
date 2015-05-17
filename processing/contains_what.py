@@ -47,7 +47,6 @@ def travel(dct, data, name_dct, indent=''):
 			print dct['rule'][:-10]
 			print idx
 			to_left = data[data[:,idx]<0.5]
-			v['which'] = to_left[:,-1].tolist()
 			v['truth'] = to_left[:,1].tolist()
 			unique, counts = np.unique(to_left[:,0], return_counts=True)	
 			print unique,counts
@@ -68,7 +67,6 @@ def travel(dct, data, name_dct, indent=''):
 			v = dct['right']
 			idx = name_dct[dct['rule'][:-10]]
 			to_right = data[data[:,idx]>=0.5]
-			v['which'] = to_right[:,-1].tolist()
 			v['truth'] = to_right[:,1].tolist()
 			unique, counts = np.unique(to_right[:,0], return_counts=True)	
 
@@ -95,7 +93,6 @@ if __name__ == '__main__':
 	idd = np.arange(train.shape[0]).reshape(train.shape[0],1)
 
 	train_with_id = np.hstack([train,idd])
-	dct['which'] = idd.tolist()
 	dct['truth'] = ytrain.tolist()
 	unique, counts = np.unique(ytrain, return_counts=True)	
 	dct[unique[0]] = counts[0] 

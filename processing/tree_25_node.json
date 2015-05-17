@@ -6,38 +6,30 @@
     "id": "1", "rule": "diagnosis__HIERARCHY_7 <= 0.5000", "entropy": "0.440431404969", "samples": "12918",
     "left": 
     {
-      "id": "9", "rule": "info__dead <= 0.5000", "entropy": "0.391352380767", "samples": "10136",
+      "id": "7", "rule": "diagnosis__HIERARCHY_4 <= 0.5000", "entropy": "0.391352380767", "samples": "10136",
       "left": 
       {
-        "id": "13", "rule": "diagnosis__HIERARCHY_4 <= 0.5000", "entropy": "0.406205553835", "samples": "9526",
+        "id": "25", "rule": "info__age_60_70 <= 0.5000", "entropy": "0.381551856933", "samples": "9806",
         "left": 
         {
-          "id": "33", "rule": "info__age_60_70 <= 0.5000", "entropy": "0.396400777279", "samples": "9213",
-          "left": 
-          {
-            "id": "43", "criterion": "entropy", "impurity": "0.373780777652", "samples": "7349", "rule": "[ 6819.   530.]"          
-          },
-          "right": 
-          {
-            "id": "44", "criterion": "entropy", "impurity": "0.478447266447", "samples": "1864", "rule": "[ 1672.   192.]"          
-          }        
+          "id": "47", "criterion": "entropy", "impurity": "0.359912250544", "samples": "7822", "rule": "[ 7287.   535.]"        
         },
         "right": 
         {
-          "id": "34", "criterion": "entropy", "impurity": "0.641295144558", "samples": "313", "rule": "[ 262.   51.]"        
+          "id": "48", "criterion": "entropy", "impurity": "0.46030791262", "samples": "1984", "rule": "[ 1791.   193.]"        
         }      
       },
       "right": 
       {
-        "id": "14", "criterion": "entropy", "impurity": "0.090422740368", "samples": "610", "rule": "[ 603.    7.]"      
+        "id": "26", "criterion": "entropy", "impurity": "0.628478324669", "samples": "330", "rule": "[ 278.   52.]"      
       }    
     },
     "right": 
     {
-      "id": "10", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.5922034868", "samples": "2782",
+      "id": "8", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.5922034868", "samples": "2782",
       "left": 
       {
-        "id": "19", "rule": "diagnosis__HIERARCHY_3 <= 0.5000", "entropy": "0.521103744548", "samples": "2117",
+        "id": "13", "rule": "diagnosis__HIERARCHY_3 <= 0.5000", "entropy": "0.521103744548", "samples": "2117",
         "left": 
         {
           "id": "45", "criterion": "entropy", "impurity": "0.447298604921", "samples": "1308", "rule": "[ 1186.   122.]"        
@@ -49,7 +41,7 @@
       },
       "right": 
       {
-        "id": "20", "rule": "diagnosis__HIERARCHY_6.7 <= 0.5000", "entropy": "0.770197682357", "samples": "665",
+        "id": "14", "rule": "diagnosis__HIERARCHY_6.7 <= 0.5000", "entropy": "0.770197682357", "samples": "665",
         "left": 
         {
           "id": "39", "criterion": "entropy", "impurity": "0.677276351035", "samples": "470", "rule": "[ 386.   84.]"        
@@ -69,127 +61,135 @@
       "id": "3", "rule": "diagnosis__HIERARCHY_7.2 <= 0.5000", "entropy": "0.75227893118", "samples": "3829",
       "left": 
       {
-        "id": "7", "rule": "diagnosis__HIERARCHY_6 <= 0.5000", "entropy": "0.548854048416", "samples": "1387",
+        "id": "5", "rule": "diagnosis__HIERARCHY_6 <= 0.5000", "entropy": "0.548854048416", "samples": "1387",
         "left": 
         {
-          "id": "25", "criterion": "entropy", "impurity": "0.420453632948", "samples": "821", "rule": "[ 751.   70.]"        
+          "id": "21", "criterion": "entropy", "impurity": "0.420453632948", "samples": "821", "rule": "[ 751.   70.]"        
         },
         "right": 
         {
-          "id": "26", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.695744830079", "samples": "566",
+          "id": "22", "rule": "diagnosis__HIERARCHY_18 <= 0.5000", "entropy": "0.695744830079", "samples": "566",
           "left": 
           {
-            "id": "37", "criterion": "entropy", "impurity": "0.572108447204", "samples": "384", "rule": "[ 332.   52.]"          
+            "id": "35", "criterion": "entropy", "impurity": "0.572108447204", "samples": "384", "rule": "[ 332.   52.]"          
           },
           "right": 
           {
-            "id": "38", "criterion": "entropy", "impurity": "0.877223623073", "samples": "182", "rule": "[ 128.   54.]"          
+            "id": "36", "criterion": "entropy", "impurity": "0.877223623073", "samples": "182", "rule": "[ 128.   54.]"          
           }        
         }      
       },
       "right": 
       {
-        "id": "8", "rule": "info__dead <= 0.5000", "entropy": "0.835922685449", "samples": "2442",
+        "id": "6", "rule": "diagnosis__HIERARCHY_3 <= 0.5000", "entropy": "0.835922685449", "samples": "2442",
         "left": 
         {
-          "id": "15", "rule": "diagnosis__HIERARCHY_3 <= 0.5000", "entropy": "0.858261161778", "samples": "2276",
-          "left": 
-          {
-            "id": "17", "criterion": "entropy", "impurity": "0.614642773542", "samples": "441", "rule": "[ 374.   67.]"          
-          },
-          "right": 
-          {
-            "id": "18", "rule": "diagnosis__HIERARCHY_4 <= 0.5000", "entropy": "0.897004382051", "samples": "1835",
-            "left": 
-            {
-              "id": "27", "rule": "diagnosis__7393 <= 0.5000", "entropy": "0.833373392243", "samples": "1108",
-              "left": 
-              {
-                "id": "47", "criterion": "entropy", "impurity": "0.810516699628", "samples": "1042", "rule": "[ 782.  260.]"              
-              },
-              "right": 
-              {
-                "id": "48", "criterion": "entropy", "impurity": "1.0", "samples": "66", "rule": "[ 33.  33.]"              
-              }            
-            },
-            "right": 
-            {
-              "id": "28", "rule": "diagnosis__HIERARCHY_10.1.4 <= 0.5000", "entropy": "0.963427977054", "samples": "727",
-              "left": 
-              {
-                "id": "29", "criterion": "entropy", "impurity": "0.908371833795", "samples": "485", "rule": "[ 328.  157.]"              
-              },
-              "right": 
-              {
-                "id": "30", "criterion": "entropy", "impurity": "0.999211552258", "samples": "242", "rule": "[ 117.  125.]"              
-              }            
-            }          
-          }        
+          "id": "11", "criterion": "entropy", "impurity": "0.596438151484", "samples": "463", "rule": "[ 396.   67.]"        
         },
         "right": 
         {
-          "id": "16", "criterion": "entropy", "impurity": "0.278669803564", "samples": "166", "rule": "[ 158.    8.]"        
+          "id": "12", "rule": "diagnosis__7393 <= 0.5000", "entropy": "0.874580938753", "samples": "1979",
+          "left": 
+          {
+            "id": "19", "rule": "diagnosis__HIERARCHY_10.1 <= 0.5000", "entropy": "0.852738304589", "samples": "1838",
+            "left": 
+            {
+              "id": "23", "criterion": "entropy", "impurity": "0.753572561998", "samples": "804", "rule": "[ 630.  174.]"            
+            },
+            "right": 
+            {
+              "id": "24", "rule": "diagnosis__HIERARCHY_17.1.7 <= 0.5000", "entropy": "0.910702134891", "samples": "1034",
+              "left": 
+              {
+                "id": "29", "criterion": "entropy", "impurity": "0.86086515303", "samples": "757", "rule": "[ 542.  215.]"              
+              },
+              "right": 
+              {
+                "id": "30", "criterion": "entropy", "impurity": "0.989737696734", "samples": "277", "rule": "[ 155.  122.]"              
+              }            
+            }          
+          },
+          "right": 
+          {
+            "id": "20", "criterion": "entropy", "impurity": "0.999673426005", "samples": "141", "rule": "[ 69.  72.]"          
+          }        
         }      
       }    
     },
     "right": 
     {
-      "id": "4", "rule": "info__dead <= 0.5000", "entropy": "0.966843236743", "samples": "5483",
+      "id": "4", "rule": "diagnosis__HIERARCHY_17.2.4 <= 0.5000", "entropy": "0.966843236743", "samples": "5483",
       "left": 
       {
-        "id": "5", "rule": "diagnosis__HIERARCHY_17.2.4 <= 0.5000", "entropy": "0.975511323429", "samples": "5236",
+        "id": "9", "rule": "diagnosis__HIERARCHY_3.2 <= 0.5000", "entropy": "0.888869392378", "samples": "1838",
         "left": 
         {
-          "id": "11", "rule": "diagnosis__HIERARCHY_3.2 <= 0.5000", "entropy": "0.90355978379", "samples": "1751",
+          "id": "17", "rule": "diagnosis__7224 <= 0.5000", "entropy": "0.845799731502", "samples": "1432",
           "left": 
           {
-            "id": "23", "rule": "diagnosis__7224 <= 0.5000", "entropy": "0.860198132385", "samples": "1365",
-            "left": 
-            {
-              "id": "31", "criterion": "entropy", "impurity": "0.83147438801", "samples": "1235", "rule": "[ 910.  325.]"            
-            },
-            "right": 
-            {
-              "id": "32", "criterion": "entropy", "impurity": "0.998462855728", "samples": "130", "rule": "[ 68.  62.]"            
-            }          
+            "id": "27", "criterion": "entropy", "impurity": "0.816726887987", "samples": "1298", "rule": "[ 969.  329.]"          
           },
           "right": 
           {
-            "id": "24", "criterion": "entropy", "impurity": "0.991442858774", "samples": "386", "rule": "[ 214.  172.]"          
+            "id": "28", "criterion": "entropy", "impurity": "0.995978956519", "samples": "134", "rule": "[ 72.  62.]"          
           }        
         },
         "right": 
         {
-          "id": "12", "rule": "diagnosis__HIERARCHY_10.1.4 <= 0.5000", "entropy": "0.993561603903", "samples": "3485",
+          "id": "18", "rule": "diagnosis__HIERARCHY_8.2.3 <= 0.5000", "entropy": "0.983112069423", "samples": "406",
           "left": 
           {
-            "id": "21", "rule": "diagnosis__2724 <= 0.5000", "entropy": "0.975331591045", "samples": "1974",
-            "left": 
-            {
-              "id": "41", "criterion": "entropy", "impurity": "0.930442401413", "samples": "737", "rule": "[ 482.  255.]"            
-            },
-            "right": 
-            {
-              "id": "42", "criterion": "entropy", "impurity": "0.991133798683", "samples": "1237", "rule": "[ 687.  550.]"            
-            }          
+            "id": "41", "criterion": "entropy", "impurity": "0.960201094779", "samples": "355", "rule": "[ 219.  136.]"          
           },
           "right": 
           {
-            "id": "22", "rule": "diagnosis__HIERARCHY_7.2.4 <= 0.5000", "entropy": "0.999612929078", "samples": "1511",
-            "left": 
-            {
-              "id": "35", "criterion": "entropy", "impurity": "0.980517334163", "samples": "433", "rule": "[ 252.  181.]"            
-            },
-            "right": 
-            {
-              "id": "36", "criterion": "entropy", "impurity": "0.993014125828", "samples": "1078", "rule": "[ 486.  592.]"            
-            }          
+            "id": "42", "criterion": "entropy", "impurity": "0.873981048127", "samples": "51", "rule": "[ 15.  36.]"          
           }        
         }      
       },
       "right": 
       {
-        "id": "6", "criterion": "entropy", "impurity": "0.391243563629", "samples": "247", "rule": "[ 228.   19.]"      
+        "id": "10", "rule": "diagnosis__HIERARCHY_10.1.4 <= 0.5000", "entropy": "0.988530923465", "samples": "3645",
+        "left": 
+        {
+          "id": "15", "rule": "diagnosis__HIERARCHY_1 <= 0.5000", "entropy": "0.966129444443", "samples": "2071",
+          "left": 
+          {
+            "id": "33", "rule": "diagnosis__HIERARCHY_6.7.6 <= 0.5000", "entropy": "0.898861037044", "samples": "600",
+            "left": 
+            {
+              "id": "37", "criterion": "entropy", "impurity": "0.839156851045", "samples": "462", "rule": "[ 338.  124.]"            
+            },
+            "right": 
+            {
+              "id": "38", "criterion": "entropy", "impurity": "0.997574452104", "samples": "138", "rule": "[ 73.  65.]"            
+            }          
+          },
+          "right": 
+          {
+            "id": "34", "rule": "diagnosis__HIERARCHY_7.3 <= 0.5000", "entropy": "0.98305699733", "samples": "1471",
+            "left": 
+            {
+              "id": "43", "criterion": "entropy", "impurity": "0.956493590712", "samples": "884", "rule": "[ 550.  334.]"            
+            },
+            "right": 
+            {
+              "id": "44", "criterion": "entropy", "impurity": "0.999830421661", "samples": "587", "rule": "[ 298.  289.]"            
+            }          
+          }        
+        },
+        "right": 
+        {
+          "id": "16", "rule": "diagnosis__HIERARCHY_7.2.4 <= 0.5000", "entropy": "0.999958072228", "samples": "1574",
+          "left": 
+          {
+            "id": "31", "criterion": "entropy", "impurity": "0.972745334953", "samples": "449", "rule": "[ 268.  181.]"          
+          },
+          "right": 
+          {
+            "id": "32", "criterion": "entropy", "impurity": "0.996791631982", "samples": "1125", "rule": "[ 525.  600.]"          
+          }        
+        }      
       }    
     }  
   }
