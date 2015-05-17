@@ -160,7 +160,7 @@ d3.json('data/tree_20depth_data.json', function(error, _treeData) {
 
 
 function depthchange(json, depth){
-    console.log(depth)
+    //console.log(depth)
 }
 
 
@@ -321,7 +321,6 @@ function finishLoading() {
     function isLeafNode(obj){
         
         if (obj.leftVal != undefined){
-            //console.log(obj.target.leftVal);
             return true;
         } else {
             return false;
@@ -533,7 +532,6 @@ function finishLoading() {
     }
 
     var overCircle = function(d) {
-        // console.log(d.name);
         //updateTempConnector();
     };
     var outCircle = function(d) {
@@ -614,14 +612,11 @@ function finishLoading() {
 
                 },1000);
             } else if (state == "addNode"){
-                //console.log(d.path);
                 //alert(d.path);
                 newChildren = splitLeaf(tree_large,d.path);
-                console.log(newChildren);
                 newChildren.rule = newChildren.rule.replace(' <= 0.5000','');
                 var newName = mapName(newChildren.rule);
                 newName = targetNode['id']+"////"+newChildren.rule+"////"+newName;
-                console.log(newName);
                 targetNode['name'] = newName;
                 targetNode['children'] = [];
                 newChildren['right']['name'] = '[-'+newChildren['right'][0]+',+'+newChildren['right'][1]+']';
@@ -715,8 +710,6 @@ function finishLoading() {
                 if (state == ""){
                     var g = d3.select(this); // The node
                 // The class is used to remove the additional text later
-                //console.log(node.leftVal);
-                //console.log(node.rightVal);
 
                 var rect = g.append('rect')
                     .classed('info', true)
@@ -791,7 +784,6 @@ function finishLoading() {
             .attr('y', 0)
             .style("visibility",function(d) {
                 if (isLeafNode(d)){
-                    //console.log(d);
                     return "visible";
                 }
             });
@@ -804,7 +796,6 @@ function finishLoading() {
             .attr('class', 'nodeText')
             .attr("text-anchor", "middle") 
             .each(function(d) {
-                console.log(d);
                 var t = d3.select(this);
                 var pos = 10;
                 d.name.split("////").forEach(function(n) { 
@@ -963,9 +954,6 @@ function finishLoading() {
                 }
             })
             .attr("transform", function(d){
-                // console.log(getLeftWidth(d.target.id));
-                // console.log(getLeftWidth(d.target));
-                // console.log(getRightWidth(d.target));
                 return "rotate(-270) scale(1,-1) translate(0,"+String(getLeftWidth(d.target))+")";
             });
 
@@ -1220,6 +1208,7 @@ function finishLoading() {
             }
         })
 
+
         var node_ids = depthMap[sliderDepth];
         node_ids = uniq(node_ids);
         var nodes = [];
@@ -1246,7 +1235,6 @@ function finishLoading() {
                 }
             total_Real_Neg = total_Real_Neg + parseInt(targetNode.leftVal);
             total_Real_Po = total_Real_Po+ parseInt(targetNode.rightVal);
-            //console.log(targetNode.leftVal);
 
             a = parseInt(targetNode.leftVal);
             b = parseInt(targetNode.rightVal);
