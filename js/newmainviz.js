@@ -769,7 +769,7 @@ function finishLoading() {
             .attr('height',45)
             .attr('fill', function(d){
                 if (selectedNode == d.id){
-                    return "yellow";
+                    return "white";
                 } else {
                     return "white";
                 }
