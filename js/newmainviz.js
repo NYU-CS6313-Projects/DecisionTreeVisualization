@@ -1202,16 +1202,6 @@ function finishLoading() {
         d3.select("#depth")
         .text(sliderDepth);
 
-        allNodes.forEach(function(node){
-            if (node!=undefined){
-                expand(node);
-            }
-        })
-
-
-        var node_ids = depthMap[sliderDepth];
-        node_ids = uniq(node_ids);
-        var nodes = [];
         var total_R = 0;
         var total_W = 0;
         var total_Real_Po = 0;
@@ -1222,6 +1212,45 @@ function finishLoading() {
         var FP_1 = 0;
         var TN_1 = 0;
         var FN_1 = 0;
+
+        allNodes.forEach(function(node){
+            if (node!=undefined){
+                expand(node);
+            }
+            if (!node.children){
+                if (node.depth < sliderDepth){
+                    var str = node.rule;
+                    str = str.replace(' ','');
+                    str = str.split(".");
+                    str[0] = str[0].replace('[', '');
+                    str[1] = str[1].replace(']', '');
+                    
+                    total_Real_Neg = total_Real_Neg + parseInt(str[0]);
+                    total_Real_Po = total_Real_Po+ parseInt(str[1]);
+                    if (parseInt(str[0]) > parseInt(str[1])){
+                        total_R = total_R + parseInt(str[0]);
+                        total_W = total_W + parseInt(str[1]);
+                        TN_1 = TN_1 + parseInt(str[0]);
+                        FN_1 = FN_1 +parseInt(str[1]);
+                        total_Predict_Neg = total_Predict_Neg + parseInt(str[1]) + parseInt(str[0]);
+            }
+            else{
+                total_R = total_R + parseInt(str[1]);
+                total_W = total_W + parseInt(str[0]);
+                TP_1 = TP_1 + parseInt(str[1]);
+                FP_1 = FP_1 + parseInt(str[0]);
+                total_Predict_Po = total_Predict_Po + parseInt(str[1]) + parseInt(str[0]);
+
+            }
+                }
+            }
+            
+        })
+
+
+        var node_ids = depthMap[sliderDepth];
+        node_ids = uniq(node_ids);
+        var nodes = [];
 
         node_ids.forEach(function(node_id){
             var targetNode = tree.nodes(root).filter(function(d) {
