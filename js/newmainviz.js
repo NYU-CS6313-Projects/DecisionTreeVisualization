@@ -505,13 +505,22 @@ function finishLoading() {
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
     var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            alert("Yaw");
+            return "<strong>Frequency:</strong> <span style='color:red'>" + d.path + "</span>";
+        })
+
 
     // define the baseSvg, attaching a class for styling and the zoomListener
     var baseSvg = d3.select("#mainviz").append("svg")
         .attr("width", viewerWidth)
         .attr("height", viewerHeight)
         .attr("class", "overlay")
-        .call(zoomListener);
+        .call(zoomListener)
+        .call(tip);
 
     // Helper functions for collapsing and expanding nodes.
 
@@ -613,6 +622,9 @@ function finishLoading() {
                 },1000);
             } else if (state == "addNode"){
                 //alert(d.path);
+
+                //alert(d.path);
+
                 newChildren = splitLeaf(tree_large,d.path);
                 newChildren.rule = newChildren.rule.replace(' <= 0.5000','');
                 var newName = mapName(newChildren.rule);
@@ -713,32 +725,35 @@ function finishLoading() {
 
                 var rect = g.append('rect')
                     .classed('info', true)
-                    .attr('width', 600)
+                    .attr('width', 540)
                     .attr('height',220)
-                    .attr('fill', "#E9E9F2")
-                    .attr('x',50)
+                    .attr('fill',  "rgba(0, 0, 0, 0.8)")
+                    .attr('x', 50)
                     .attr('y', 50);
 
-                var info = g.append('text')
+                var info1 = g.append('text')
                     .classed('info', true)
-                    .attr('x', 60)
+                    .attr('x', 70)
                     .attr('y', 110)
-                    .text('Patients            :' + (node.leftVal +node.rightVal) + " (" + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%)" )
+                    .style('fill',"#ffffff")
+                    .text('Patients : ' + (node.leftVal +node.rightVal) + " (" + ((node.leftVal +node.rightVal)/22230*100).toFixed(2)+ "%)" )
                     .style('font-size', "40px");
 
-                var info = g.append('text')
+                var info2 = g.append('text')
                     .classed('info', true)
-                    .attr('x', 60)
+                    .attr('x', 70)
                     .attr('y', 170)
+                    .style('fill',"#ffffff")
                     .style('font-size', "40px")
-                    .text('Diabetes(+) : ' + node.rightVal + " (" + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
+                    .text('Diabetes (+) : ' + node.rightVal + " (" + (node.rightVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
 
-                var info = g.append('text')
+                var info3 = g.append('text')
                     .classed('info', true)
-                    .attr('x', 60)
+                    .attr('x', 70)
                     .attr('y', 230)
+                    .style('fill',"#ffffff")
                     .style('font-size', "40px")
-                    .text('Diabetes(-)  :  ' + node.leftVal + " (" + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
+                    .text('Diabetes (-) :  ' + node.leftVal + " (" + (node.leftVal/(node.leftVal +node.rightVal)*100).toFixed(2)+ "%)" );
          
                 }
                 
@@ -848,6 +863,7 @@ function finishLoading() {
 
         // Fade the text in
         nodeUpdate.select("text")
+            .style("font", "12px lato")
             .style("fill-opacity", 1);
 
         // Transition exiting nodes to the parent's new position.
@@ -862,6 +878,7 @@ function finishLoading() {
             .attr("r", 0);
 
         nodeExit.select("text")
+            .style("font", "12px lato")
             .style("fill-opacity", 0);
 
         // Update the links…
@@ -1038,46 +1055,6 @@ function finishLoading() {
     update(root);
     initializeCenterNode(root);
 
-    /*
-
-    var couplingParent1 = tree.nodes(root).filter(function(d) {
-            return d['id'] === '1';
-        })[0];
-    var couplingChild1 = tree.nodes(root).filter(function(d) {
-            return d['id'] === '77';
-        })[0];
-
-    
-    multiParents = [{
-                    parent: couplingParent1,
-                    child: couplingChild1
-                }];
-    
-    multiParents.forEach(function(multiPair) {
-            svgGroup.append("path", "g")
-            .attr("class", "link")
-            .attr("transform", "rotate(-270) scale(1,-1)")
-                .attr("d", function() {
-                    var oTarget = {
-                        x: multiPair.parent.x0,
-                        y: multiPair.parent.y0
-                    };
-                    var oSource = {
-                        x: multiPair.child.x0,
-                        y: multiPair.child.y0
-                    };
-                    /*if (multiPair.child.depth === multiPair.couplingParent1.depth) {
-                        return "M" + oSource.y + " " + oSource.x + " L" + (oTarget.y + ((Math.abs((oTarget.x - oSource.x))) * 0.25)) + " " + oTarget.x + " " + oTarget.y + " " + oTarget.x;
-                    
-                    return diagonal({
-                        source: oSource,
-                        target: oTarget
-                    });
-                });
-        }); 
-
-*/
-
 
     var allNodes = [];
     for (i =0 ; i< totalNodes ; i++){
@@ -1143,6 +1120,7 @@ function finishLoading() {
         if (list1[i].charAt(0) !='['){
             new_li = document.createElement('button');
             new_li.className = "btn btn-default";
+            new_li.style.cssText="background-color:#fff;color:#000000"
             var nameArray = list1[i].split("////");
             var nameLabel = nameArray[0]+" "+nameArray[1]+" "+nameArray[2];
             new_li.appendChild(document.createTextNode(nameLabel));
@@ -1353,5 +1331,4 @@ d3.json(detailed_tree_file, function(error, _data){
 //     csvData= _data;
 // //     finishLoading();
 // });
-
 
