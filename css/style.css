@@ -1,9 +1,3 @@
-@font-face
-{
-font-family: lato;
-src: url(../fonts/lato.ttf);
-}
-
 .node circle {
   fill: #fff;
   stroke: #7D0C0C;
@@ -55,7 +49,7 @@ path {
 }
 
 text {
-  font-family: Lato;
+  font-family: Arial, sans-serif;
   font-size: 10px;
 }
 
@@ -86,13 +80,4 @@ text {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
-}
-
-.panel-default>.panel-heading{
-  background-color:#000000;
-  color:#fff;
-}
-
-.panel-title{
-  font-weight:normal;
 }
