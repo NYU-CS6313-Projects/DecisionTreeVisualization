@@ -4,6 +4,8 @@ There is a strong need for researchers to visualize a decision tree in an effect
 
 To run this application locally, simply pull the entire directory and run index.html.
 
-Our final video presentation can be found [here](https://vimeo.com/128145962).
+Our final proposal will be posted here when complete.
+
+Our final video presentation will be posted here when complete.
 
 A live demo can be found [here](http://NYU-CS6313-Projects.github.io/DecisionTreeVisualization/).
